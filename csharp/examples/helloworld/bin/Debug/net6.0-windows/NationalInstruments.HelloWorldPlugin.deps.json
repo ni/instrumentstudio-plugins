@@ -1,0 +1,272 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "NationalInstruments.HelloWorldPlugin/1.0.0": {
+        "dependencies": {
+          "System.ComponentModel.Composition": "6.0.0",
+          "NationalInstruments.Core": "9.0.0.0",
+          "NationalInstruments.InstrumentFramework.Plugins": "22.0.0.0"
+        },
+        "runtime": {
+          "NationalInstruments.HelloWorldPlugin.dll": {}
+        }
+      },
+      "System.ComponentModel.Composition/6.0.0": {
+        "runtime": {
+          "lib/net6.0/System.ComponentModel.Composition.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        }
+      },
+      "NationalInstruments.Core/9.0.0.0": {
+        "runtime": {
+          "NationalInstruments.Core.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.5.0.1427"
+          }
+        },
+        "resources": {
+          "ja/NationalInstruments.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "ko/NationalInstruments.Core.resources.dll": {
+            "locale": "ko"
+          }
+        }
+      },
+      "NationalInstruments.InstrumentFramework.Plugins/22.0.0.0": {
+        "runtime": {
+          "NationalInstruments.InstrumentFramework.Plugins.dll": {
+            "assemblyVersion": "22.0.0.0",
+            "fileVersion": "22.3.0.1427"
+          }
+        }
+      },
+      "NationalInstruments.Common/19.1.40.49152": {
+        "runtime": {
+          "NationalInstruments.Common.dll": {
+            "assemblyVersion": "19.1.40.49152",
+            "fileVersion": "19.1.40.49152"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.0.0": {
+        "runtime": {
+          "Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
+          }
+        }
+      },
+      "Caching/2009.26.8.0": {
+        "runtime": {
+          "Caching.dll": {
+            "assemblyVersion": "2009.26.8.0",
+            "fileVersion": "2009.26.8.0"
+          }
+        }
+      },
+      "SharpVectors.Rendering.Wpf/1.0.0.0": {
+        "runtime": {
+          "SharpVectors.Rendering.Wpf.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SharpVectors.Converters/1.0.0.0": {
+        "runtime": {
+          "SharpVectors.Converters.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SharpVectors.Core/1.0.0.0": {
+        "runtime": {
+          "SharpVectors.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "System.Json/2.0.6.0": {
+        "runtime": {
+          "System.Json.dll": {
+            "assemblyVersion": "2.0.6.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
+      "Microsoft.WindowsAPICodePack.Shell/1.2.0.0": {
+        "runtime": {
+          "Microsoft.WindowsAPICodePack.Shell.dll": {
+            "assemblyVersion": "1.2.0.0",
+            "fileVersion": "1.2.0.0"
+          }
+        }
+      },
+      "NationalInstruments.NiLmClientDLL/19.0.40.49152": {
+        "runtime": {
+          "NationalInstruments.NiLmClientDLL.dll": {
+            "assemblyVersion": "19.0.40.49152",
+            "fileVersion": "19.0.40.49152"
+          }
+        }
+      },
+      "NationalInstruments.MStudioCLM/19.0.40.49152": {
+        "runtime": {
+          "NationalInstruments.MStudioCLM.dll": {
+            "assemblyVersion": "19.0.40.49152",
+            "fileVersion": "19.0.40.49152"
+          }
+        }
+      },
+      "SharpVectors.Model/1.0.0.0": {
+        "runtime": {
+          "SharpVectors.Model.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SharpVectors.Css/1.0.0.0": {
+        "runtime": {
+          "SharpVectors.Css.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SharpVectors.Runtime/1.0.0.0": {
+        "runtime": {
+          "SharpVectors.Runtime.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.WindowsAPICodePack/1.1.6.0": {
+        "runtime": {
+          "Microsoft.WindowsAPICodePack.dll": {
+            "assemblyVersion": "1.1.6.0",
+            "fileVersion": "1.1.6.0"
+          }
+        }
+      },
+      "SharpVectors.Dom/1.0.0.0": {
+        "runtime": {
+          "SharpVectors.Dom.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NationalInstruments.HelloWorldPlugin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.ComponentModel.Composition/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-60Qv+F7oxomOjJeTDA5Z4iCyFbQ0B/2Mi5HT+13pxxq0lVnu2ipbWMzFB+RWKr3wWKA8BSncXr9PH/fECwMX5Q==",
+      "path": "system.componentmodel.composition/6.0.0",
+      "hashPath": "system.componentmodel.composition.6.0.0.nupkg.sha512"
+    },
+    "NationalInstruments.Core/9.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NationalInstruments.InstrumentFramework.Plugins/22.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NationalInstruments.Common/19.1.40.49152": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/12.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Caching/2009.26.8.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharpVectors.Rendering.Wpf/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharpVectors.Converters/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharpVectors.Core/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Json/2.0.6.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.WindowsAPICodePack.Shell/1.2.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NationalInstruments.NiLmClientDLL/19.0.40.49152": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NationalInstruments.MStudioCLM/19.0.40.49152": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharpVectors.Model/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharpVectors.Css/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharpVectors.Runtime/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.WindowsAPICodePack/1.1.6.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SharpVectors.Dom/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0-windows7.0": {
+      "System.ComponentModel.Composition/6.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.ComponentModel.Composition.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.ComponentModel.Composition.dll": {}
+        },
+        "build": {
+          "buildTransitive/netcoreapp3.1/_._": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "System.ComponentModel.Composition/6.0.0": {
+      "sha512": "60Qv+F7oxomOjJeTDA5Z4iCyFbQ0B/2Mi5HT+13pxxq0lVnu2ipbWMzFB+RWKr3wWKA8BSncXr9PH/fECwMX5Q==",
+      "type": "package",
+      "path": "system.componentmodel.composition/6.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/netcoreapp2.0/System.ComponentModel.Composition.targets",
+        "buildTransitive/netcoreapp3.1/_._",
+        "lib/net461/_._",
+        "lib/net6.0/System.ComponentModel.Composition.dll",
+        "lib/net6.0/System.ComponentModel.Composition.xml",
+        "lib/netcoreapp3.1/System.ComponentModel.Composition.dll",
+        "lib/netcoreapp3.1/System.ComponentModel.Composition.xml",
+        "lib/netstandard2.0/System.ComponentModel.Composition.dll",
+        "lib/netstandard2.0/System.ComponentModel.Composition.xml",
+        "system.componentmodel.composition.6.0.0.nupkg.sha512",
+        "system.componentmodel.composition.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0-windows7.0": [
+      "System.ComponentModel.Composition >= 6.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\jdixon\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\dev\\instrumentstudio-plugins\\csharp\\examples\\helloworld\\HelloWorld.NetCore.csproj",
+      "projectName": "NationalInstruments.HelloWorldPlugin",
+      "projectPath": "C:\\dev\\instrumentstudio-plugins\\csharp\\examples\\helloworld\\HelloWorld.NetCore.csproj",
+      "packagesPath": "C:\\Users\\jdixon\\.nuget\\packages\\",
+      "outputPath": "C:\\dev\\instrumentstudio-plugins\\csharp\\examples\\helloworld\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\jdixon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "http://ninugetsvr.amer.corp.natinst.com/nuget/packages": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0-windows7.0": {
+        "targetAlias": "net6.0-windows",
+        "dependencies": {
+          "System.ComponentModel.Composition": {
+            "target": "Package",
+            "version": "[6.0.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

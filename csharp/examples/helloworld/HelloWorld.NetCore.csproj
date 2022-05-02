@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <UseWPF>true</UseWPF>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <AssemblyName>NationalInstruments.HelloWorldPlugin</AssemblyName>
+    <RootNamespace>NationalInstruments.InstrumentStudio.HelloWorldPlugin</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <InstrumentStudioDirectory>C:/dev/asw3/Binaries/NetCore/InstrumentStudio/Debug</InstrumentStudioDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="NationalInstruments.Core">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.InstrumentFramework.Plugins">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.InstrumentFramework.Plugins.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
