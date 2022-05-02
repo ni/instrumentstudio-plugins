@@ -35,7 +35,7 @@ To build the example, run this command from the 'csharp/examples/helloworld' dir
 
 ## Installation
 
-Copy the built assembly (NationalInstruments.HelloWorldPlugin.dll) into the 'Addons' directory under InstrumentStudio.
+Copy the built assembly (NationalInstruments.HelloWorldPlugin.dll) into the 'Addons' directory under InstrumentStudio, for example "C:\Program Files\National Instruments\InstrumentStudio\Addons". The assembly can also be located in a sub-folder under the Addons directory if you want to isolate it from other plugins.
 
 If the plugin is installed correctly, it will appear in the Edit Layout dialog in InstrumentStudio
 ![Hello World In Edit Layout Dialog](HelloWorldInEditLayout.png)
