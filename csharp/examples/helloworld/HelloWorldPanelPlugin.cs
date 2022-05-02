@@ -12,6 +12,6 @@ namespace NationalInstruments.InstrumentStudio.HelloWorldPlugin
         {
         }
 
-        public override FrameworkElement PanelContent => new TextBlock { Text = "Hello InstrumentStudio World" };
+        public override FrameworkElement PanelContent => new TextBlock { Text = "Hello InstrumentStudio World!" };
     }
 }
