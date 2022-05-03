@@ -159,8 +159,7 @@ Run `dotnet build` to ensure the plugin project is buildable at this point.
 ## Install the plugin assembly into InstrumentStudio
 
 Copy the myplugin.dll from the built assembly directory (bin\Debug\net6.0-windows) to the Addons folder of InstrumentStudio
-(C:\Program Files\National Instruments\InstrumentStudio\Addons). It can be anywhere under this directory including a
-sub-folder if you want to isolate your plugin files from other files there.
+(C:\Program Files\National Instruments\InstrumentStudio\Addons). It can be anywhere under this directory including a sub-folder.
 
 ## Test the Plugin
 
