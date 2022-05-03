@@ -19,8 +19,8 @@ the point where you have a plugin that is building and running correctly as quic
 
 ## Install InstrumentStudio
 
-This tutorial requires assemblies that are installed with InstrumentStudio. You must install
-a development version of InstrumentStudio 22.3 at least as new as version 22.3.0.383-0+d383.
+This tutorial requires assemblies that are installed with InstrumentStudio. Install
+InstrumentStudio with at least version 22.3.0.383-0+d383.
 
 ## Get the .NET SDK
 
@@ -87,7 +87,7 @@ In order to be correctly recognized by InstrumentStudio, assemblies need to have
 Add a .cs file to the project to contain the `ParticipatesInComposition` attribute. This is traditionally stored
 in a file called AssemblyInfo.cs, but any .cs file that is compiled into the project should work.
 
-![AssemblyInfo.cs](AssemblyInfoFile.png)
+![AssemblyInfo.cs](images/AssemblyInfoFile.png)
 
 ```csharp
 using NationalInstruments.Composition;
@@ -133,6 +133,11 @@ Create a new class in the project the implements the `IPanelPluginFactory` inter
 in general terms including its 'DisplayName' and other 'metadata' information.
 - The class implements the `IPanelPluginFactory` interface. This interface contains the `CreatePlugin` method.
 - The `CreatePlugin` method is called by the framework and returns an instance of your class that inherits from the `PanelPlugin` abstract base class.
+- The GroupName and PanelType determine how the plugin appears in the Edit Layout dialog in InstrumentStudio. See the images below.
+
+![GroupName](images/EditLayoutGroupName.png)
+
+![PanelType](images/EditLayoutPanelType.png)
 
 ```csharp
 using NationalInstruments.InstrumentFramework.Plugins;
@@ -163,12 +168,11 @@ Copy the myplugin.dll from the built assembly directory (bin\Debug\net6.0-window
 
 ## Test the Plugin
 
-Run InstrumentStudio. From the lobby screen in InstrumentStudio, click the 'Manual Layout' button. You
-will see the 'Edit Layout' dialog with your new plugin listed there:
+Run InstrumentStudio. NOTE: Relaunch InstrumentStudio if it is already running to detect new plugins. From the lobby screen in InstrumentStudio, click the 'Manual Layout' button. You will see the 'Edit Layout' dialog with your new plugin listed there:
 
-![Edit Layout Dialog](MyPluginEditLayout.png)
+![Edit Layout Dialog](images/MyPluginEditLayout.png)
 
 Create a large panel for the plugin and click OK. You will see a soft front panel with your plugin UI in it
 similar to this:
 
-![Large Panel](MyPluginLargePanel.png)
+![Large Panel](images/MyPluginLargePanel.png)
