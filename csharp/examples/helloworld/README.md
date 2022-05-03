@@ -39,8 +39,8 @@ Copy the built assembly (NationalInstruments.HelloWorldPlugin.dll) into the 'Add
 
 If the plugin is installed correctly, it will appear in the Edit Layout dialog in InstrumentStudio
 
-![Hello World In Edit Layout Dialog](HelloWorldInEditLayout.png)
+![Hello World In Edit Layout Dialog](images/HelloWorldInEditLayout.png)
 
 The panel looks like this in InstrumentStudio once it is created
 
-![Hello World Panel](HelloWorldLargePanel.png)
+![Hello World Panel](images/HelloWorldLargePanel.png)
