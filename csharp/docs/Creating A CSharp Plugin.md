@@ -14,6 +14,7 @@ the point where you have a plugin that is building and running correctly as quic
 - [Add the `ParticipatesInComposition` attribute](#add-the-participatesincomposition-attribute)
 - [Implement the `PanelPlugin` Class](#implement-the-panelplugin-class)
 - [Implement the `IPanelPluginFactory` Class](#implement-the-ipanelpluginfactory-class)
+- [Optional: Delete the Class1.cs file](#optional-delete-the-class1cs-file)
 - [Install the plugin](#install-the-plugin-assembly-into-instrumentstudio)
 - [Test the plugin](#test-the-plugin)
 
@@ -158,6 +159,11 @@ namespace NationalInstruments.InstrumentStudio.HelloWorldPlugin
 ```
 
 Run `dotnet build` to ensure the plugin project is buildable at this point.
+
+## Optional: Delete the Class1.cs file
+
+When the library was created, .NET put an initial Class1.cs file into the project directory.
+This file is unneeded and can be deleted if you wish.
 
 ## Install the plugin assembly into InstrumentStudio
 
