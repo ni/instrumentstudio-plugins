@@ -14,14 +14,14 @@ namespace SwitchExecutive.Plugin.Internal.Common
 
    class SaveDelegator : ISave
    {
-      private UpdateConfigurationDelegate updateConfiguration;
+      private PluginSession pluginSession;
       private Func<string> serialize;
       private Action<string> deserialize;
       private bool loading = false;
 
-      public SaveDelegator(UpdateConfigurationDelegate updateConfigurationDelegate)
+      public SaveDelegator(PluginSession pluginSession)
       {
-         this.updateConfiguration = updateConfigurationDelegate;
+         this.pluginSession = pluginSession;
       }
 
       public void Save()
@@ -32,9 +32,8 @@ namespace SwitchExecutive.Plugin.Internal.Common
          if (!this.loading)
          {
             string serializedState = this.serialize();
-            this.updateConfiguration?.Invoke(
-               editTimeConfiguration: serializedState,
-               runTimeConfiguration: serializedState);
+            this.pluginSession.EditTimeConfiguration = serializedState;
+            this.pluginSession.RunTimeConfiguration = serializedState;
          }
       }
 

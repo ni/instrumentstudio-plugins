@@ -1,6 +1,5 @@
 ﻿using NationalInstruments.InstrumentFramework.Plugins;
 using System;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using SwitchExecutive.Plugin.Internal.DriverOperations;
@@ -8,20 +7,16 @@ using SwitchExecutive.Plugin.Internal.Common;
 
 namespace SwitchExecutive.Plugin.Internal
 {
-   public partial class SwitchExecutiveControl : UserControl, IPanelPlugin
+   public partial class SwitchExecutiveControl : UserControl
    {
-      public SwitchExecutiveControl(
-         string editTimeConfiguration, 
-         string runTimeConfiguration, 
-         UpdateConfigurationDelegate updateConfigurationDelegate, 
-         PanelPresentation requestedPresentation)
+      public SwitchExecutiveControl(PluginSession pluginSession)
       {
          InitializeComponent();
 
          /* used to save/load our view models and models.  for save we serialize
-            and return the string to InstrumentStudio via the UpdateConfiguraitonDelegate.  This 
+            and return the string to InstrumentStudio via PluginSession.  This 
             class also handles not saving during load.  */
-         var saveDelegator = new SaveDelegator(updateConfigurationDelegate);
+         var saveDelegator = new SaveDelegator(pluginSession);
 
          /* crete the main view model which creates all the child view models and models.  by
             doing this creation here we imply that the view is created first. Also we:
@@ -31,7 +26,7 @@ namespace SwitchExecutive.Plugin.Internal
             3. create a status option that is shared to all view models.  this allows any code to report errors. */
          var mainViewModel = 
             new SwitchExecutiveControlViewModel(
-                  requestedPresentation,
+                  pluginSession.RequestedPresentation,
                   NISwitchExecutiveDriverOperations.IsDriverInstalled(),
                   (ISwitchExecutiveDriverOperations)new NISwitchExecutiveDriverOperations(),
                   (ISave)saveDelegator,
@@ -47,15 +42,9 @@ namespace SwitchExecutive.Plugin.Internal
          this.DataContext = mainViewModel;
 
          // update our state based on the state saved in the .sfp file
-         saveDelegator.Deserialize(editTimeConfiguration);
+         saveDelegator.Deserialize(pluginSession.EditTimeConfiguration);
          // restore connections from the saved file
          mainViewModel.ApplyLoadFromFile();
-      }
-
-      public FrameworkElement PanelContent => this;
-
-      public void Shutdown()
-      {
       }
    }
 }
