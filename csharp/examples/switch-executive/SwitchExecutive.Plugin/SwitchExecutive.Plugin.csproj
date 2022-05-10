@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1FEDF17A-3F2A-4246-8AB2-3A6E4426E62C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SwitchExecutive.Plugin</RootNamespace>
+    <AssemblyName>SwitchExecutive.Plugin</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NationalInstruments.Common, Version=17.5.40.49153, Culture=neutral, PublicKeyToken=dc6ad606294fc298, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Imports\NationalInstruments.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls">
+      <HintPath>Imports\NationalInstruments.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls.Numerics">
+      <HintPath>Imports\NationalInstruments.Controls.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls.SkinProviders">
+      <HintPath>Imports\NationalInstruments.Controls.SkinProviders.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls.SkinProviders.Graphs">
+      <HintPath>Imports\NationalInstruments.Controls.SkinProviders.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls.SkinProviders.Numerics">
+      <HintPath>Imports\NationalInstruments.Controls.SkinProviders.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Core, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Imports\NationalInstruments.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.FuseControlsImplementation">
+      <HintPath>Imports\NationalInstruments.FuseControlsImplementation.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.InstrumentFramework.HostedContent, Version=255.0.0.0, Culture=neutral, PublicKeyToken=2eaa5af0834e221d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Imports\NationalInstruments.InstrumentFramework.HostedContent.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.PlatformFramework">
+      <HintPath>Imports\NationalInstruments.PlatformFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Imports\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>Imports\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="source\Exceptions.cs" />
+    <Compile Include="source\Internal\Common\SaveDelegator.cs" />
+    <Compile Include="source\Internal\Common\SingleOrArrayConverter.cs" />
+    <Compile Include="source\Internal\Common\Status.cs" />
+    <Compile Include="source\Internal\Common\Version.cs" />
+    <Compile Include="source\Internal\Configuration\ConfigurationView.xaml.cs" />
+    <Compile Include="source\Internal\Configuration\ConfigurationViewModel.cs" />
+    <Compile Include="source\Internal\Configuration\ConnectedRouteTable.xaml.cs" />
+    <Compile Include="source\Internal\Configuration\ConnectedRouteTableViewModel.cs" />
+    <Compile Include="source\Internal\Header\HeaderView.xaml.cs" />
+    <Compile Include="source\Internal\Header\HeaderViewModel.cs" />
+    <Compile Include="source\Internal\Visualization\ChannelTable.xaml.cs" />
+    <Compile Include="source\Internal\Common\BaseNotify.cs" />
+    <Compile Include="source\Internal\Constants.cs" />
+    <Compile Include="source\Internal\Controls\AdornedControl.cs" />
+    <Compile Include="source\Internal\Controls\CollapsibleRowDefinition.cs" />
+    <Compile Include="source\Internal\Controls\FrameworkElementAdorner.cs" />
+    <Compile Include="source\Internal\Controls\MenuButton.xaml.cs" />
+    <Compile Include="source\Internal\Controls\Menu\ContextMenuProvider.cs" />
+    <Compile Include="source\Internal\Controls\Menu\ContextMenuService.cs" />
+    <Compile Include="source\Internal\Controls\Menu\ContextMenuServiceExtensions.cs" />
+    <Compile Include="source\Internal\Controls\DisplayContainer.cs" />
+    <Compile Include="source\Internal\Controls\DisplayContainerCollection.cs" />
+    <Compile Include="source\Internal\Controls\Menu\IContextMenuDataProvider.cs" />
+    <Compile Include="source\Internal\Controls\Menu\IContextMenuProvider.cs" />
+    <Compile Include="source\Internal\Controls\Menu\IDynamicMenuDataProvider.cs" />
+    <Compile Include="source\Internal\Controls\Menu\IMenuBuilder.cs" />
+    <Compile Include="source\Internal\Controls\Menu\IMenuItem.cs" />
+    <Compile Include="source\Internal\Controls\Menu\IMenuProvider.cs" />
+    <Compile Include="source\Internal\Controls\InstrumentPanelResources.xaml.cs">
+      <DependentUpon>InstrumentPanelResources.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="source\Internal\Controls\Menu\Internal\MenuItem.cs" />
+    <Compile Include="source\Internal\Controls\Menu\Internal\MenuItemToViewConverter.cs" />
+    <Compile Include="source\Internal\Controls\Menu\MenuBuilder.cs" />
+    <Compile Include="source\Internal\Controls\Menu\MenuItemFactory.cs" />
+    <Compile Include="source\Internal\Controls\Menu\MenuProvider.cs" />
+    <Compile Include="source\Internal\Controls\Menu\MenuType.cs" />
+    <Compile Include="source\Internal\Controls\PlotColors.cs" />
+    <Compile Include="source\Internal\Header\HeaderMenuView.xaml.cs" />
+    <Compile Include="source\Internal\Header\HeaderMenuViewModel.cs" />
+    <Compile Include="source\Internal\Visualization\ChannelTableViewModel.cs" />
+    <Compile Include="source\Internal\Visualization\DeviceTable.xaml.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\FakeNISwitchExecutive.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\FakeVirtualDevices.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\IVirtualDevices.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\NISwitchExecutiveConfigurationManagement.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\NISwitchExecutiveConfigurationUtilities.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\VirtualDevicesFactory.cs" />
+    <Compile Include="source\Internal\DriverOperations\NISwitchExecutiveFactory.cs" />
+    <Compile Include="source\Internal\DriverOperations\NISwitchExecutiveDriverOperations.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\VirtualDevices.cs" />
+    <Compile Include="source\Internal\DriverOperations\NISwitchExecutiveInterface.cs" />
+    <Compile Include="source\Internal\Visualization\DeviceTableViewModel.cs" />
+    <Compile Include="source\Internal\Visualization\RouteTable.xaml.cs" />
+    <Compile Include="source\Internal\SwitchExecutiveControlViewModel.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\IviConstants.cs" />
+    <Compile Include="source\Internal\DriverOperations\Internal\NISwitchExecutive.cs" />
+    <Compile Include="source\Internal\Visualization\RouteTableViewModel.cs" />
+    <Compile Include="source\Internal\Visualization\VisualizationView.xaml.cs">
+      <DependentUpon>VisualizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="source\Internal\Visualization\VisualizationViewModel.cs" />
+    <Compile Include="source\Properties\AssemblyInfo.cs" />
+    <Compile Include="source\Internal\SwitchExecutiveControl.xaml.cs">
+      <DependentUpon>SwitchExecutiveControl.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="source\SwtichExecutiveFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="source\Internal\Configuration\ConfigurationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="source\Internal\Configuration\ConnectedRouteTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="source\Internal\Header\HeaderView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="source\Internal\Visualization\ChannelTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="source\Internal\Controls\InstrumentPanelResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </Page>
+    <Page Include="source\Internal\Controls\MenuButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="source\Internal\Header\HeaderMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="source\Internal\Visualization\DeviceTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="source\Internal\Visualization\RouteTable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="source\Internal\SwitchExecutiveControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="source\Internal\Visualization\VisualizationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\missingdevice_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="niSE">
+      <Guid>{4128667A-472E-4B0E-9D3F-05A6AD8FB114}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="niseCfg">
+      <Guid>{8715111D-1307-4657-97EC-A80A09695061}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>1033</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\missingdevice_12x12.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
