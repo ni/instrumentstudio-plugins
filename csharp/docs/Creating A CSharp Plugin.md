@@ -14,6 +14,7 @@ the point where you have a plugin that is building and running correctly as quic
 - [Add the `ParticipatesInComposition` attribute](#add-the-participatesincomposition-attribute)
 - [Implement the `PanelPlugin` Class](#implement-the-panelplugin-class)
 - [Implement the `IPanelPluginFactory` Class](#implement-the-ipanelpluginfactory-class)
+- [Optional: Delete the Class1.cs file](#optional-delete-the-class1cs-file)
 - [Install the plugin](#install-the-plugin-assembly-into-instrumentstudio)
 - [Test the plugin](#test-the-plugin)
 
@@ -84,10 +85,8 @@ Run `dotnet build` to ensure the plugin project is buildable at this point.
 
 In order to be correctly recognized by InstrumentStudio, assemblies need to have an assembly attribute called `ParticipatesInComposition`.
 
-Add a .cs file to the project to contain the `ParticipatesInComposition` attribute. This is traditionally stored
-in a file called AssemblyInfo.cs, but any .cs file that is compiled into the project should work.
-
-![AssemblyInfo.cs](images/AssemblyInfoFile.png)
+Add a .cs file to the project directory to contain the `ParticipatesInComposition` attribute. This is traditionally stored
+in a file called AssemblyInfo.cs, but any .cs file that is compiled into the project should work. By default, for .NET projects, any .cs file placed in the project directory will be compiled by default. So simply create the AssemblyInfo.cs file in the project directory with the contents below.
 
 ```csharp
 using NationalInstruments.Composition;
@@ -160,6 +159,11 @@ namespace NationalInstruments.InstrumentStudio.HelloWorldPlugin
 ```
 
 Run `dotnet build` to ensure the plugin project is buildable at this point.
+
+## Optional: Delete the Class1.cs file
+
+When the library was created, .NET put an initial Class1.cs file into the project directory.
+This file is unneeded and can be deleted if you wish.
 
 ## Install the plugin assembly into InstrumentStudio
 
