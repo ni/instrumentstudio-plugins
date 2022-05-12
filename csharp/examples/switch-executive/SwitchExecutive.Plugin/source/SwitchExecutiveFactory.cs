@@ -2,11 +2,8 @@
 
 namespace SwitchExecutive.Plugin
 {
-    // This export attribute is what InstrumentStudio uses to discover your plugin. The first argument is the name
-    // of your plugin that will show up in InstrumentStudio for your users to select. The second argument is a
-    // unique identifier that InstrumentStudio uses internally. Use guidgen to generate a guid. The third argument 
-    // is which panel presentations this plugin supports.
-    [PanelPlugin("SwitchExecutive", "need guid", "Group Name", "Panel Type", PanelPresentation.ConfigurationWithVisualization | PanelPresentation.ConfigurationOnly)]
+    // This export attribute is what InstrumentStudio uses to discover your plugin.
+    [PanelPlugin("SwitchExecutive", "NI | CSharpPlugin | IS_2022 | SwitchExecutive", "NI InstrumentStudio", "SwitchExecutive", PanelPresentation.ConfigurationWithVisualization | PanelPresentation.ConfigurationOnly)]
     public class SwitchExecutiveFactory : IPanelPluginFactory
     {
         /// <summary>
