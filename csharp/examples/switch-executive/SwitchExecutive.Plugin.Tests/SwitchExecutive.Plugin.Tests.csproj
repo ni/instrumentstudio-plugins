@@ -12,7 +12,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SwitchExecutive.Plugin\SwitchExecutive.Plugin.csproj" />
+    <ProjectReference Include="..\SwitchExecutive.Plugin\SwitchExecutive.Plugin.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />

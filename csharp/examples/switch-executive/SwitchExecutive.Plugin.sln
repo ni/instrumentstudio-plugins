@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchExecutive.Plugin", "SwitchExecutive.Plugin\SwitchExecutive.Plugin.csproj", "{1FEDF17A-3F2A-4246-8AB2-3A6E4426E62C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchExecutive.Plugin.Tests", "SwitchExecutive.Plugin.Tests\SwitchExecutive.Plugin.Tests\SwitchExecutive.Plugin.Tests.csproj", "{81AF22E1-46D9-47A3-A883-23CFA9C18563}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwitchExecutive.Plugin.Tests", "SwitchExecutive.Plugin.Tests\SwitchExecutive.Plugin.Tests.csproj", "{81AF22E1-46D9-47A3-A883-23CFA9C18563}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
