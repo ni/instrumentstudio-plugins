@@ -1,62 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SwitchExecutive.Plugin.Internal.DriverOperations;
+using Xunit;
 
 namespace SwitchExecutive.Plugin.Tests
 {
-    [TestClass]
     public class NISwitchExecutiveDriverOperationsTests
     {
-        [TestMethod]
+        [Fact]
         public void OnContruction_NoThrow()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
-            Assert.IsNotNull(driverOperations);
+            Assert.NotNull(driverOperations);
         }
 
-        [TestMethod]
+        [Fact]
         public void IsDriverInstalled_ReturnsTrue()
         {
             // The rest of these tests will fail if SwitchExecutive isn't installed. Needs default SwitchExecutiveExample in MAX.
-            Assert.IsTrue(NISwitchExecutiveDriverOperations.IsDriverInstalled());
+            Assert.True(NISwitchExecutiveDriverOperations.IsDriverInstalled());
         }
 
-        [TestMethod]
+        [Fact]
         public void DefaultSelectedVirtualDevice_IsEmpty()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
-            Assert.IsTrue(driverOperations.SelectedVirtualDevice == "");
+            Assert.True(driverOperations.SelectedVirtualDevice == "");
         }
 
-        [TestMethod]
+        [Fact]
         public void SetVirtualDevice_ReturnsNoError()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
             string newVirtualDevice = "VirtualDevice1";
             driverOperations.SelectedVirtualDevice = newVirtualDevice;
-            Assert.IsTrue(driverOperations.SelectedVirtualDevice == newVirtualDevice);
+            Assert.True(driverOperations.SelectedVirtualDevice == newVirtualDevice);
         }
 
-        [TestMethod]
+        [Fact]
         public void SetRoute_ReturnsNoError()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
             string newRoute = "PowerUUT";
             driverOperations.SelectedRoute = newRoute;
-            Assert.IsTrue(driverOperations.SelectedRoute == newRoute);
+            Assert.True(driverOperations.SelectedRoute == newRoute);
         }
 
-        [TestMethod]
+        [Fact]
         public void VirtualDeviceNames_ReturnsSwitchExecutiveExample()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
             IEnumerable<string> virtualDevices = driverOperations.VirtualDeviceNames;
-            Assert.IsTrue(virtualDevices.FirstOrDefault(device => device == "SwitchExecutiveExample").Any());
+            Assert.True(virtualDevices.FirstOrDefault(device => device == "SwitchExecutiveExample").Any());
         }
 
-        [TestMethod]
+        [Fact]
         public void VirtualDeviceRoutes_ReturnsPowerUUT()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
@@ -64,10 +63,10 @@ namespace SwitchExecutive.Plugin.Tests
             driverOperations.SelectedVirtualDevice = newVirtualDevice;
 
             IEnumerable<string> routes = driverOperations.RouteNames;
-            Assert.IsTrue(routes.FirstOrDefault(route => route == "PowerUUT").Any());
+            Assert.True(routes.FirstOrDefault(route => route == "PowerUUT").Any());
         }
 
-        [TestMethod]
+        [Fact]
         public void ConnectDisconnectRouteTest()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
@@ -77,19 +76,19 @@ namespace SwitchExecutive.Plugin.Tests
             string newRoute = "PowerUUT";
             driverOperations.SelectedRoute = newRoute;
 
-            Assert.IsTrue(driverOperations.CanConnect());
-            Assert.IsFalse(driverOperations.IsConnected());
+            Assert.True(driverOperations.CanConnect());
+            Assert.False(driverOperations.IsConnected());
             driverOperations.TryConnect(MulticonnectMode.Multiconnect);
-            Assert.IsTrue(driverOperations.IsConnected());
-            Assert.IsTrue(driverOperations.ConnectedRoutes.Any());
+            Assert.True(driverOperations.IsConnected());
+            Assert.True(driverOperations.ConnectedRoutes.Any());
 
-            Assert.IsTrue(driverOperations.CanDisconnect());
+            Assert.True(driverOperations.CanDisconnect());
             driverOperations.TryDisconnect();
-            Assert.IsFalse(driverOperations.IsConnected());
-            Assert.IsFalse(driverOperations.ConnectedRoutes.Any());
+            Assert.False(driverOperations.IsConnected());
+            Assert.False(driverOperations.ConnectedRoutes.Any());
         }
 
-        [TestMethod]
+        [Fact]
         public void ConnectDisconnectAllRouteTest()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
@@ -99,19 +98,19 @@ namespace SwitchExecutive.Plugin.Tests
             string newRoute = "PowerUUT";
             driverOperations.SelectedRoute = newRoute;
 
-            Assert.IsTrue(driverOperations.CanConnect());
-            Assert.IsFalse(driverOperations.IsConnected());
+            Assert.True(driverOperations.CanConnect());
+            Assert.False(driverOperations.IsConnected());
             driverOperations.TryConnect(MulticonnectMode.Multiconnect);
-            Assert.IsTrue(driverOperations.IsConnected());
-            Assert.IsTrue(driverOperations.ConnectedRoutes.Any());
+            Assert.True(driverOperations.IsConnected());
+            Assert.True(driverOperations.ConnectedRoutes.Any());
 
-            Assert.IsTrue(driverOperations.CanDisconnect());
+            Assert.True(driverOperations.CanDisconnect());
             driverOperations.TryDisconnectAll();
-            Assert.IsFalse(driverOperations.IsConnected());
-            Assert.IsFalse(driverOperations.ConnectedRoutes.Any());
+            Assert.False(driverOperations.IsConnected());
+            Assert.False(driverOperations.ConnectedRoutes.Any());
         }
 
-        [TestMethod]
+        [Fact]
         public void ConnectNoMulticonnectTwiceErrorsTest()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
@@ -120,11 +119,11 @@ namespace SwitchExecutive.Plugin.Tests
             driverOperations.SelectedRoute = "PowerUUT";
             driverOperations.TryConnect(MulticonnectMode.NoMulticonnect);
 
-            Assert.ThrowsException<DriverException>(() => { driverOperations.TryConnect(MulticonnectMode.NoMulticonnect); });
+            Assert.Throws<DriverException>(() => { driverOperations.TryConnect(MulticonnectMode.NoMulticonnect); });
         }
 
         // note:  this tests requires going to MAX and creating a new VirtualDevice named VirtualDevice1 with a route named "RouteGroup0"
-        [TestMethod]
+        [Fact]
         public void ConfiguredVirtualDevice_SwitchToAnotherVirtualDevice_CanConnect()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
@@ -137,7 +136,7 @@ namespace SwitchExecutive.Plugin.Tests
             driverOperations.SelectedVirtualDevice = "VirtualDevice1";
             driverOperations.SelectedRoute = "RouteGroup0";
             driverOperations.TryConnect(MulticonnectMode.Multiconnect);
-            Assert.IsTrue(driverOperations.IsConnected());
+            Assert.True(driverOperations.IsConnected());
         }
     }
 }
