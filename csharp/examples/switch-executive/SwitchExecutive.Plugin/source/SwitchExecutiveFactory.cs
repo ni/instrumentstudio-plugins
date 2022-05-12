@@ -7,7 +7,7 @@ namespace SwitchExecutive.Plugin
     // unique identifier that InstrumentStudio uses internally. Use guidgen to generate a guid. The third argument 
     // is which panel presentations this plugin supports.
     [PanelPlugin("SwitchExecutive", "need guid", "Group Name", "Panel Type", PanelPresentation.ConfigurationWithVisualization | PanelPresentation.ConfigurationOnly)]
-    public class SwtichExecutiveFactory : IPanelPluginFactory
+    public class SwitchExecutiveFactory : IPanelPluginFactory
     {
         /// <summary>
         /// This method is called by InstrumentStudio when your plugin is placed within a document.
