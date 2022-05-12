@@ -47,12 +47,12 @@
     <Reference Include="NationalInstruments.PlatformFramework">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.PlatformFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>$(InstrumentStudioDirectory)\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows.Interactivity">
       <HintPath>$(InstrumentStudioDirectory)\System.Windows.Interactivity.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\missingdevice_16x16.png" />
