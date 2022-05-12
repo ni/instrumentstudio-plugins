@@ -3,12 +3,12 @@ using System.Windows;
 
 namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 {
-   public interface IMenuProvider
-   {
-      IEnumerable<FrameworkElement> GetDynamicMenuItems();
+    public interface IMenuProvider
+    {
+        IEnumerable<FrameworkElement> GetDynamicMenuItems();
 
-      void AddMenuDataProvider(IDynamicMenuDataProvider dynamicMenuDataProvider);
+        void AddMenuDataProvider(IDynamicMenuDataProvider dynamicMenuDataProvider);
 
-      void RemoveMenuDataProvider(IDynamicMenuDataProvider dynamicMenuDataProvider);
-   }
+        void RemoveMenuDataProvider(IDynamicMenuDataProvider dynamicMenuDataProvider);
+    }
 }

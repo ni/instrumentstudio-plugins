@@ -19,5 +19,5 @@ namespace SwitchExecutive.Plugin
             : base(message, innerException)
         {
         }
-    }    
+    }
 }

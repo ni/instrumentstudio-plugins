@@ -9,42 +9,42 @@ using NationalInstruments.Controls;
 
 namespace SwitchExecutive.Plugin.Internal
 {
-   /// <summary>
-   /// Interaction logic for DeviceTable.xaml
-   /// </summary>
-   public partial class DeviceTable : UserControl
-   {
-      #region Fields
+    /// <summary>
+    /// Interaction logic for DeviceTable.xaml
+    /// </summary>
+    public partial class DeviceTable : UserControl
+    {
+        #region Fields
 
-      public static readonly DependencyProperty DeviceInfoItemsSourceProperty = DependencyProperty.Register(
-         "DeviceInfoItemsSource",
-         typeof(IEnumerable<DeviceInfo>),
-         typeof(DeviceTable),
-         new PropertyMetadata(defaultValue: new List<DeviceInfo>()));
+        public static readonly DependencyProperty DeviceInfoItemsSourceProperty = DependencyProperty.Register(
+           "DeviceInfoItemsSource",
+           typeof(IEnumerable<DeviceInfo>),
+           typeof(DeviceTable),
+           new PropertyMetadata(defaultValue: new List<DeviceInfo>()));
 
-      #endregion
+        #endregion
 
-      #region Constructors
+        #region Constructors
 
-      public DeviceTable()
-      {
-         this.SetValue(DeviceInfoItemsSourceProperty, new List<DeviceInfo>());
-         this.InitializeComponent();
-      }
+        public DeviceTable()
+        {
+            this.SetValue(DeviceInfoItemsSourceProperty, new List<DeviceInfo>());
+            this.InitializeComponent();
+        }
 
-      #endregion
+        #endregion
 
-      #region Properties
+        #region Properties
 
-      /// <summary>
-      /// The collection of <see cref="DeviceInfo"/> that populates the table.
-      /// </summary>
-      public IEnumerable<DeviceInfo> DeviceInfoItemsSource
-      {
-         get { return (IEnumerable<DeviceInfo>)this.GetValue(DeviceTable.DeviceInfoItemsSourceProperty); }
-         set { this.SetValue(DeviceTable.DeviceInfoItemsSourceProperty, value); }
-      }
+        /// <summary>
+        /// The collection of <see cref="DeviceInfo"/> that populates the table.
+        /// </summary>
+        public IEnumerable<DeviceInfo> DeviceInfoItemsSource
+        {
+            get { return (IEnumerable<DeviceInfo>)this.GetValue(DeviceTable.DeviceInfoItemsSourceProperty); }
+            set { this.SetValue(DeviceTable.DeviceInfoItemsSourceProperty, value); }
+        }
 
-      #endregion
-   }
+        #endregion
+    }
 }

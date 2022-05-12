@@ -4,18 +4,18 @@ using System.Windows.Media;
 
 namespace SwitchExecutive.Plugin.Internal.Controls
 {
-   public static class PlotColors
-   {
-      private static readonly ResourceDictionary InstrumentPanelsResources = Controls.InstrumentPanelResources.Instance;
-      private static IList<Color> plotColorList;
+    public static class PlotColors
+    {
+        private static readonly ResourceDictionary InstrumentPanelsResources = Controls.InstrumentPanelResources.Instance;
+        private static IList<Color> plotColorList;
 
-      public static IList<Color> PlotColorList
-      {
-         get
-         {
-            if (plotColorList == null)
+        public static IList<Color> PlotColorList
+        {
+            get
             {
-               plotColorList = new List<Color>()
+                if (plotColorList == null)
+                {
+                    plotColorList = new List<Color>()
                {
                   (Color)InstrumentPanelsResources["Plot1Color"],
                   (Color)InstrumentPanelsResources["Plot2Color"],
@@ -34,19 +34,19 @@ namespace SwitchExecutive.Plugin.Internal.Controls
                   (Color)InstrumentPanelsResources["Plot15Color"],
                   (Color)InstrumentPanelsResources["Plot16Color"],
                };
+                }
+
+                return plotColorList;
             }
+        }
 
-            return plotColorList;
-         }
-      }
+        public static string GetPlotColorStringForIndex(int index)
+        {
+            int count = PlotColors.PlotColorList.Count;
+            index = index % count;
 
-      public static string GetPlotColorStringForIndex(int index)
-      {
-         int count = PlotColors.PlotColorList.Count;
-         index = index % count;
-
-         var color = PlotColors.PlotColorList[index];
-         return new ColorConverter().ConvertToString(color);
-      }
-   }
+            var color = PlotColors.PlotColorList[index];
+            return new ColorConverter().ConvertToString(color);
+        }
+    }
 }

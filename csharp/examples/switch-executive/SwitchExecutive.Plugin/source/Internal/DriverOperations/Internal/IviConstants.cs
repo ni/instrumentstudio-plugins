@@ -37,5 +37,5 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 
         public const ushort VI_FALSE = 0;
         public const ushort VI_TRUE = 1;
-   }
+    }
 }

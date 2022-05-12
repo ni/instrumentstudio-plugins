@@ -12,146 +12,146 @@ using Newtonsoft.Json;
 
 namespace SwitchExecutive.Plugin.Internal
 {
-   [JsonObject(MemberSerialization.OptIn)]
-   internal sealed class HeaderMenuViewModel : BaseNotify, IDynamicMenuDataProvider
-   {
-      private readonly ISwitchExecutiveDriverOperations driverOperations;
-      private readonly ISave saveOperation;
-      private IStatus status;
-      private static ICommand disabledCommand = new NationalInstruments.RelayCommand((o) => System.Linq.Expressions.Expression.Empty(), (o) => false);
-      private bool autoRefreshEnabled = false;
-      private bool includedConntectedRoutesWithSave = true;
+    [JsonObject(MemberSerialization.OptIn)]
+    internal sealed class HeaderMenuViewModel : BaseNotify, IDynamicMenuDataProvider
+    {
+        private readonly ISwitchExecutiveDriverOperations driverOperations;
+        private readonly ISave saveOperation;
+        private IStatus status;
+        private static ICommand disabledCommand = new NationalInstruments.RelayCommand((o) => System.Linq.Expressions.Expression.Empty(), (o) => false);
+        private bool autoRefreshEnabled = false;
+        private bool includedConntectedRoutesWithSave = true;
 
-      #region Constructors
+        #region Constructors
 
-      public HeaderMenuViewModel(
-         ISwitchExecutiveDriverOperations driverOperations,
-         ISave saveOperation,
-         IStatus status)
-      {
-         this.driverOperations = driverOperations;
-         this.saveOperation = saveOperation;
-         this.status = status;
+        public HeaderMenuViewModel(
+           ISwitchExecutiveDriverOperations driverOperations,
+           ISave saveOperation,
+           IStatus status)
+        {
+            this.driverOperations = driverOperations;
+            this.saveOperation = saveOperation;
+            this.status = status;
 
-         this.MenuProvider = new MenuProvider(this);
-         this.MenuProvider.AddMenuDataProvider(this);
+            this.MenuProvider = new MenuProvider(this);
+            this.MenuProvider.AddMenuDataProvider(this);
 
-         this.driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
-         this.driverOperations.RefreshOptions(auto: true);
-      }
+            this.driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
+            this.driverOperations.RefreshOptions(auto: true);
+        }
 
-      #endregion
+        #endregion
 
-      #region Properties
-      public ImageSource MissingDeviceIcon => new BitmapImage(new Uri("/SwitchExecutive.Plugin;component/resources/missingdevice_16x16.png", UriKind.Relative));
-      public IMenuProvider MenuProvider { get; }
-      public IEnumerable<IMenuItem> CollectDynamicMenuItems(object commandParameter)
-      {
-         var builder = new MenuBuilder();
+        #region Properties
+        public ImageSource MissingDeviceIcon => new BitmapImage(new Uri("/SwitchExecutive.Plugin;component/resources/missingdevice_16x16.png", UriKind.Relative));
+        public IMenuProvider MenuProvider { get; }
+        public IEnumerable<IMenuItem> CollectDynamicMenuItems(object commandParameter)
+        {
+            var builder = new MenuBuilder();
 
-         // Menu:  Virtual devices
-         int currentWeight = 0;
-         IMenuItem deviceMenuGroup =
-            MenuItemFactory.CreateMenuItem(
-               menuText: "Virtual Devices",
-               weight: currentWeight++);
+            // Menu:  Virtual devices
+            int currentWeight = 0;
+            IMenuItem deviceMenuGroup =
+               MenuItemFactory.CreateMenuItem(
+                  menuText: "Virtual Devices",
+                  weight: currentWeight++);
 
-         using (builder.AddMenuGroup(deviceMenuGroup))
-         {
-            int i = 0;
-            var virtualDevices = this.driverOperations.VirtualDeviceNames;
-            var currentlySelectedVirtualDevice = this.SelectedVirtualDevice;
-            foreach (var virtualDevice in virtualDevices)
+            using (builder.AddMenuGroup(deviceMenuGroup))
             {
-               IMenuItem deviceMenuItem = 
-                  MenuItemFactory.CreateMenuItem(
-                     menuCommand: 
-                        new NationalInstruments.RelayCommand(
-                           executeParam => this.SelectedVirtualDevice = virtualDevice,
-                           canExecuteParam => virtualDevice != currentlySelectedVirtualDevice),
-                     menuText: virtualDevice, 
-                     weight: i,
-                     commandParameter: null);
-               builder.AddMenu(deviceMenuItem);
-               i++;
+                int i = 0;
+                var virtualDevices = this.driverOperations.VirtualDeviceNames;
+                var currentlySelectedVirtualDevice = this.SelectedVirtualDevice;
+                foreach (var virtualDevice in virtualDevices)
+                {
+                    IMenuItem deviceMenuItem =
+                       MenuItemFactory.CreateMenuItem(
+                          menuCommand:
+                             new NationalInstruments.RelayCommand(
+                                executeParam => this.SelectedVirtualDevice = virtualDevice,
+                                canExecuteParam => virtualDevice != currentlySelectedVirtualDevice),
+                          menuText: virtualDevice,
+                          weight: i,
+                          commandParameter: null);
+                    builder.AddMenu(deviceMenuItem);
+                    i++;
+                }
             }
-         }
 
-         builder.AddMenu(MenuItemFactory.CreateSeparator(currentWeight++));
-         
-         //Menu: Refresh
-         builder.AddMenu(
-            MenuItemFactory.CreateMenuItem(
-                     menuCommand:
-                        new NationalInstruments.RelayCommand(
-                           executeParam => this.driverOperations.Refresh(),
-                           canExecuteParam => !this.IsAnyDeviceOffline),
-                     menuText: "Refresh",
-                     weight: currentWeight++,
-                     commandParameter: null));
+            builder.AddMenu(MenuItemFactory.CreateSeparator(currentWeight++));
 
-         return builder.MenuItems;
-      }
-      public bool IsAnyDeviceOffline => this.driverOperations.SelectedVirtualDevice == string.Empty;
-      [JsonProperty]
-      public bool AutoRefreshEnabled
-      {
-         get => this.autoRefreshEnabled;
-         set
-         {
-            this.autoRefreshEnabled = value;
-            this.driverOperations.RefreshOptions(auto: value);
-            this.Save();
+            //Menu: Refresh
+            builder.AddMenu(
+               MenuItemFactory.CreateMenuItem(
+                        menuCommand:
+                           new NationalInstruments.RelayCommand(
+                              executeParam => this.driverOperations.Refresh(),
+                              canExecuteParam => !this.IsAnyDeviceOffline),
+                        menuText: "Refresh",
+                        weight: currentWeight++,
+                        commandParameter: null));
 
-            this.NotifyPropertyChanged();
-         }
-      }
-      [JsonProperty]
-      public bool IncludeConnectedRoutesWithSave
-      {
-         get => this.includedConntectedRoutesWithSave;
-         set
-         {
-            this.includedConntectedRoutesWithSave = value;
-            this.Save();
+            return builder.MenuItems;
+        }
+        public bool IsAnyDeviceOffline => this.driverOperations.SelectedVirtualDevice == string.Empty;
+        [JsonProperty]
+        public bool AutoRefreshEnabled
+        {
+            get => this.autoRefreshEnabled;
+            set
+            {
+                this.autoRefreshEnabled = value;
+                this.driverOperations.RefreshOptions(auto: value);
+                this.Save();
 
-            this.NotifyPropertyChanged();
-         }
-      }
+                this.NotifyPropertyChanged();
+            }
+        }
+        [JsonProperty]
+        public bool IncludeConnectedRoutesWithSave
+        {
+            get => this.includedConntectedRoutesWithSave;
+            set
+            {
+                this.includedConntectedRoutesWithSave = value;
+                this.Save();
 
-      [JsonProperty]
-      public string SelectedVirtualDevice
-      {
-         get => this.driverOperations.SelectedVirtualDevice;
-         set
-         {
-            if (value == null) { return; }
-            this.ClearErrorMessage();
+                this.NotifyPropertyChanged();
+            }
+        }
 
-            this.driverOperations.SelectedVirtualDevice = value;
-            this.NotifyPropertyChanged();
+        [JsonProperty]
+        public string SelectedVirtualDevice
+        {
+            get => this.driverOperations.SelectedVirtualDevice;
+            set
+            {
+                if (value == null) { return; }
+                this.ClearErrorMessage();
 
-            // the .net framework handles the policy on when to call 'canExecutes' on ICommands.
-            // for whatever reason it doesn't work well for this app (likely because state 
-            // changes are happening in the driver hidden from policy.  This call hints to
-            // the framework to requery.  This makes the buttons on the app to be disabled/enabled
-            // properly.
-            CommandManager.InvalidateRequerySuggested();
+                this.driverOperations.SelectedVirtualDevice = value;
+                this.NotifyPropertyChanged();
 
-            this.Save();
-         }
-      }
+                // the .net framework handles the policy on when to call 'canExecutes' on ICommands.
+                // for whatever reason it doesn't work well for this app (likely because state 
+                // changes are happening in the driver hidden from policy.  This call hints to
+                // the framework to requery.  This makes the buttons on the app to be disabled/enabled
+                // properly.
+                CommandManager.InvalidateRequerySuggested();
 
-      #endregion
+                this.Save();
+            }
+        }
 
-      private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
-      {
-         if (e.PropertyName == nameof(this.driverOperations.SelectedVirtualDevice))
-            this.NotifyPropertyChanged(nameof(this.IsAnyDeviceOffline));
-      }
+        #endregion
 
-      private void SetErrorMessage(string msg) => this.status.Set(msg);
-      private void ClearErrorMessage() => this.status.Clear();
-      private void Save() => this.saveOperation.Save();
-   }
+        private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(this.driverOperations.SelectedVirtualDevice))
+                this.NotifyPropertyChanged(nameof(this.IsAnyDeviceOffline));
+        }
+
+        private void SetErrorMessage(string msg) => this.status.Set(msg);
+        private void ClearErrorMessage() => this.status.Clear();
+        private void Save() => this.saveOperation.Save();
+    }
 }

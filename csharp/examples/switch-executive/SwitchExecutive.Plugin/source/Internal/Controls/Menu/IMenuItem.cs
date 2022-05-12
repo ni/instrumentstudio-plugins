@@ -5,24 +5,24 @@ using System.Windows.Input;
 
 namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 {
-   public interface IMenuItem : IComparable<IMenuItem>, IEquatable<IMenuItem>
-   {
-      IEnumerable<IMenuItem> SubItems { get; }
+    public interface IMenuItem : IComparable<IMenuItem>, IEquatable<IMenuItem>
+    {
+        IEnumerable<IMenuItem> SubItems { get; }
 
-      ICommand Command { get; }
+        ICommand Command { get; }
 
-      object CommandParameter { get; }
+        object CommandParameter { get; }
 
-      MenuType Type { get; }
+        MenuType Type { get; }
 
-      Image Icon { get; }
+        Image Icon { get; }
 
-      double Weight { get; }
+        double Weight { get; }
 
-      string Text { get; }
+        string Text { get; }
 
-      void Add(IMenuItem menuItem);
+        void Add(IMenuItem menuItem);
 
-      void Remove(IMenuItem menuItem);
-   }
+        void Remove(IMenuItem menuItem);
+    }
 }

@@ -7,50 +7,50 @@ using NationalInstruments;
 
 namespace SwitchExecutive.Plugin.Internal
 {
-   internal sealed class VisualizationViewModel : BaseNotify
-   {
-      #region Fields
+    internal sealed class VisualizationViewModel : BaseNotify
+    {
+        #region Fields
 
-      private RelayCommand refreshCommand;
-      private readonly ISwitchExecutiveDriverOperations driverOperations;
+        private RelayCommand refreshCommand;
+        private readonly ISwitchExecutiveDriverOperations driverOperations;
 
-      #endregion
+        #endregion
 
-      #region Constructors
+        #region Constructors
 
-      public VisualizationViewModel(
-         ISwitchExecutiveDriverOperations driverOperations)
-      {
-         this.driverOperations = driverOperations;
+        public VisualizationViewModel(
+           ISwitchExecutiveDriverOperations driverOperations)
+        {
+            this.driverOperations = driverOperations;
 
-         this.DeviceTableViewModel = new DeviceTableViewModel(driverOperations);
-         this.ChannelTableViewModel = new ChannelTableViewModel(driverOperations);
-         this.RouteTableViewModel = new RouteTableViewModel(driverOperations);
-      }
+            this.DeviceTableViewModel = new DeviceTableViewModel(driverOperations);
+            this.ChannelTableViewModel = new ChannelTableViewModel(driverOperations);
+            this.RouteTableViewModel = new RouteTableViewModel(driverOperations);
+        }
 
-      #endregion
+        #endregion
 
-      #region Properties
+        #region Properties
 
-      public DeviceTableViewModel DeviceTableViewModel { get; }
-      public ChannelTableViewModel ChannelTableViewModel { get; }
-      public RouteTableViewModel RouteTableViewModel { get; }
+        public DeviceTableViewModel DeviceTableViewModel { get; }
+        public ChannelTableViewModel ChannelTableViewModel { get; }
+        public RouteTableViewModel RouteTableViewModel { get; }
 
-      public RelayCommand RefreshCommand
-      {
-         get
-         {
-            if (this.refreshCommand == null)
-               this.refreshCommand = new RelayCommand(param => this.driverOperations.Refresh());
+        public RelayCommand RefreshCommand
+        {
+            get
+            {
+                if (this.refreshCommand == null)
+                    this.refreshCommand = new RelayCommand(param => this.driverOperations.Refresh());
 
-            return this.refreshCommand;
-         }
-      }
+                return this.refreshCommand;
+            }
+        }
 
-      #endregion
+        #endregion
 
-      #region Methods
+        #region Methods
 
-      #endregion
-   }
+        #endregion
+    }
 }

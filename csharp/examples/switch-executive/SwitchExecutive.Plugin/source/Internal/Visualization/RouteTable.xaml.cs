@@ -9,42 +9,42 @@ using NationalInstruments.Controls;
 
 namespace SwitchExecutive.Plugin.Internal
 {
-   /// <summary>
-   /// Interaction logic for RouteTable.xaml
-   /// </summary>
-   public partial class RouteTable : UserControl
-   {
-      #region Fields
+    /// <summary>
+    /// Interaction logic for RouteTable.xaml
+    /// </summary>
+    public partial class RouteTable : UserControl
+    {
+        #region Fields
 
-      public static readonly DependencyProperty InfoItemsSourceProperty = DependencyProperty.Register(
-         "InfoItemsSource",
-         typeof(IEnumerable<RouteInfo>),
-         typeof(RouteTable),
-         new PropertyMetadata(defaultValue: new List<RouteInfo>()));
+        public static readonly DependencyProperty InfoItemsSourceProperty = DependencyProperty.Register(
+           "InfoItemsSource",
+           typeof(IEnumerable<RouteInfo>),
+           typeof(RouteTable),
+           new PropertyMetadata(defaultValue: new List<RouteInfo>()));
 
-      #endregion
+        #endregion
 
-      #region Constructors
+        #region Constructors
 
-      public RouteTable()
-      {
-         this.SetValue(InfoItemsSourceProperty, new List<RouteInfo>());
-         this.InitializeComponent();
-      }
+        public RouteTable()
+        {
+            this.SetValue(InfoItemsSourceProperty, new List<RouteInfo>());
+            this.InitializeComponent();
+        }
 
-      #endregion
+        #endregion
 
-      #region Properties
+        #region Properties
 
-      /// <summary>
-      /// The collection of <see cref="RouteInfo"/> that populates the table.
-      /// </summary>
-      public IEnumerable<RouteInfo> InfoItemsSource
-      {
-         get { return (IEnumerable<RouteInfo>)this.GetValue(RouteTable.InfoItemsSourceProperty); }
-         set { this.SetValue(RouteTable.InfoItemsSourceProperty, value); }
-      }
+        /// <summary>
+        /// The collection of <see cref="RouteInfo"/> that populates the table.
+        /// </summary>
+        public IEnumerable<RouteInfo> InfoItemsSource
+        {
+            get { return (IEnumerable<RouteInfo>)this.GetValue(RouteTable.InfoItemsSourceProperty); }
+            set { this.SetValue(RouteTable.InfoItemsSourceProperty, value); }
+        }
 
-      #endregion
-   }
+        #endregion
+    }
 }
