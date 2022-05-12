@@ -19,7 +19,6 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
         {
         }
 
-        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         public static NISwitchExecutiveHandle CreateFromCHandle(IntPtr handle, bool ownsHandle)
         {
             NISwitchExecutiveHandle switchHandle = new NISwitchExecutiveHandle(ownsHandle);
@@ -40,23 +39,16 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 
         private const string NativeDllName64 = "nise.dll";
 
-        // Microsoft internal code comments states to make use of the SuppressUnmanagedCodeSecurity attribute on p-invoke
-        // calls in a SafeHandle class to avoid a runtime security check that can also inject failures. See:
-        // https://referencesource.microsoft.com/#mscorlib/system/runtime/interopservices/safehandle.cs
         [SuppressUnmanagedCodeSecurity]
         [DllImport(NativeDllName64, EntryPoint = "niSE_CloseSession", CallingConvention = CallingConvention.StdCall)]
-        // Microsoft also seems to add the following to every pInvoke they call from their SafeHandle derived classes.
-        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         private static extern int Close(IntPtr instrumentHandle);
 
         [SecurityCritical]
-        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
         protected override bool ReleaseHandle()
         {
             return !NISwitchExecutive.HasErrorClearIfDoes(new NISwitchExecutiveHandle(), Close(base.handle));
         }
 
-        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         public void SetDCPowerHandle(IntPtr handle)
         {
             base.SetHandle(handle);
