@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using MenuItem = System.Windows.Controls.MenuItem;
+using System.Windows.Controls;
 
 namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 {
