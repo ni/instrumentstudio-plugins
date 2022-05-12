@@ -1,0 +1,91 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+	<PropertyGroup>
+		<InstrumentStudioDirectory>C:\Program Files\National Instruments\InstrumentStudio</InstrumentStudioDirectory>
+	</PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NationalInstruments.Common">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls.Numerics">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls.SkinProviders">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.SkinProviders.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls.SkinProviders.Graphs">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.SkinProviders.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Controls.SkinProviders.Numerics">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.SkinProviders.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Core">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.FuseControlsImplementation">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.FuseControlsImplementation.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.InstrumentFramework.Plugins">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.InstrumentFramework.Plugins.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.PlatformFramework">
+      <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.PlatformFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(InstrumentStudioDirectory)\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>$(InstrumentStudioDirectory)\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\missingdevice_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+	 <Resource Include="Resources\missingdevice_12x12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="niSE">
+      <Guid>{4128667A-472E-4B0E-9D3F-05A6AD8FB114}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="niseCfg">
+      <Guid>{8715111D-1307-4657-97EC-A80A09695061}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>1033</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="6.0.0" />
+  </ItemGroup>
+</Project>

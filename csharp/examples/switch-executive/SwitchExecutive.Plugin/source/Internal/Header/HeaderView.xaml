@@ -1,0 +1,49 @@
+<UserControl x:Class="SwitchExecutive.Plugin.Internal.HeaderView"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:localControls="clr-namespace:SwitchExecutive.Plugin.Internal.Controls"
+             xmlns:local="clr-namespace:SwitchExecutive.Plugin.Internal"
+             xmlns:shellControls="clr-namespace:NationalInstruments.Controls.Shell;assembly=NationalInstruments.PlatformFramework">
+<UserControl.Resources>
+      <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../Controls/InstrumentPanelResources.xaml"/>
+         </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>
+   </UserControl.Resources>
+    <Grid
+        Width="{StaticResource SettingsPanelWidth}" 
+        Background="{StaticResource SettingsPanelBackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock 
+            Grid.Row="0" 
+            Grid.Column="0"
+            Text="{Binding HeaderPanelTitle, Mode=OneWay}" 
+            Style="{StaticResource HeaderPanelSfpNameStyle}"/>
+        <ContentControl
+            Grid.Row="0"
+            Grid.Column="1"
+            Content="{Binding HeaderMenuVisual, Mode=OneWay}"
+            Style="{StaticResource ContentControlStyle}"
+            VerticalAlignment="Center">
+            <ContentControl.Margin>
+                <!-- Have to give this +2px more than the header text's top Margin, because of odd vertical centering issues-->
+                <Thickness Top="13" Right="{StaticResource DefaultRowRightMargin}"/>
+            </ContentControl.Margin>
+        </ContentControl>
+        <TextBlock 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Text="{Binding Status, Mode=OneWay}" 
+            Style="{StaticResource SettingsPanelSubheaderTextBlockStyle}"/>
+    </Grid>
+</UserControl>

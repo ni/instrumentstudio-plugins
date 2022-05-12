@@ -1,0 +1,41 @@
+<UserControl x:Class="SwitchExecutive.Plugin.Internal.HeaderMenuView"
+             x:ClassModifier="internal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:localControls="clr-namespace:SwitchExecutive.Plugin.Internal.Controls"
+             xmlns:local="clr-namespace:SwitchExecutive.Plugin.Internal"
+             xmlns:shellControls="clr-namespace:NationalInstruments.Controls.Shell;assembly=NationalInstruments.PlatformFramework">
+<UserControl.Resources>
+      <ResourceDictionary>
+         <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../Controls/InstrumentPanelResources.xaml"/>
+         </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>
+   </UserControl.Resources>
+   <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+        <localControls:AdornedControl
+           Style="{StaticResource InstrumentSettingsAdornedControlStyle}"
+           IsAdornerVisible="{Binding IsAnyDeviceOffline}">
+           <localControls:MenuButton
+               Style="{StaticResource InstrumentSettingsMenuButtonStyle}"
+               MenuProvider="{Binding MenuProvider}">
+               <Control Style="{StaticResource InstrumentSettingsIconControlStyle}"/>
+                <localControls:MenuButton.MenuItems>
+                    <MenuItem Header="Auto Refresh" localControls:WeightExtension.Weight="{x:Static local:Constants+MenuItemWeights.MenuWeightSeparatorAfterLayout}">
+                        <MenuItem Header="Auto Refresh Enabled" IsCheckable="True" IsChecked="{Binding AutoRefreshEnabled}" IsEnabled="{Binding IsAnyDeviceOffline, Converter={StaticResource BooleanToNotBooleanConverter}}"/>
+                        <MenuItem Header="Auto Refresh Disabled" IsCheckable="True" IsChecked="{Binding AutoRefreshEnabled, Converter={StaticResource BooleanToNotBooleanConverter}}" IsEnabled="{Binding IsAnyDeviceOffline, Converter={StaticResource BooleanToNotBooleanConverter}}"/>
+                    </MenuItem>
+                    <Separator localControls:WeightExtension.Weight="10000.0"/>
+                    <MenuItem Header="Save Options" localControls:WeightExtension.Weight="10001.0">
+                        <MenuItem Header="Include Connected Routes" IsCheckable="True" IsChecked="{Binding IncludeConnectedRoutesWithSave}" IsEnabled="{Binding IsAnyDeviceOffline, Converter={StaticResource BooleanToNotBooleanConverter}}"/>
+                    </MenuItem>
+                </localControls:MenuButton.MenuItems>
+            </localControls:MenuButton>
+            <localControls:AdornedControl.AdornerContent>
+                <Image 
+                   Style="{StaticResource InstrumentSettingsAdornerImageStyle}"
+                   Source="{Binding MissingDeviceIcon}"/>
+            </localControls:AdornedControl.AdornerContent>
+        </localControls:AdornedControl>
+   </StackPanel>
+</UserControl>
