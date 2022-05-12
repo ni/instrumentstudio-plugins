@@ -14,47 +14,47 @@ namespace SwitchExecutive.Plugin.Internal.Common
 
     class SaveDelegator : ISave
     {
-        private PluginSession pluginSession;
-        private Func<string> serialize;
-        private Action<string> deserialize;
-        private bool loading = false;
+        private PluginSession _pluginSession;
+        private Func<string> _serialize;
+        private Action<string> _deserialize;
+        private bool _loading = false;
 
         public SaveDelegator(PluginSession pluginSession)
         {
-            this.pluginSession = pluginSession;
+            _pluginSession = pluginSession;
         }
 
         public void Save()
         {
-            if (!this.Attrached())
+            if (!Attrached())
                 return;
 
-            if (!this.loading)
+            if (!_loading)
             {
-                string serializedState = this.serialize();
-                this.pluginSession.EditTimeConfiguration = serializedState;
-                this.pluginSession.RunTimeConfiguration = serializedState;
+                string serializedState = _serialize();
+                _pluginSession.EditTimeConfiguration = serializedState;
+                _pluginSession.RunTimeConfiguration = serializedState;
             }
         }
 
         public void Deserialize(string json)
         {
-            if (!this.Attrached())
+            if (!Attrached())
                 return;
 
-            this.loading = true;
-            this.deserialize(json);
-            this.loading = false;
+            _loading = true;
+            _deserialize(json);
+            _loading = false;
         }
 
         public void Attach(
            Func<string> serialize,
            Action<string> deserialize)
         {
-            this.serialize = serialize;
-            this.deserialize = deserialize;
+            _serialize = serialize;
+            _deserialize = deserialize;
         }
 
-        private bool Attrached() => this.serialize != null && this.deserialize != null;
+        private bool Attrached() => _serialize != null && _deserialize != null;
     }
 }

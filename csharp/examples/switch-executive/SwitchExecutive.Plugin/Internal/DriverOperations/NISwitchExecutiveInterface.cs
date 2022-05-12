@@ -43,9 +43,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
     {
         public DeviceInfo(string name, string topology, string comment)
         {
-            this.Name = name;
-            this.Topology = topology;
-            this.Comment = comment;
+            Name = name;
+            Topology = topology;
+            Comment = comment;
         }
 
         public string Name { get; }
@@ -66,13 +66,13 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
            string hardwire,
            string comment)
         {
-            this.Name = name;
-            this.FormattedName = formattedName;
-            this.Status = status ? "Enabled" : string.Empty;
-            this.DeviceName = deviceName;
-            this.ReservedForRouting = reservedForRouting;
-            this.Hardwire = hardwire;
-            this.Comment = comment;
+            Name = name;
+            FormattedName = formattedName;
+            Status = status ? "Enabled" : string.Empty;
+            DeviceName = deviceName;
+            ReservedForRouting = reservedForRouting;
+            Hardwire = hardwire;
+            Comment = comment;
         }
 
         public string Name { get; }
@@ -84,7 +84,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public string Comment { get; }
         public int index { set; get; } = ChannelInfo.NotConnected;
         public string DisplayColor { set; get; } = Constants.InstrumentPanels.NoBlockBannerColor;
-        public bool Connected => this.index != ChannelInfo.NotConnected;
+        public bool Connected => index != ChannelInfo.NotConnected;
     }
 
     public class RouteInfo
@@ -99,12 +99,12 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
            string specification,
            string comment)
         {
-            this.Name = name;
-            this.RouteGroup = routeGroup;
-            this.Endpoint1 = endpoint1;
-            this.Endpoint2 = endpoint2;
-            this.Specification = specification;
-            this.Comment = comment;
+            Name = name;
+            RouteGroup = routeGroup;
+            Endpoint1 = endpoint1;
+            Endpoint2 = endpoint2;
+            Specification = specification;
+            Comment = comment;
         }
 
         public string Name { get; }

@@ -15,12 +15,12 @@ namespace SwitchExecutive.Plugin.Internal
     [JsonObject(MemberSerialization.OptIn)]
     internal sealed class HeaderMenuViewModel : BaseNotify, IDynamicMenuDataProvider
     {
-        private readonly ISwitchExecutiveDriverOperations driverOperations;
-        private readonly ISave saveOperation;
-        private IStatus status;
-        private static ICommand disabledCommand = new NationalInstruments.RelayCommand((o) => System.Linq.Expressions.Expression.Empty(), (o) => false);
-        private bool autoRefreshEnabled = false;
-        private bool includedConntectedRoutesWithSave = true;
+        private readonly ISwitchExecutiveDriverOperations _driverOperations;
+        private readonly ISave _saveOperation;
+        private IStatus _status;
+        private static ICommand _disabledCommand = new NationalInstruments.RelayCommand((o) => System.Linq.Expressions.Expression.Empty(), (o) => false);
+        private bool _autoRefreshEnabled = false;
+        private bool _includedConntectedRoutesWithSave = true;
 
         #region Constructors
 
@@ -29,15 +29,15 @@ namespace SwitchExecutive.Plugin.Internal
            ISave saveOperation,
            IStatus status)
         {
-            this.driverOperations = driverOperations;
-            this.saveOperation = saveOperation;
-            this.status = status;
+            _driverOperations = driverOperations;
+            _saveOperation = saveOperation;
+            _status = status;
 
-            this.MenuProvider = new MenuProvider(this);
-            this.MenuProvider.AddMenuDataProvider(this);
+            MenuProvider = new MenuProvider(this);
+            MenuProvider.AddMenuDataProvider(this);
 
-            this.driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
-            this.driverOperations.RefreshOptions(auto: true);
+            _driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
+            _driverOperations.RefreshOptions(auto: true);
         }
 
         #endregion
@@ -59,15 +59,15 @@ namespace SwitchExecutive.Plugin.Internal
             using (builder.AddMenuGroup(deviceMenuGroup))
             {
                 int i = 0;
-                var virtualDevices = this.driverOperations.VirtualDeviceNames;
-                var currentlySelectedVirtualDevice = this.SelectedVirtualDevice;
+                var virtualDevices = _driverOperations.VirtualDeviceNames;
+                var currentlySelectedVirtualDevice = SelectedVirtualDevice;
                 foreach (var virtualDevice in virtualDevices)
                 {
                     IMenuItem deviceMenuItem =
                        MenuItemFactory.CreateMenuItem(
                           menuCommand:
                              new NationalInstruments.RelayCommand(
-                                executeParam => this.SelectedVirtualDevice = virtualDevice,
+                                executeParam => SelectedVirtualDevice = virtualDevice,
                                 canExecuteParam => virtualDevice != currentlySelectedVirtualDevice),
                           menuText: virtualDevice,
                           weight: i,
@@ -84,52 +84,52 @@ namespace SwitchExecutive.Plugin.Internal
                MenuItemFactory.CreateMenuItem(
                         menuCommand:
                            new NationalInstruments.RelayCommand(
-                              executeParam => this.driverOperations.Refresh(),
-                              canExecuteParam => !this.IsAnyDeviceOffline),
+                              executeParam => _driverOperations.Refresh(),
+                              canExecuteParam => !IsAnyDeviceOffline),
                         menuText: "Refresh",
                         weight: currentWeight++,
                         commandParameter: null));
 
             return builder.MenuItems;
         }
-        public bool IsAnyDeviceOffline => this.driverOperations.SelectedVirtualDevice == string.Empty;
+        public bool IsAnyDeviceOffline => _driverOperations.SelectedVirtualDevice == string.Empty;
         [JsonProperty]
         public bool AutoRefreshEnabled
         {
-            get => this.autoRefreshEnabled;
+            get => _autoRefreshEnabled;
             set
             {
-                this.autoRefreshEnabled = value;
-                this.driverOperations.RefreshOptions(auto: value);
-                this.Save();
+                _autoRefreshEnabled = value;
+                _driverOperations.RefreshOptions(auto: value);
+                Save();
 
-                this.NotifyPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
         [JsonProperty]
         public bool IncludeConnectedRoutesWithSave
         {
-            get => this.includedConntectedRoutesWithSave;
+            get => _includedConntectedRoutesWithSave;
             set
             {
-                this.includedConntectedRoutesWithSave = value;
-                this.Save();
+                _includedConntectedRoutesWithSave = value;
+                Save();
 
-                this.NotifyPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
 
         [JsonProperty]
         public string SelectedVirtualDevice
         {
-            get => this.driverOperations.SelectedVirtualDevice;
+            get => _driverOperations.SelectedVirtualDevice;
             set
             {
                 if (value == null) { return; }
-                this.ClearErrorMessage();
+                ClearErrorMessage();
 
-                this.driverOperations.SelectedVirtualDevice = value;
-                this.NotifyPropertyChanged();
+                _driverOperations.SelectedVirtualDevice = value;
+                NotifyPropertyChanged();
 
                 // the .net framework handles the policy on when to call 'canExecutes' on ICommands.
                 // for whatever reason it doesn't work well for this app (likely because state 
@@ -138,7 +138,7 @@ namespace SwitchExecutive.Plugin.Internal
                 // properly.
                 CommandManager.InvalidateRequerySuggested();
 
-                this.Save();
+                Save();
             }
         }
 
@@ -146,12 +146,12 @@ namespace SwitchExecutive.Plugin.Internal
 
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(this.driverOperations.SelectedVirtualDevice))
-                this.NotifyPropertyChanged(nameof(this.IsAnyDeviceOffline));
+            if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
+                NotifyPropertyChanged(nameof(IsAnyDeviceOffline));
         }
 
-        private void SetErrorMessage(string msg) => this.status.Set(msg);
-        private void ClearErrorMessage() => this.status.Clear();
-        private void Save() => this.saveOperation.Save();
+        private void SetErrorMessage(string msg) => _status.Set(msg);
+        private void ClearErrorMessage() => _status.Clear();
+        private void Save() => _saveOperation.Save();
     }
 }

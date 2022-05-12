@@ -14,7 +14,7 @@ namespace SwitchExecutive.Plugin.Internal
     {
         public ConnectedRouteTable()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         public static Visibility VisibilityForBooleanValue(bool? value)
@@ -24,19 +24,19 @@ namespace SwitchExecutive.Plugin.Internal
 
         private void PopupClosed(object sender, EventArgs e)
         {
-            Application.Current.MainWindow.PreviewKeyDown -= this.OnPreviewKeyDown;
+            Application.Current.MainWindow.PreviewKeyDown -= OnPreviewKeyDown;
         }
 
         private void PopupOpened(object sender, EventArgs e)
         {
-            Application.Current.MainWindow.PreviewKeyDown += this.OnPreviewKeyDown;
+            Application.Current.MainWindow.PreviewKeyDown += OnPreviewKeyDown;
         }
 
         private void OnPreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
-                //this.Popup.IsOpen = false;
+                //Popup.IsOpen = false;
             }
         }
 

@@ -8,7 +8,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
     {
         public ContextMenuService(Func<CreateContextMenuRoutedEventArgs, IEnumerable<IMenuItem>> getContextMenu)
         {
-            this.GetContextMenu = getContextMenu;
+            GetContextMenu = getContextMenu;
         }
 
         public Func<CreateContextMenuRoutedEventArgs, IEnumerable<IMenuItem>> GetContextMenu { get; }

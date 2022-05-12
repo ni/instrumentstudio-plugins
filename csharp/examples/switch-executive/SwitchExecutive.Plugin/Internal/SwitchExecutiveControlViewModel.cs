@@ -22,10 +22,10 @@ namespace SwitchExecutive.Plugin.Internal
     {
         #region Fields
 
-        private ISwitchExecutiveDriverOperations driverOperations;
-        private readonly ISave saveOperation;
-        private readonly IStatus status;
-        private FrameworkElement displayPanelVisual;
+        private ISwitchExecutiveDriverOperations _driverOperations;
+        private readonly ISave _saveOperation;
+        private readonly IStatus _status;
+        private FrameworkElement _displayPanelVisual;
 
         #endregion
 
@@ -38,18 +38,18 @@ namespace SwitchExecutive.Plugin.Internal
            ISave saveOperation,
            IStatus status)
         {
-            this.driverOperations = driverOperations;
-            this.saveOperation = saveOperation;
-            this.status = status;
+            _driverOperations = driverOperations;
+            _saveOperation = saveOperation;
+            _status = status;
 
             // create view models
             if (requestedPresentation == PanelPresentation.ConfigurationWithVisualization)
-                this.VisualizationViewModel = new VisualizationViewModel(driverOperations);
-            this.HeaderViewModel = new HeaderViewModel(isSwitchExecutiveInstalled, driverOperations, saveOperation, status);
-            this.ConfigurationViewModel = new ConfigurationViewModel(driverOperations, saveOperation, status);
+                VisualizationViewModel = new VisualizationViewModel(driverOperations);
+            HeaderViewModel = new HeaderViewModel(isSwitchExecutiveInstalled, driverOperations, saveOperation, status);
+            ConfigurationViewModel = new ConfigurationViewModel(driverOperations, saveOperation, status);
 
             // we're ready to go, so let's hook up to recieve events from our model and other views models
-            this.driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
+            _driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
         }
 
         #endregion
@@ -58,27 +58,27 @@ namespace SwitchExecutive.Plugin.Internal
 
         [JsonProperty]
         public SwitchExecutive.Plugin.Internal.Common.Version Version { get; set; } = new SwitchExecutive.Plugin.Internal.Common.Version();
-        public Visibility DisplayPanelVisibility => (this.displayPanelVisual == null) ? Visibility.Collapsed : Visibility.Visible;
+        public Visibility DisplayPanelVisibility => (_displayPanelVisual == null) ? Visibility.Collapsed : Visibility.Visible;
         public bool IsReadyForUserInteraction => true;
-        public bool IsInstrumentActive => this.HeaderViewModel.IsInstrumentActive;
+        public bool IsInstrumentActive => HeaderViewModel.IsInstrumentActive;
 
         public SwitchExecutiveControlViewModel MainViewModel { get => this; }
         public VisualizationViewModel VisualizationViewModel { get; }
         public HeaderViewModel HeaderViewModel { get; }
         public ConfigurationViewModel ConfigurationViewModel { get; }
-        public NISwitchExecutiveDriverOperations DriverOpertationsModel => (NISwitchExecutiveDriverOperations)this.driverOperations;
+        public NISwitchExecutiveDriverOperations DriverOpertationsModel => (NISwitchExecutiveDriverOperations)_driverOperations;
 
         public FrameworkElement DisplayPanelVisual
         {
             get
             {
-                if (this.displayPanelVisual == null && this.VisualizationViewModel != null)
+                if (_displayPanelVisual == null && VisualizationViewModel != null)
                 {
-                    this.displayPanelVisual = (FrameworkElement)this.CreateVisualizationView();
-                    this.NotifyPropertyChanged(nameof(this.DisplayPanelVisibility));
+                    _displayPanelVisual = (FrameworkElement)CreateVisualizationView();
+                    NotifyPropertyChanged(nameof(DisplayPanelVisibility));
                 }
 
-                return this.displayPanelVisual;
+                return _displayPanelVisual;
             }
         }
 
@@ -86,11 +86,11 @@ namespace SwitchExecutive.Plugin.Internal
 
         #region Methods
 
-        public void Shutdown() => this.driverOperations.Shutdown();
-        public void Dispose() => this.Shutdown();
+        public void Shutdown() => _driverOperations.Shutdown();
+        public void Dispose() => Shutdown();
 
-        private FrameworkElement CreateVisualizationView() => new VisualizationView(this, this.VisualizationViewModel);
-        private void Save() => this.saveOperation.Save();
+        private FrameworkElement CreateVisualizationView() => new VisualizationView(this, VisualizationViewModel);
+        private void Save() => _saveOperation.Save();
 
         public string Serialize()
         {
@@ -101,11 +101,11 @@ namespace SwitchExecutive.Plugin.Internal
                JsonConvert.SerializeObject(
                   new
                   {
-                      this.Version,
-                      this.HeaderViewModel.HeaderMenuViewModel,
-                      this.MainViewModel,
-                      this.ConfigurationViewModel,
-                      this.DriverOpertationsModel,
+                      Version,
+                      HeaderViewModel.HeaderMenuViewModel,
+                      MainViewModel,
+                      ConfigurationViewModel,
+                      DriverOpertationsModel,
                   },
                   Formatting.Indented,
                   settings);
@@ -126,11 +126,11 @@ namespace SwitchExecutive.Plugin.Internal
                    json,
                    new
                    {
-                       this.Version,
-                       this.HeaderViewModel.HeaderMenuViewModel,
-                       this.MainViewModel,
-                       this.ConfigurationViewModel,
-                       this.DriverOpertationsModel,
+                       Version,
+                       HeaderViewModel.HeaderMenuViewModel,
+                       MainViewModel,
+                       ConfigurationViewModel,
+                       DriverOpertationsModel,
                    },
                    settings);
             }
@@ -144,28 +144,28 @@ namespace SwitchExecutive.Plugin.Internal
         {
             try
             {
-                if (this.HeaderViewModel.HeaderMenuViewModel.IncludeConnectedRoutesWithSave)
+                if (HeaderViewModel.HeaderMenuViewModel.IncludeConnectedRoutesWithSave)
                 {
-                    this.driverOperations.ApplyLoadFromFile(
-                       ConfigurationViewModel.SupportedMulticonnectModes[this.ConfigurationViewModel.SelectedConnectionMode]);
+                    _driverOperations.ApplyLoadFromFile(
+                       ConfigurationViewModel.SupportedMulticonnectModes[ConfigurationViewModel.SelectedConnectionMode]);
                 }
             }
             catch (DriverException e)
             {
-                this.SetErrorMessage(e.Message);
+                SetErrorMessage(e.Message);
             }
         }
 
-        private void SetErrorMessage(string msg) => this.status.Set(msg);
-        private void ClearErrorMessage() => this.status.Clear();
+        private void SetErrorMessage(string msg) => _status.Set(msg);
+        private void ClearErrorMessage() => _status.Clear();
 
         /* hook up to notifications so that changes from models and other views can update this classes properities.
            This app uses a design where the model can notify one or more views about changes. This is because the 
            switch driver can make changes to the state that this app doesn't know about. */
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(this.driverOperations.SelectedVirtualDevice))
-                this.NotifyPropertyChanged(nameof(this.IsInstrumentActive));
+            if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
+                NotifyPropertyChanged(nameof(IsInstrumentActive));
         }
 
         #endregion

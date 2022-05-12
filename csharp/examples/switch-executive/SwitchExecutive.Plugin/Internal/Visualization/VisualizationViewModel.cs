@@ -11,8 +11,8 @@ namespace SwitchExecutive.Plugin.Internal
     {
         #region Fields
 
-        private RelayCommand refreshCommand;
-        private readonly ISwitchExecutiveDriverOperations driverOperations;
+        private RelayCommand _refreshCommand;
+        private readonly ISwitchExecutiveDriverOperations _driverOperations;
 
         #endregion
 
@@ -21,11 +21,11 @@ namespace SwitchExecutive.Plugin.Internal
         public VisualizationViewModel(
            ISwitchExecutiveDriverOperations driverOperations)
         {
-            this.driverOperations = driverOperations;
+            _driverOperations = driverOperations;
 
-            this.DeviceTableViewModel = new DeviceTableViewModel(driverOperations);
-            this.ChannelTableViewModel = new ChannelTableViewModel(driverOperations);
-            this.RouteTableViewModel = new RouteTableViewModel(driverOperations);
+            DeviceTableViewModel = new DeviceTableViewModel(driverOperations);
+            ChannelTableViewModel = new ChannelTableViewModel(driverOperations);
+            RouteTableViewModel = new RouteTableViewModel(driverOperations);
         }
 
         #endregion
@@ -40,10 +40,10 @@ namespace SwitchExecutive.Plugin.Internal
         {
             get
             {
-                if (this.refreshCommand == null)
-                    this.refreshCommand = new RelayCommand(param => this.driverOperations.Refresh());
+                if (_refreshCommand == null)
+                    _refreshCommand = new RelayCommand(param => _driverOperations.Refresh());
 
-                return this.refreshCommand;
+                return _refreshCommand;
             }
         }
 

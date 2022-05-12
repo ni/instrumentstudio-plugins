@@ -39,7 +39,7 @@ namespace SwitchExecutive.Plugin.Internal
                deserialize: o => mainViewModel.Deserialize(o));
 
 
-            this.DataContext = mainViewModel;
+            DataContext = mainViewModel;
 
             // update our state based on the state saved in the .sfp file
             saveDelegator.Deserialize(pluginSession.EditTimeConfiguration);

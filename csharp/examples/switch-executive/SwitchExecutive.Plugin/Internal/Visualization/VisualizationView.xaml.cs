@@ -6,9 +6,9 @@ namespace SwitchExecutive.Plugin.Internal
     {
         public VisualizationView(SwitchExecutiveControlViewModel instrumentViewModel, VisualizationViewModel visualizationViewModel)
         {
-            this.InstrumentViewModel = instrumentViewModel;
-            this.InitializeComponent();
-            this.DataContext = visualizationViewModel;
+            InstrumentViewModel = instrumentViewModel;
+            InitializeComponent();
+            DataContext = visualizationViewModel;
         }
 
         public SwitchExecutiveControlViewModel InstrumentViewModel { get; private set; }

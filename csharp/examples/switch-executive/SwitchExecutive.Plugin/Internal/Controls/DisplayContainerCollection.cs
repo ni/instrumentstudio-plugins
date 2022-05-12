@@ -14,8 +14,8 @@ namespace SwitchExecutive.Plugin.Internal.Controls
     {
         #region Fields
 
-        private Grid grid;
-        private bool loaded;
+        private Grid _grid;
+        private bool _loaded;
 
         #endregion
 
@@ -23,12 +23,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
 
         public DisplayContainerCollection()
         {
-            this.Loaded += this.DisplayContainerCollectionLoaded;
+            Loaded += DisplayContainerCollectionLoaded;
 
             // TODO:  for some reason this works in the IF stack, but in the plugin it causes a crash
             // on tab switching.  Race condition?  This is really only necessary for layouts that add
             // display containers dynamically (like FFT views).
-            //this.Unloaded += this.DisplayContainerCollectionUnloaded;
+            //Unloaded += DisplayContainerCollectionUnloaded;
         }
 
         #endregion
@@ -44,27 +44,27 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            this.grid = this.GetTemplateChild("PART_Grid") as Grid;
+            _grid = GetTemplateChild("PART_Grid") as Grid;
 
-            if (this.grid == null)
+            if (_grid == null)
             {
                 return;
             }
 
-            foreach (var container in this.DisplayContainers)
+            foreach (var container in DisplayContainers)
             {
-                this.grid.Children.Add(container);
+                _grid.Children.Add(container);
             }
         }
 
         public void ResetToDefaults()
         {
-            foreach (var container in this.DisplayContainers)
+            foreach (var container in DisplayContainers)
             {
                 container.PreferredProportion = container.DefaultProportion;
                 container.IsContentCollapsed = false;
 
-                var containerRow = this.GetRowDefinitionForContainer(container) as CollapsibleRowDefinition;
+                var containerRow = GetRowDefinitionForContainer(container) as CollapsibleRowDefinition;
                 if (containerRow != null)
                 {
                     containerRow.Height = new GridLength(container.DefaultProportion, GridUnitType.Star);
@@ -100,34 +100,34 @@ namespace SwitchExecutive.Plugin.Internal.Controls
 
         private void DisplayContainerCollectionLoaded(object sender, RoutedEventArgs e)
         {
-            if (this.grid == null)
+            if (_grid == null)
                 return;
 
-            if (this.loaded)
+            if (_loaded)
                 return;
 
-            this.AddContainerPropertyChangedListeners();
-            this.PopulateGrid();
+            AddContainerPropertyChangedListeners();
+            PopulateGrid();
 
-            this.loaded = true;
+            _loaded = true;
         }
 
         private void DisplayContainerCollectionUnloaded(object sender, RoutedEventArgs e)
         {
-            if (!this.loaded)
+            if (!_loaded)
                 return;
 
-            this.RemoveRowDefinitionPropertyChangedListeners();
-            this.RemoveContainerPropertyChangedListeners();
+            RemoveRowDefinitionPropertyChangedListeners();
+            RemoveContainerPropertyChangedListeners();
 
-            this.loaded = false;
+            _loaded = false;
         }
 
         private void PopulateGrid()
         {
-            this.ResetGrid();
+            ResetGrid();
 
-            var activeContainers = this.DisplayContainers.Where(c => c.Visibility == Visibility.Visible).ToList();
+            var activeContainers = DisplayContainers.Where(c => c.Visibility == Visibility.Visible).ToList();
             for (int index = 0; index < activeContainers.Count; index++)
             {
                 var displayContainer = activeContainers[index];
@@ -136,11 +136,11 @@ namespace SwitchExecutive.Plugin.Internal.Controls
                 if (index != 0)
                 {
                     var rowDefinitionForSplitter = new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) };
-                    this.grid.RowDefinitions.Add(rowDefinitionForSplitter);
+                    _grid.RowDefinitions.Add(rowDefinitionForSplitter);
 
                     var gridSplitter = new GridSplitter() { Style = (Style)InstrumentPanelResources.Instance["GridSplitterStyle"], Height = (double)InstrumentPanelResources.Instance["DisplayContainerSplitterHeight"] };
-                    Grid.SetRow(gridSplitter, this.grid.RowDefinitions.Count - 1);
-                    this.grid.Children.Add(gridSplitter);
+                    Grid.SetRow(gridSplitter, _grid.RowDefinitions.Count - 1);
+                    _grid.Children.Add(gridSplitter);
 
                     var previousContainer = activeContainers[index - 1];
                     AddGridSplitterBindings(gridSplitter, previousContainer, displayContainer);
@@ -156,18 +156,18 @@ namespace SwitchExecutive.Plugin.Internal.Controls
 
                 AddContainerRowDefinitionBindings(rowDefinitionForContainer, displayContainer);
 
-                this.grid.RowDefinitions.Add(rowDefinitionForContainer);
-                Grid.SetRow(displayContainer, this.grid.RowDefinitions.Count - 1);
+                _grid.RowDefinitions.Add(rowDefinitionForContainer);
+                Grid.SetRow(displayContainer, _grid.RowDefinitions.Count - 1);
             }
 
-            this.AddRowDefinitionPropertyChangedListeners();
+            AddRowDefinitionPropertyChangedListeners();
 
             // Add a row at the end for hidden containers. We keep the hidden containers in the Grid to preserve the Bindings.
             var rowDefinitionForHiddenContainers = new RowDefinition() { Height = GridLength.Auto };
-            this.grid.RowDefinitions.Add(rowDefinitionForHiddenContainers);
+            _grid.RowDefinitions.Add(rowDefinitionForHiddenContainers);
 
-            var hiddenRowIndex = this.grid.RowDefinitions.IndexOf(rowDefinitionForHiddenContainers);
-            var hiddenContainers = this.DisplayContainers.Where(c => c.Visibility != Visibility.Visible).ToList();
+            var hiddenRowIndex = _grid.RowDefinitions.IndexOf(rowDefinitionForHiddenContainers);
+            var hiddenContainers = DisplayContainers.Where(c => c.Visibility != Visibility.Visible).ToList();
             foreach (var container in hiddenContainers)
             {
                 Grid.SetRow(container, hiddenRowIndex);
@@ -180,15 +180,15 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private void ResetGrid()
         {
-            this.RemoveRowDefinitionPropertyChangedListeners();
-            this.grid.RowDefinitions.Clear();
+            RemoveRowDefinitionPropertyChangedListeners();
+            _grid.RowDefinitions.Clear();
 
             // Remove the existing splitters, but leave the DisplayContainers as children of the Grid to preserve Bindings.
             // New splitters are added between visible containers when the grid is populated.
-            var splitters = this.grid.Children.OfType<GridSplitter>().ToList();
+            var splitters = _grid.Children.OfType<GridSplitter>().ToList();
             foreach (var splitter in splitters)
             {
-                this.grid.Children.Remove(splitter);
+                _grid.Children.Remove(splitter);
             }
         }
 
@@ -202,10 +202,10 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             var visibilityPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(DisplayContainer.VisibilityProperty, typeof(DisplayContainer));
             var proportionPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(DisplayContainer.PreferredProportionProperty, typeof(DisplayContainer));
-            foreach (DisplayContainer displayContainer in this.DisplayContainers)
+            foreach (DisplayContainer displayContainer in DisplayContainers)
             {
-                visibilityPropertyDescriptor.AddValueChanged(displayContainer, this.DisplayContainerVisibilityChanged);
-                proportionPropertyDescriptor.AddValueChanged(displayContainer, this.DisplayContainerPreferredProportionChanged);
+                visibilityPropertyDescriptor.AddValueChanged(displayContainer, DisplayContainerVisibilityChanged);
+                proportionPropertyDescriptor.AddValueChanged(displayContainer, DisplayContainerPreferredProportionChanged);
             }
         }
 
@@ -213,10 +213,10 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             var visibilityPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(DisplayContainer.VisibilityProperty, typeof(DisplayContainer));
             var proportionPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(DisplayContainer.PreferredProportionProperty, typeof(DisplayContainer));
-            foreach (DisplayContainer displayContainer in this.DisplayContainers)
+            foreach (DisplayContainer displayContainer in DisplayContainers)
             {
-                visibilityPropertyDescriptor.RemoveValueChanged(displayContainer, this.DisplayContainerVisibilityChanged);
-                proportionPropertyDescriptor.RemoveValueChanged(displayContainer, this.DisplayContainerPreferredProportionChanged);
+                visibilityPropertyDescriptor.RemoveValueChanged(displayContainer, DisplayContainerVisibilityChanged);
+                proportionPropertyDescriptor.RemoveValueChanged(displayContainer, DisplayContainerPreferredProportionChanged);
             }
         }
 
@@ -228,18 +228,18 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         private void AddRowDefinitionPropertyChangedListeners()
         {
             var heightPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(RowDefinition.HeightProperty, typeof(RowDefinition));
-            foreach (var rowDefinition in this.grid.RowDefinitions.OfType<CollapsibleRowDefinition>())
+            foreach (var rowDefinition in _grid.RowDefinitions.OfType<CollapsibleRowDefinition>())
             {
-                heightPropertyDescriptor.AddValueChanged(rowDefinition, this.RowDefinitionHeightChanged);
+                heightPropertyDescriptor.AddValueChanged(rowDefinition, RowDefinitionHeightChanged);
             }
         }
 
         private void RemoveRowDefinitionPropertyChangedListeners()
         {
             var heightPropertyDescriptor = DependencyPropertyDescriptor.FromProperty(RowDefinition.HeightProperty, typeof(RowDefinition));
-            foreach (var rowDefinition in this.grid.RowDefinitions.OfType<CollapsibleRowDefinition>())
+            foreach (var rowDefinition in _grid.RowDefinitions.OfType<CollapsibleRowDefinition>())
             {
-                heightPropertyDescriptor.RemoveValueChanged(rowDefinition, this.RowDefinitionHeightChanged);
+                heightPropertyDescriptor.RemoveValueChanged(rowDefinition, RowDefinitionHeightChanged);
             }
         }
 
@@ -254,14 +254,14 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             }
 
             // Recreate the grid to show only visible containers
-            this.PopulateGrid();
+            PopulateGrid();
         }
 
         private void RowDefinitionHeightChanged(object sender, EventArgs e)
         {
             var collapsibleRow = (CollapsibleRowDefinition)sender;
-            var rowIndex = this.grid.RowDefinitions.IndexOf(collapsibleRow);
-            var container = this.DisplayContainers.Where(c => Grid.GetRow(c) == rowIndex).FirstOrDefault();
+            var rowIndex = _grid.RowDefinitions.IndexOf(collapsibleRow);
+            var container = DisplayContainers.Where(c => Grid.GetRow(c) == rowIndex).FirstOrDefault();
             if (container != null &&
                !container.IsContentCollapsed &&
                container.PreferredProportion != collapsibleRow.Height.Value)
@@ -273,7 +273,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         private void DisplayContainerPreferredProportionChanged(object sender, EventArgs e)
         {
             var container = sender as DisplayContainer;
-            var containerRow = this.GetRowDefinitionForContainer(container) as CollapsibleRowDefinition;
+            var containerRow = GetRowDefinitionForContainer(container) as CollapsibleRowDefinition;
 
             if (containerRow == null)
             {
@@ -293,7 +293,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         private RowDefinition GetRowDefinitionForContainer(DisplayContainer container)
         {
             var row = Grid.GetRow(container);
-            return this.grid.RowDefinitions.ElementAt(row);
+            return _grid.RowDefinitions.ElementAt(row);
         }
 
         #endregion

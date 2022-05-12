@@ -9,8 +9,8 @@ namespace SwitchExecutive.Plugin.Internal
     {
         public HeaderMenuView(HeaderMenuViewModel viewModel)
         {
-            this.InitializeComponent();
-            this.DataContext = viewModel;
+            InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }

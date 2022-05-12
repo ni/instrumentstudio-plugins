@@ -11,11 +11,11 @@ namespace SwitchExecutive.Plugin.Internal
 {
     internal sealed class HeaderViewModel : BaseNotify
     {
-        private static string Disconnected = "Disconnected";
+        private static string _disconnected = "Disconnected";
 
-        private readonly ISwitchExecutiveDriverOperations driverOperations;
-        private IStatus status;
-        private FrameworkElement headerMenuVisual;
+        private readonly ISwitchExecutiveDriverOperations _driverOperations;
+        private IStatus _status;
+        private FrameworkElement _headerMenuVisual;
 
         #region Constructors
 
@@ -25,14 +25,14 @@ namespace SwitchExecutive.Plugin.Internal
            ISave saveOperation,
            IStatus status)
         {
-            this.IsSwitchExecutiveInstalled = isSwitchExecutiveInstalled;
-            this.driverOperations = driverOperations;
-            this.status = status;
+            IsSwitchExecutiveInstalled = isSwitchExecutiveInstalled;
+            _driverOperations = driverOperations;
+            _status = status;
 
-            this.HeaderMenuViewModel = new HeaderMenuViewModel(driverOperations, saveOperation, status);
+            HeaderMenuViewModel = new HeaderMenuViewModel(driverOperations, saveOperation, status);
 
-            this.driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
-            this.status.PropertyChanged += Status_PropertyChanged;
+            _driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
+            _status.PropertyChanged += Status_PropertyChanged;
         }
 
         #endregion
@@ -40,19 +40,19 @@ namespace SwitchExecutive.Plugin.Internal
         #region Properties
 
         public string HeaderPanelTitle => "SWITCH EXECUTIVE APP";
-        public bool IsInstrumentActive => this.Status != HeaderViewModel.Disconnected;
+        public bool IsInstrumentActive => Status != HeaderViewModel._disconnected;
         public HeaderMenuViewModel HeaderMenuViewModel { get; }
         public FrameworkElement HeaderMenuVisual
         {
             get
             {
-                if (this.headerMenuVisual == null)
+                if (_headerMenuVisual == null)
                 {
-                    this.headerMenuVisual = (FrameworkElement)this.CreateHeaderMenuView();
-                    this.NotifyPropertyChanged();
+                    _headerMenuVisual = (FrameworkElement)CreateHeaderMenuView();
+                    NotifyPropertyChanged();
                 }
 
-                return this.headerMenuVisual;
+                return _headerMenuVisual;
             }
         }
         /* very basic error handling.
@@ -63,38 +63,38 @@ namespace SwitchExecutive.Plugin.Internal
         {
             get
             {
-                if (!this.IsSwitchExecutiveInstalled)
-                    this.SetErrorMessage("Error: Switch Executive is not installed.");
+                if (!IsSwitchExecutiveInstalled)
+                    SetErrorMessage("Error: Switch Executive is not installed.");
 
-                if (this.status.IsFatal)
-                    return this.status.GetMessage();
+                if (_status.IsFatal)
+                    return _status.GetMessage();
 
-                bool connected = this.driverOperations.SelectedVirtualDevice != string.Empty;
+                bool connected = _driverOperations.SelectedVirtualDevice != string.Empty;
                 if (connected)
-                    return this.driverOperations.SelectedVirtualDevice;
+                    return _driverOperations.SelectedVirtualDevice;
                 else
-                    return HeaderViewModel.Disconnected;
+                    return HeaderViewModel._disconnected;
             }
         }
         private bool IsSwitchExecutiveInstalled { get; }
 
         #endregion
 
-        private FrameworkElement CreateHeaderMenuView() => new HeaderMenuView(this.HeaderMenuViewModel);
-        private void SetErrorMessage(string msg) => this.status.Set(msg);
-        private void ClearErrorMessage() => this.status.Clear();
+        private FrameworkElement CreateHeaderMenuView() => new HeaderMenuView(HeaderMenuViewModel);
+        private void SetErrorMessage(string msg) => _status.Set(msg);
+        private void ClearErrorMessage() => _status.Clear();
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(this.driverOperations.SelectedVirtualDevice))
+            if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
             {
-                this.NotifyPropertyChanged(nameof(this.Status));
-                this.NotifyPropertyChanged(nameof(this.IsInstrumentActive));
+                NotifyPropertyChanged(nameof(Status));
+                NotifyPropertyChanged(nameof(IsInstrumentActive));
             }
         }
         private void Status_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(this.status.Message))
-                this.NotifyPropertyChanged(nameof(this.Status));
+            if (e.PropertyName == nameof(_status.Message))
+                NotifyPropertyChanged(nameof(Status));
         }
     }
 }

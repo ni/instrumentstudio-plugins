@@ -53,7 +53,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
            typeof(DisplayContainer),
            new UIPropertyMetadata(null, OnContentPropertyChanged));
 
-        private ICommand expandCollapseContentCommand;
+        private ICommand _expandCollapseContentCommand;
 
         #endregion
 
@@ -78,47 +78,47 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         public double PreferredProportion
         {
-            get { return (double)this.GetValue(DisplayContainer.PreferredProportionProperty); }
-            set { this.SetValue(DisplayContainer.PreferredProportionProperty, value); }
+            get { return (double)GetValue(DisplayContainer.PreferredProportionProperty); }
+            set { SetValue(DisplayContainer.PreferredProportionProperty, value); }
         }
 
         public double MinimumExpandedHeight { get; set; }
 
         public bool IsCollapsible
         {
-            get { return (bool)this.GetValue(DisplayContainer.IsCollapsibleProperty); }
-            set { this.SetValue(DisplayContainer.IsCollapsibleProperty, value); }
+            get { return (bool)GetValue(DisplayContainer.IsCollapsibleProperty); }
+            set { SetValue(DisplayContainer.IsCollapsibleProperty, value); }
         }
 
         public string Title
         {
-            get { return (string)this.GetValue(DisplayContainer.TitleProperty); }
-            set { this.SetValue(DisplayContainer.TitleProperty, value); }
+            get { return (string)GetValue(DisplayContainer.TitleProperty); }
+            set { SetValue(DisplayContainer.TitleProperty, value); }
         }
 
         public bool IsContentCollapsed
         {
-            get { return (bool)this.GetValue(DisplayContainer.IsContentCollapsedProperty); }
-            set { this.SetValue(DisplayContainer.IsContentCollapsedProperty, value); }
+            get { return (bool)GetValue(DisplayContainer.IsContentCollapsedProperty); }
+            set { SetValue(DisplayContainer.IsContentCollapsedProperty, value); }
         }
 
         public object DisplayContent
         {
-            get { return (object)this.GetValue(DisplayContainer.DisplayContentProperty); }
-            set { this.SetValue(DisplayContainer.DisplayContentProperty, value); }
+            get { return (object)GetValue(DisplayContainer.DisplayContentProperty); }
+            set { SetValue(DisplayContainer.DisplayContentProperty, value); }
         }
 
         public object HeaderContent
         {
-            get { return (object)this.GetValue(DisplayContainer.HeaderContentProperty); }
-            set { this.SetValue(DisplayContainer.HeaderContentProperty, value); }
+            get { return (object)GetValue(DisplayContainer.HeaderContentProperty); }
+            set { SetValue(DisplayContainer.HeaderContentProperty, value); }
         }
 
         public ICommand ExpandCollapseContentCommand
         {
             get
             {
-                return this.expandCollapseContentCommand ?? (this.expandCollapseContentCommand = new RelayCommand(param => { this.IsContentCollapsed = !this.IsContentCollapsed; }));
+                return _expandCollapseContentCommand ?? (_expandCollapseContentCommand = new RelayCommand(param => { IsContentCollapsed = !IsContentCollapsed; }));
             }
         }
 
@@ -132,8 +132,8 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             {
                 var children = new List<object>()
             {
-               this.DisplayContent,
-               this.HeaderContent
+               DisplayContent,
+               HeaderContent
             };
 
                 return children.GetEnumerator();

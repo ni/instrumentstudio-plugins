@@ -11,14 +11,14 @@ namespace SwitchExecutive.Plugin.Internal
 {
     internal sealed class RouteTableViewModel : BaseNotify
     {
-        private readonly ISwitchExecutiveDriverOperations driverOperations;
+        private readonly ISwitchExecutiveDriverOperations _driverOperations;
 
         public RouteTableViewModel(
            ISwitchExecutiveDriverOperations driverOperations)
         {
-            this.driverOperations = driverOperations;
+            _driverOperations = driverOperations;
 
-            this.driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
+            _driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
         }
 
         public bool IsContentCollapsed { get; set; } = false;
@@ -27,7 +27,7 @@ namespace SwitchExecutive.Plugin.Internal
         {
             get
             {
-                var routes = this.driverOperations.RouteInfo;
+                var routes = _driverOperations.RouteInfo;
                 foreach (var route in routes)
                 {
                     if (route.index != RouteInfo.NotConnected)
@@ -41,10 +41,10 @@ namespace SwitchExecutive.Plugin.Internal
 
         public void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(this.driverOperations.RouteInfo))
-                this.NotifyPropertyChanged(nameof(this.Info));
-            if (e.PropertyName == nameof(this.driverOperations.ConnectedRoutes))
-                this.NotifyPropertyChanged(nameof(this.Info));
+            if (e.PropertyName == nameof(_driverOperations.RouteInfo))
+                NotifyPropertyChanged(nameof(Info));
+            if (e.PropertyName == nameof(_driverOperations.ConnectedRoutes))
+                NotifyPropertyChanged(nameof(Info));
         }
     }
 }

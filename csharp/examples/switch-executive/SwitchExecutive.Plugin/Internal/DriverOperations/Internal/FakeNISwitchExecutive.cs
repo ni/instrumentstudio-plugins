@@ -2,12 +2,12 @@
 {
     internal class FakeNISwitchExecutive : NISwitchExecutiveInterface
     {
-        private string resourceName;
+        private string _resourceName;
 
-        public FakeNISwitchExecutive(string resourceName) { this.resourceName = resourceName; }
+        public FakeNISwitchExecutive(string resourceName) { _resourceName = resourceName; }
 
         public void Dispose() { }
-        public string Name { get { return this.resourceName; } }
+        public string Name { get { return _resourceName; } }
         public void Connect(string connectSpec, MulticonnectMode multiconnectMode, bool waitForDebounce) { }
         public void Disconnect(string spec) { }
         public void DisconnectAll() { }

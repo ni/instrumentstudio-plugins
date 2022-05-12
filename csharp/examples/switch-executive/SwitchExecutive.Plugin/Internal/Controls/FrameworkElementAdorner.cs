@@ -17,23 +17,23 @@ namespace SwitchExecutive.Plugin.Internal.Controls
     internal class FrameworkElementAdorner : Adorner
     {
         // The framework element that is the adorner.
-        private FrameworkElement child;
+        private FrameworkElement _child;
 
         // Placement of the child.
-        private AdornedControl.AdornerPlacement horizontalAdornerPlacement = AdornedControl.AdornerPlacement.Inside;
-        private AdornedControl.AdornerPlacement verticalAdornerPlacement = AdornedControl.AdornerPlacement.Inside;
+        private AdornedControl.AdornerPlacement _horizontalAdornerPlacement = AdornedControl.AdornerPlacement.Inside;
+        private AdornedControl.AdornerPlacement _verticalAdornerPlacement = AdornedControl.AdornerPlacement.Inside;
 
         // Offset of the child.
-        private double offsetX = 0.0;
-        private double offsetY = 0.0;
+        private double _offsetX = 0.0;
+        private double _offsetY = 0.0;
 
         public FrameworkElementAdorner(FrameworkElement adornerChildElement, FrameworkElement adornedElement)
             : base(adornedElement)
         {
-            this.child = adornerChildElement;
+            _child = adornerChildElement;
 
-            this.AddLogicalChild(adornerChildElement);
-            this.AddVisualChild(adornerChildElement);
+            AddLogicalChild(adornerChildElement);
+            AddVisualChild(adornerChildElement);
 
             // Binding necessary so that when adornedControl's (the "parent") IsVisible property changes, the
             // adorner also reflects that.
@@ -45,7 +45,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
                 Converter = new BooleanToVisibilityConverter()
             };
 
-            this.SetBinding(Adorner.VisibilityProperty, binding);
+            SetBinding(Adorner.VisibilityProperty, binding);
         }
 
         public FrameworkElementAdorner(
@@ -57,12 +57,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
            double offsetY)
             : this(adornerChildElement, adornedElement)
         {
-            this.horizontalAdornerPlacement = horizontalAdornerPlacement;
-            this.verticalAdornerPlacement = verticalAdornerPlacement;
-            this.offsetX = offsetX;
-            this.offsetY = offsetY;
+            _horizontalAdornerPlacement = horizontalAdornerPlacement;
+            _verticalAdornerPlacement = verticalAdornerPlacement;
+            _offsetX = offsetX;
+            _offsetY = offsetY;
 
-            adornedElement.SizeChanged += new SizeChangedEventHandler(this.AdornedElement_SizeChanged);
+            adornedElement.SizeChanged += new SizeChangedEventHandler(AdornedElement_SizeChanged);
         }
 
         #region Properties
@@ -83,7 +83,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                var list = new List<FrameworkElement>() { this.child };
+                var list = new List<FrameworkElement>() { _child };
                 return (IEnumerator)list.GetEnumerator();
             }
         }
@@ -97,35 +97,35 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         public void DisconnectChild()
         {
-            this.RemoveLogicalChild(this.child);
-            this.RemoveVisualChild(this.child);
+            RemoveLogicalChild(_child);
+            RemoveVisualChild(_child);
         }
 
         protected override Size MeasureOverride(Size constraint)
         {
-            this.child.Measure(constraint);
-            return this.child.DesiredSize;
+            _child.Measure(constraint);
+            return _child.DesiredSize;
         }
 
-        protected override Visual GetVisualChild(int index) => this.child;
+        protected override Visual GetVisualChild(int index) => _child;
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            double x = this.PositionX;
+            double x = PositionX;
             if (double.IsNaN(x))
             {
-                x = this.DetermineX();
+                x = DetermineX();
             }
 
-            double y = this.PositionY;
+            double y = PositionY;
             if (double.IsNaN(y))
             {
-                y = this.DetermineY();
+                y = DetermineY();
             }
 
-            double adornerWidth = this.DetermineWidth();
-            double adornerHeight = this.DetermineHeight();
-            this.child.Arrange(new Rect(x, y, adornerWidth, adornerHeight));
+            double adornerWidth = DetermineWidth();
+            double adornerHeight = DetermineHeight();
+            _child.Arrange(new Rect(x, y, adornerWidth, adornerHeight));
             return finalSize;
         }
 
@@ -138,37 +138,37 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             double adornerWidth;
             double widthDifference;
 
-            switch (this.child.HorizontalAlignment)
+            switch (_child.HorizontalAlignment)
             {
                 case HorizontalAlignment.Left:
-                    if (this.horizontalAdornerPlacement == AdornedControl.AdornerPlacement.Outside)
+                    if (_horizontalAdornerPlacement == AdornedControl.AdornerPlacement.Outside)
                     {
-                        return -this.child.DesiredSize.Width + this.offsetX;
+                        return -_child.DesiredSize.Width + _offsetX;
                     }
                     else
                     {
-                        return this.offsetX;
+                        return _offsetX;
                     }
 
                 case HorizontalAlignment.Right:
-                    if (this.horizontalAdornerPlacement == AdornedControl.AdornerPlacement.Outside)
+                    if (_horizontalAdornerPlacement == AdornedControl.AdornerPlacement.Outside)
                     {
-                        adornedWidth = this.AdornedElement.ActualWidth;
-                        return adornedWidth + this.offsetX;
+                        adornedWidth = AdornedElement.ActualWidth;
+                        return adornedWidth + _offsetX;
                     }
                     else
                     {
-                        adornerWidth = this.child.DesiredSize.Width;
-                        adornedWidth = this.AdornedElement.ActualWidth;
+                        adornerWidth = _child.DesiredSize.Width;
+                        adornedWidth = AdornedElement.ActualWidth;
                         widthDifference = adornedWidth - adornerWidth;
-                        return widthDifference + this.offsetX;
+                        return widthDifference + _offsetX;
                     }
 
                 case HorizontalAlignment.Center:
-                    adornerWidth = this.child.DesiredSize.Width;
-                    adornedWidth = this.AdornedElement.ActualWidth;
+                    adornerWidth = _child.DesiredSize.Width;
+                    adornedWidth = AdornedElement.ActualWidth;
                     widthDifference = (adornedWidth / 2) - (adornerWidth / 2);
-                    return widthDifference + this.offsetX;
+                    return widthDifference + _offsetX;
 
                 case HorizontalAlignment.Stretch:
                     return 0.0;
@@ -186,37 +186,37 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             double adornerHeight;
             double heightDifference;
 
-            switch (this.child.VerticalAlignment)
+            switch (_child.VerticalAlignment)
             {
                 case VerticalAlignment.Top:
-                    if (this.verticalAdornerPlacement == AdornedControl.AdornerPlacement.Outside)
+                    if (_verticalAdornerPlacement == AdornedControl.AdornerPlacement.Outside)
                     {
-                        return -this.child.DesiredSize.Height + this.offsetY;
+                        return -_child.DesiredSize.Height + _offsetY;
                     }
                     else
                     {
-                        return this.offsetY;
+                        return _offsetY;
                     }
 
                 case VerticalAlignment.Bottom:
-                    if (this.verticalAdornerPlacement == AdornedControl.AdornerPlacement.Outside)
+                    if (_verticalAdornerPlacement == AdornedControl.AdornerPlacement.Outside)
                     {
-                        adornedHeight = this.AdornedElement.ActualHeight;
-                        return adornedHeight + this.offsetY;
+                        adornedHeight = AdornedElement.ActualHeight;
+                        return adornedHeight + _offsetY;
                     }
                     else
                     {
-                        adornerHeight = this.child.DesiredSize.Height;
-                        adornedHeight = this.AdornedElement.ActualHeight;
+                        adornerHeight = _child.DesiredSize.Height;
+                        adornedHeight = AdornedElement.ActualHeight;
                         heightDifference = adornedHeight - adornerHeight;
-                        return heightDifference + this.offsetY;
+                        return heightDifference + _offsetY;
                     }
 
                 case VerticalAlignment.Center:
-                    adornerHeight = this.child.DesiredSize.Height;
-                    adornedHeight = this.AdornedElement.ActualHeight;
+                    adornerHeight = _child.DesiredSize.Height;
+                    adornedHeight = AdornedElement.ActualHeight;
                     heightDifference = (adornedHeight / 2) - (adornerHeight / 2);
-                    return heightDifference + this.offsetY;
+                    return heightDifference + _offsetY;
 
                 case VerticalAlignment.Stretch:
                     return 0.0;
@@ -230,19 +230,19 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private double DetermineWidth()
         {
-            if (!double.IsNaN(this.PositionX))
+            if (!double.IsNaN(PositionX))
             {
-                return this.child.DesiredSize.Width;
+                return _child.DesiredSize.Width;
             }
 
-            switch (this.child.HorizontalAlignment)
+            switch (_child.HorizontalAlignment)
             {
                 case HorizontalAlignment.Left:
                 case HorizontalAlignment.Right:
                 case HorizontalAlignment.Center:
-                    return this.child.DesiredSize.Width;
+                    return _child.DesiredSize.Width;
                 case HorizontalAlignment.Stretch:
-                    return this.AdornedElement.ActualWidth;
+                    return AdornedElement.ActualWidth;
             }
 
             return 0.0;
@@ -253,19 +253,19 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private double DetermineHeight()
         {
-            if (!double.IsNaN(this.PositionY))
+            if (!double.IsNaN(PositionY))
             {
-                return this.child.DesiredSize.Height;
+                return _child.DesiredSize.Height;
             }
 
-            switch (this.child.VerticalAlignment)
+            switch (_child.VerticalAlignment)
             {
                 case VerticalAlignment.Top:
                 case VerticalAlignment.Bottom:
                 case VerticalAlignment.Center:
-                    return this.child.DesiredSize.Height;
+                    return _child.DesiredSize.Height;
                 case VerticalAlignment.Stretch:
-                    return this.AdornedElement.ActualHeight;
+                    return AdornedElement.ActualHeight;
             }
 
             return 0.0;
@@ -276,7 +276,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private void AdornedElement_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            this.InvalidateMeasure();
+            InvalidateMeasure();
         }
 
         #endregion

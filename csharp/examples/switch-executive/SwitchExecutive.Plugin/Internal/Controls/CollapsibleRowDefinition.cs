@@ -15,8 +15,8 @@ namespace SwitchExecutive.Plugin.Internal.Controls
            typeof(CollapsibleRowDefinition),
            new PropertyMetadata(false, OnIsCollapsedChanged));
 
-        private bool isCollapsed = false;
-        private double minimumExpandedHeight = 0.0;
+        private bool _isCollapsed = false;
+        private double _minimumExpandedHeight = 0.0;
 
         #endregion
 
@@ -30,12 +30,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
                RowDefinition.HeightProperty,
                typeof(RowDefinition));
 
-            this.Loaded += (sender, e) =>
+            Loaded += (sender, e) =>
             {
                 heightPropertyDescriptor.AddValueChanged(this, OnHeightChanged);
             };
 
-            this.Unloaded += (sender, e) =>
+            Unloaded += (sender, e) =>
             {
                 heightPropertyDescriptor.RemoveValueChanged(this, OnHeightChanged);
             };
@@ -53,16 +53,16 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                return this.minimumExpandedHeight;
+                return _minimumExpandedHeight;
             }
 
             set
             {
-                this.minimumExpandedHeight = value;
+                _minimumExpandedHeight = value;
 
-                if (!this.IsCollapsed)
+                if (!IsCollapsed)
                 {
-                    this.MinHeight = value;
+                    MinHeight = value;
                 }
             }
         }
@@ -71,16 +71,16 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                return this.isCollapsed;
+                return _isCollapsed;
             }
 
             set
             {
-                if (this.isCollapsed != value)
+                if (_isCollapsed != value)
                 {
-                    this.isCollapsed = value;
-                    this.Height = value ? this.CollapsedHeight : this.ExpandedHeight;
-                    this.MinHeight = value ? this.CollapsedHeight.Value : this.MinimumExpandedHeight;
+                    _isCollapsed = value;
+                    Height = value ? CollapsedHeight : ExpandedHeight;
+                    MinHeight = value ? CollapsedHeight.Value : MinimumExpandedHeight;
                 }
             }
         }

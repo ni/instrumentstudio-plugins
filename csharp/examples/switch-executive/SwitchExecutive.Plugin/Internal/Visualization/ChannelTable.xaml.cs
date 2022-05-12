@@ -24,8 +24,8 @@ namespace SwitchExecutive.Plugin.Internal
 
         public ChannelTable()
         {
-            this.SetValue(InfoItemsSourceProperty, new List<ChannelInfo>());
-            this.InitializeComponent();
+            SetValue(InfoItemsSourceProperty, new List<ChannelInfo>());
+            InitializeComponent();
         }
 
         #endregion
@@ -37,8 +37,8 @@ namespace SwitchExecutive.Plugin.Internal
         /// </summary>
         public IEnumerable<ChannelInfo> InfoItemsSource
         {
-            get { return (IEnumerable<ChannelInfo>)this.GetValue(ChannelTable.InfoItemsSourceProperty); }
-            set { this.SetValue(ChannelTable.InfoItemsSourceProperty, value); }
+            get { return (IEnumerable<ChannelInfo>)GetValue(ChannelTable.InfoItemsSourceProperty); }
+            set { SetValue(ChannelTable.InfoItemsSourceProperty, value); }
         }
 
         #endregion

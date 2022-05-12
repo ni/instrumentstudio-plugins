@@ -6,13 +6,13 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 {
     public class ContextMenuProvider : IContextMenuProvider
     {
-        private readonly ISet<IContextMenuDataProvider> contextMenuDataProviders;
-        private readonly object commandParameter;
+        private readonly ISet<IContextMenuDataProvider> _contextMenuDataProviders;
+        private readonly object _commandParameter;
 
         public ContextMenuProvider(object commandParameter)
         {
-            this.contextMenuDataProviders = new HashSet<IContextMenuDataProvider>();
-            this.commandParameter = commandParameter;
+            _contextMenuDataProviders = new HashSet<IContextMenuDataProvider>();
+            _commandParameter = commandParameter;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         {
             if (contextMenuDataProvider != null)
             {
-                this.contextMenuDataProviders.Add(contextMenuDataProvider);
+                _contextMenuDataProviders.Add(contextMenuDataProvider);
             }
         }
 
@@ -51,9 +51,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         public IEnumerable<IMenuItem> GetContextMenuItems()
         {
             var contextMenuItems = new List<IMenuItem>();
-            foreach (var contextMenuDataProvider in this.contextMenuDataProviders)
+            foreach (var contextMenuDataProvider in _contextMenuDataProviders)
             {
-                contextMenuItems.AddRange(contextMenuDataProvider.CollectContextMenuItems(this.commandParameter));
+                contextMenuItems.AddRange(contextMenuDataProvider.CollectContextMenuItems(_commandParameter));
             }
 
             if (!contextMenuItems.Any())
@@ -69,7 +69,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         {
             if (contextMenuDataProvider != null)
             {
-                this.contextMenuDataProviders.Remove(contextMenuDataProvider);
+                _contextMenuDataProviders.Remove(contextMenuDataProvider);
             }
         }
 

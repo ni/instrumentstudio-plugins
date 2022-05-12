@@ -28,8 +28,8 @@ namespace SwitchExecutive.Plugin.Internal
 
         public DeviceTable()
         {
-            this.SetValue(DeviceInfoItemsSourceProperty, new List<DeviceInfo>());
-            this.InitializeComponent();
+            SetValue(DeviceInfoItemsSourceProperty, new List<DeviceInfo>());
+            InitializeComponent();
         }
 
         #endregion
@@ -41,8 +41,8 @@ namespace SwitchExecutive.Plugin.Internal
         /// </summary>
         public IEnumerable<DeviceInfo> DeviceInfoItemsSource
         {
-            get { return (IEnumerable<DeviceInfo>)this.GetValue(DeviceTable.DeviceInfoItemsSourceProperty); }
-            set { this.SetValue(DeviceTable.DeviceInfoItemsSourceProperty, value); }
+            get { return (IEnumerable<DeviceInfo>)GetValue(DeviceTable.DeviceInfoItemsSourceProperty); }
+            set { SetValue(DeviceTable.DeviceInfoItemsSourceProperty, value); }
         }
 
         #endregion

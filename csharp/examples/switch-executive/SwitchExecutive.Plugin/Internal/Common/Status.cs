@@ -19,21 +19,21 @@ namespace SwitchExecutive.Plugin.Internal.Common
 
     public class Status : BaseNotify, IStatus
     {
-        private static string NoError = string.Empty;
-        private string message = Status.NoError;
+        private static string _noError = string.Empty;
+        private string _message = Status._noError;
 
-        public void Set(string msg) => this.Message = msg;
-        public void Clear() => this.Message = Status.NoError;
-        public string GetMessage() => this.Message;
-        public bool IsFatal => this.Message != Status.NoError;
+        public void Set(string msg) => Message = msg;
+        public void Clear() => Message = Status._noError;
+        public string GetMessage() => Message;
+        public bool IsFatal => Message != Status._noError;
 
         public string Message
         {
-            get => this.message;
+            get => _message;
             private set
             {
-                this.message = value;
-                this.NotifyPropertyChanged();
+                _message = value;
+                NotifyPropertyChanged();
             }
         }
     }

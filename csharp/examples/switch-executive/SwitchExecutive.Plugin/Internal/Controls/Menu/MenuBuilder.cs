@@ -6,36 +6,36 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 {
     public sealed class BuilderScope : IDisposable
     {
-        private readonly Action disposeAction;
+        private readonly Action _disposeAction;
 
         public BuilderScope(Action disposeAction)
         {
-            this.disposeAction = disposeAction;
+            _disposeAction = disposeAction;
         }
 
         public void Dispose()
         {
-            this.disposeAction();
+            _disposeAction();
         }
     }
 
     public sealed class MenuBuilder : IMenuBuilder
     {
-        private readonly Stack<IMenuItem> rootMenuItems = new Stack<IMenuItem>();
-        private readonly IList<IMenuItem> menuItems = new List<IMenuItem>();
+        private readonly Stack<IMenuItem> _rootMenuItems = new Stack<IMenuItem>();
+        private readonly IList<IMenuItem> _menuItems = new List<IMenuItem>();
 
-        public IEnumerable<IMenuItem> MenuItems => this.menuItems;
+        public IEnumerable<IMenuItem> MenuItems => _menuItems;
 
         private IMenuItem Parent
         {
             get
             {
-                if (!this.rootMenuItems.Any())
+                if (!_rootMenuItems.Any())
                 {
                     return null;
                 }
 
-                return this.rootMenuItems.Peek();
+                return _rootMenuItems.Peek();
             }
         }
 
@@ -61,10 +61,10 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 
         public void AddMenu(IMenuItem menuItem)
         {
-            var parent = this.Parent;
+            var parent = Parent;
             if (parent == null)
             {
-                this.menuItems.Add(menuItem);
+                _menuItems.Add(menuItem);
                 return;
             }
 
@@ -73,7 +73,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 
         public IDisposable AddMenuGroup(IMenuItem menuItem)
         {
-            return this.PushMenu(menuItem);
+            return PushMenu(menuItem);
         }
 
         private static void MergeInPlace(IMenuItem existingMenuItem, IMenuItem newMenuItem)
@@ -94,14 +94,14 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 
         private IDisposable PushMenu(IMenuItem menuItem)
         {
-            this.rootMenuItems.Push(menuItem);
-            return new BuilderScope(this.PopMenu);
+            _rootMenuItems.Push(menuItem);
+            return new BuilderScope(PopMenu);
         }
 
         private void PopMenu()
         {
-            var rootMenuItem = this.rootMenuItems.Pop();
-            this.AddMenu(rootMenuItem);
+            var rootMenuItem = _rootMenuItems.Pop();
+            AddMenu(rootMenuItem);
         }
     }
 }

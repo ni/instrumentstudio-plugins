@@ -37,10 +37,10 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             }
         }
 
-        private const string NativeDllName64 = "nise.dll";
+        private const string _nativeDllName64 = "nise.dll";
 
         [SuppressUnmanagedCodeSecurity]
-        [DllImport(NativeDllName64, EntryPoint = "niSE_CloseSession", CallingConvention = CallingConvention.StdCall)]
+        [DllImport(_nativeDllName64, EntryPoint = "niSE_CloseSession", CallingConvention = CallingConvention.StdCall)]
         private static extern int Close(IntPtr instrumentHandle);
 
         [SecurityCritical]
@@ -59,12 +59,12 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
     {
         private readonly NISwitchExecutiveHandle _sessionHandle;
         private readonly string _resourceName;
-        private const string NativeDllName64 = "nise.dll";
+        private const string _nativeDllName64 = "nise.dll";
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_GetError(NISwitchExecutiveHandle vi, out int errorCode, StringBuilder errorDescription, out int errorDescriptionBufferSize);
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_OpenSession(string resourceName, string options, out NISwitchExecutiveHandle instrumentHandle);
 
         private static bool HasError(int status)
@@ -158,7 +158,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             _sessionHandle.Dispose();
         }
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_Connect(NISwitchExecutiveHandle vi, string connectSpec, long multiconnectMode, ushort waitForDebounce);
         public void Connect(string connectSpec, MulticonnectMode multiconnectMode, bool waitForDebounce)
         {
@@ -172,7 +172,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
                   localWaitForDebounce));
         }
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_Disconnect(NISwitchExecutiveHandle vi, string spec);
         public void Disconnect(string spec)
         {
@@ -182,7 +182,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
                   spec));
         }
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_DisconnectAll(NISwitchExecutiveHandle vi);
         public void DisconnectAll()
         {
@@ -191,7 +191,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
                   _sessionHandle));
         }
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_ConnectAndDisconnect(NISwitchExecutiveHandle vi, string connectSpec, string disconnectSpec, long multiconnectMode, long operationOrder, ushort waitForDebounce);
         public void ConnectAndDisconnect(string connectSpec, string disconnectSpec, MulticonnectMode multiconnectMode, OperationOrder operationOrder, bool waitForDebounce)
         {
@@ -207,7 +207,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
                   localWaitForDebounce));
         }
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_IsConnected(NISwitchExecutiveHandle vi, string spec, out ushort isConnected);
         public bool IsConnected(string spec)
         {
@@ -222,7 +222,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             return localIsConnected == IVIConstants.VI_TRUE;
         }
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_ExpandRouteSpec(NISwitchExecutiveHandle vi, string spec, ExpandOptions expandOptions, StringBuilder expandedRouteSpec, out int expandedRouteSpecSize);
         public string ExpandRouteSpec(string spec, ExpandOptions expandOptions)
         {
@@ -251,7 +251,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             return expandedRouteSpec.ToString();
         }
 
-        [DllImport(NativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
+        [DllImport(_nativeDllName64, CharSet = CharSet.Ansi, ExactSpelling = true)]
         private static extern int niSE_GetAllConnections(NISwitchExecutiveHandle vi, StringBuilder routeSpec, out int routeSpecSize);
         public string GetAllConnections()
         {

@@ -9,7 +9,7 @@ namespace SwitchExecutive.Plugin.Internal
     {
         public ConfigurationView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

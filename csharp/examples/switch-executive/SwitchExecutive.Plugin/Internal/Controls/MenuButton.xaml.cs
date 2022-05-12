@@ -55,9 +55,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls
            typeof(MenuButton),
            new UIPropertyMetadata(null));
 
-        private bool shouldOpenMenu = true;
-        private bool didCacheStaticMenuItems = false;
-        private IEnumerable<FrameworkElement> staticMenuItems;
+        private bool _shouldOpenMenu = true;
+        private bool _didCacheStaticMenuItems = false;
+        private IEnumerable<FrameworkElement> _staticMenuItems;
 
         #endregion
 
@@ -65,8 +65,8 @@ namespace SwitchExecutive.Plugin.Internal.Controls
 
         public MenuButton()
         {
-            this.SetValue(MenuItemsProperty, new ObservableCollection<FrameworkElement>());
-            this.InitializeComponent();
+            SetValue(MenuItemsProperty, new ObservableCollection<FrameworkElement>());
+            InitializeComponent();
         }
 
         #endregion
@@ -75,20 +75,20 @@ namespace SwitchExecutive.Plugin.Internal.Controls
 
         public ObservableCollection<FrameworkElement> MenuItems
         {
-            get { return (ObservableCollection<FrameworkElement>)this.GetValue(MenuButton.MenuItemsProperty); }
-            set { this.SetValue(MenuButton.MenuItemsProperty, value); }
+            get { return (ObservableCollection<FrameworkElement>)GetValue(MenuButton.MenuItemsProperty); }
+            set { SetValue(MenuButton.MenuItemsProperty, value); }
         }
 
         public object ButtonContent
         {
-            get { return this.GetValue(MenuButton.ButtonContentProperty); }
-            set { this.SetValue(MenuButton.ButtonContentProperty, value); }
+            get { return GetValue(MenuButton.ButtonContentProperty); }
+            set { SetValue(MenuButton.ButtonContentProperty, value); }
         }
 
         public MenuProvider MenuProvider
         {
-            get { return (MenuProvider)this.GetValue(MenuButton.MenuProviderProperty); }
-            set { this.SetValue(MenuButton.MenuProviderProperty, value); }
+            get { return (MenuProvider)GetValue(MenuButton.MenuProviderProperty); }
+            set { SetValue(MenuButton.MenuProviderProperty, value); }
         }
 
         #endregion
@@ -100,15 +100,15 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             var menu = (ContextMenu)sender;
             var menuToggleButton = (ToggleButton)menu.PlacementTarget;
 
-            if (!this.IsMouseOver || this.IsKeyboardFocusWithin)
+            if (!IsMouseOver || IsKeyboardFocusWithin)
             {
                 menuToggleButton.IsChecked = false;
             }
 
             // If the user is clicking the button when the drop-down menu closes, don't re-open it in OnMenuToggleButtonClick
-            if (this.IsMouseOver && menuToggleButton.IsMouseCaptured)
+            if (IsMouseOver && menuToggleButton.IsMouseCaptured)
             {
-                this.shouldOpenMenu = false;
+                _shouldOpenMenu = false;
             }
         }
 
@@ -117,10 +117,10 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             var button = (ToggleButton)sender;
 
             // If the drop-down menu was just closed, uncheck the button and don't reopen the drop-down.
-            if (!this.shouldOpenMenu)
+            if (!_shouldOpenMenu)
             {
                 button.IsChecked = false;
-                this.shouldOpenMenu = true;
+                _shouldOpenMenu = true;
             }
 
             if (button.IsChecked == true)
@@ -134,18 +134,18 @@ namespace SwitchExecutive.Plugin.Internal.Controls
 
         private void OnContextMenuOpened(object sender, RoutedEventArgs e)
         {
-            if (this.MenuProvider == null)
+            if (MenuProvider == null)
             {
                 return;
             }
 
-            if (!this.didCacheStaticMenuItems)
+            if (!_didCacheStaticMenuItems)
             {
-                this.staticMenuItems = this.MenuItems;
-                this.didCacheStaticMenuItems = true;
+                _staticMenuItems = MenuItems;
+                _didCacheStaticMenuItems = true;
             }
 
-            var dynamicMenuItems = this.MenuProvider.GetDynamicMenuItems();
+            var dynamicMenuItems = MenuProvider.GetDynamicMenuItems();
 
             // We need to merge the dynamic and static menu items and sort them based on their weights.
             // Note 1: In the rare case when the static and dynamic menu items all have the same weight the below union decides their order.
@@ -155,10 +155,10 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             // Note 3: Using OrderBy since List.Sort() is not a stable sort
             // see http://stackoverflow.com/questions/15883112/what-should-icomparer-return-to-indicate-keep-the-existing-sort-order
             // TODO: need to find a way to sort the itemsCollection of each subMenu (for completely sorting even the static elements)
-            var compositeMenuItems = this.staticMenuItems
+            var compositeMenuItems = _staticMenuItems
                .Union(dynamicMenuItems)
                .OrderBy(WeightExtension.GetWeight);
-            this.MenuItems = new ObservableCollection<FrameworkElement>(compositeMenuItems);
+            MenuItems = new ObservableCollection<FrameworkElement>(compositeMenuItems);
         }
 
         #endregion

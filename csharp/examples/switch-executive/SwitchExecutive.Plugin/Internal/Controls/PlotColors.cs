@@ -6,37 +6,37 @@ namespace SwitchExecutive.Plugin.Internal.Controls
 {
     public static class PlotColors
     {
-        private static readonly ResourceDictionary InstrumentPanelsResources = Controls.InstrumentPanelResources.Instance;
-        private static IList<Color> plotColorList;
+        private static readonly ResourceDictionary _instrumentPanelsResources = Controls.InstrumentPanelResources.Instance;
+        private static IList<Color> _plotColorList;
 
         public static IList<Color> PlotColorList
         {
             get
             {
-                if (plotColorList == null)
+                if (_plotColorList == null)
                 {
-                    plotColorList = new List<Color>()
+                    _plotColorList = new List<Color>()
                {
-                  (Color)InstrumentPanelsResources["Plot1Color"],
-                  (Color)InstrumentPanelsResources["Plot2Color"],
-                  (Color)InstrumentPanelsResources["Plot3Color"],
-                  (Color)InstrumentPanelsResources["Plot4Color"],
-                  (Color)InstrumentPanelsResources["Plot5Color"],
-                  (Color)InstrumentPanelsResources["Plot6Color"],
-                  (Color)InstrumentPanelsResources["Plot7Color"],
-                  (Color)InstrumentPanelsResources["Plot8Color"],
-                  (Color)InstrumentPanelsResources["Plot9Color"],
-                  (Color)InstrumentPanelsResources["Plot10Color"],
-                  (Color)InstrumentPanelsResources["Plot11Color"],
-                  (Color)InstrumentPanelsResources["Plot12Color"],
-                  (Color)InstrumentPanelsResources["Plot13Color"],
-                  (Color)InstrumentPanelsResources["Plot14Color"],
-                  (Color)InstrumentPanelsResources["Plot15Color"],
-                  (Color)InstrumentPanelsResources["Plot16Color"],
+                  (Color)_instrumentPanelsResources["Plot1Color"],
+                  (Color)_instrumentPanelsResources["Plot2Color"],
+                  (Color)_instrumentPanelsResources["Plot3Color"],
+                  (Color)_instrumentPanelsResources["Plot4Color"],
+                  (Color)_instrumentPanelsResources["Plot5Color"],
+                  (Color)_instrumentPanelsResources["Plot6Color"],
+                  (Color)_instrumentPanelsResources["Plot7Color"],
+                  (Color)_instrumentPanelsResources["Plot8Color"],
+                  (Color)_instrumentPanelsResources["Plot9Color"],
+                  (Color)_instrumentPanelsResources["Plot10Color"],
+                  (Color)_instrumentPanelsResources["Plot11Color"],
+                  (Color)_instrumentPanelsResources["Plot12Color"],
+                  (Color)_instrumentPanelsResources["Plot13Color"],
+                  (Color)_instrumentPanelsResources["Plot14Color"],
+                  (Color)_instrumentPanelsResources["Plot15Color"],
+                  (Color)_instrumentPanelsResources["Plot16Color"],
                };
                 }
 
-                return plotColorList;
+                return _plotColorList;
             }
         }
 

@@ -39,12 +39,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// <summary>
         /// Caches the adorner layer.
         /// </summary>
-        private AdornerLayer adornerLayer = null;
+        private AdornerLayer _adornerLayer = null;
 
         /// <summary>
         /// The actual adorner create to contain our 'adorner UI content'.
         /// </summary>
-        private FrameworkElementAdorner adorner = null;
+        private FrameworkElementAdorner _adorner = null;
 
         #endregion
 
@@ -52,9 +52,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls
 
         public AdornedControl()
         {
-            this.Focusable = false; // By default don't want 'AdornedControl' to be focusable.
+            Focusable = false; // By default don't want 'AdornedControl' to be focusable.
 
-            this.DataContextChanged += new DependencyPropertyChangedEventHandler(this.AdornedControl_DataContextChanged);
+            DataContextChanged += new DependencyPropertyChangedEventHandler(AdornedControl_DataContextChanged);
         }
 
         #endregion
@@ -77,12 +77,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                return (bool)this.GetValue(IsAdornerVisibleProperty);
+                return (bool)GetValue(IsAdornerVisibleProperty);
             }
 
             set
             {
-                this.SetValue(IsAdornerVisibleProperty, value);
+                SetValue(IsAdornerVisibleProperty, value);
             }
         }
 
@@ -93,12 +93,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                return (FrameworkElement)this.GetValue(AdornerContentProperty);
+                return (FrameworkElement)GetValue(AdornerContentProperty);
             }
 
             set
             {
-                this.SetValue(AdornerContentProperty, value);
+                SetValue(AdornerContentProperty, value);
             }
         }
 
@@ -109,12 +109,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                return (AdornerPlacement)this.GetValue(HorizontalAdornerPlacementProperty);
+                return (AdornerPlacement)GetValue(HorizontalAdornerPlacementProperty);
             }
 
             set
             {
-                this.SetValue(HorizontalAdornerPlacementProperty, value);
+                SetValue(HorizontalAdornerPlacementProperty, value);
             }
         }
 
@@ -125,12 +125,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                return (AdornerPlacement)this.GetValue(VerticalAdornerPlacementProperty);
+                return (AdornerPlacement)GetValue(VerticalAdornerPlacementProperty);
             }
 
             set
             {
-                this.SetValue(VerticalAdornerPlacementProperty, value);
+                SetValue(VerticalAdornerPlacementProperty, value);
             }
         }
 
@@ -141,12 +141,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                return (double)this.GetValue(AdornerOffsetXProperty);
+                return (double)GetValue(AdornerOffsetXProperty);
             }
 
             set
             {
-                this.SetValue(AdornerOffsetXProperty, value);
+                SetValue(AdornerOffsetXProperty, value);
             }
         }
 
@@ -157,12 +157,12 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             get
             {
-                return (double)this.GetValue(AdornerOffsetYProperty);
+                return (double)GetValue(AdornerOffsetYProperty);
             }
 
             set
             {
-                this.SetValue(AdornerOffsetYProperty, value);
+                SetValue(AdornerOffsetYProperty, value);
             }
         }
 
@@ -172,7 +172,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         {
             base.OnApplyTemplate();
 
-            this.ShowOrHideAdornerInternal();
+            ShowOrHideAdornerInternal();
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private void AdornedControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            this.UpdateAdornerDataContext();
+            UpdateAdornerDataContext();
         }
 
         /// <summary>
@@ -206,9 +206,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private void UpdateAdornerDataContext()
         {
-            if (this.AdornerContent != null)
+            if (AdornerContent != null)
             {
-                this.AdornerContent.DataContext = this.DataContext;
+                AdornerContent.DataContext = DataContext;
             }
         }
 
@@ -217,13 +217,13 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private void ShowOrHideAdornerInternal()
         {
-            if (this.IsAdornerVisible)
+            if (IsAdornerVisible)
             {
-                this.ShowAdornerInternal();
+                ShowAdornerInternal();
             }
             else
             {
-                this.HideAdornerInternal();
+                HideAdornerInternal();
             }
         }
 
@@ -232,25 +232,25 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private void ShowAdornerInternal()
         {
-            if (this.adorner != null)
+            if (_adorner != null)
             {
                 // Already adorned.
                 return;
             }
 
-            if (this.AdornerContent != null)
+            if (AdornerContent != null)
             {
-                if (this.adornerLayer == null)
+                if (_adornerLayer == null)
                 {
-                    this.adornerLayer = AdornerLayer.GetAdornerLayer(this);
+                    _adornerLayer = AdornerLayer.GetAdornerLayer(this);
                 }
 
-                if (this.adornerLayer != null)
+                if (_adornerLayer != null)
                 {
-                    this.adorner = new FrameworkElementAdorner(this.AdornerContent, this, this.HorizontalAdornerPlacement, this.VerticalAdornerPlacement, this.AdornerOffsetX, this.AdornerOffsetY);
-                    this.adornerLayer.Add(this.adorner);
+                    _adorner = new FrameworkElementAdorner(AdornerContent, this, HorizontalAdornerPlacement, VerticalAdornerPlacement, AdornerOffsetX, AdornerOffsetY);
+                    _adornerLayer.Add(_adorner);
 
-                    this.UpdateAdornerDataContext();
+                    UpdateAdornerDataContext();
                 }
             }
         }
@@ -260,17 +260,17 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         private void HideAdornerInternal()
         {
-            if (this.adornerLayer == null || this.adorner == null)
+            if (_adornerLayer == null || _adorner == null)
             {
                 // Not already adorned.
                 return;
             }
 
-            this.adornerLayer.Remove(this.adorner);
-            this.adorner.DisconnectChild();
+            _adornerLayer.Remove(_adorner);
+            _adorner.DisconnectChild();
 
-            this.adorner = null;
-            this.adornerLayer = null;
+            _adorner = null;
+            _adornerLayer = null;
         }
 
         #endregion

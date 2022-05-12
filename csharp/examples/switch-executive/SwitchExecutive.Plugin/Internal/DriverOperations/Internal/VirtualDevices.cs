@@ -5,46 +5,46 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 {
     internal class VirtualDevices : IVirtualDevices
     {
-        private readonly NISwitchExecutiveConfigurationManagementInterface switchExecutiveConfigurationManagement;
-        private string selectedName = string.Empty;
-        private string selectedRouteName = string.Empty;
+        private readonly NISwitchExecutiveConfigurationManagementInterface _switchExecutiveConfigurationManagement;
+        private string _selectedName = string.Empty;
+        private string _selectedRouteName = string.Empty;
 
         public VirtualDevices(NISwitchExecutiveConfigurationManagementInterface switchExecutiveConfigurationManagement)
         {
-            this.switchExecutiveConfigurationManagement = switchExecutiveConfigurationManagement;
+            _switchExecutiveConfigurationManagement = switchExecutiveConfigurationManagement;
         }
 
-        public IEnumerable<string> Names => this.switchExecutiveConfigurationManagement.VirtualDeviceNames;
-        public IEnumerable<string> Routes => this.switchExecutiveConfigurationManagement.Routes(this.SelectedName);
-        public IEnumerable<DeviceInfo> DeviceInfo => this.switchExecutiveConfigurationManagement.DeviceInfo(this.SelectedName);
-        public IEnumerable<ChannelInfo> ChannelInfo => this.switchExecutiveConfigurationManagement.ChannelInfo(this.SelectedName);
-        public IEnumerable<RouteInfo> RouteInfo => this.switchExecutiveConfigurationManagement.RouteInfo(this.SelectedName);
+        public IEnumerable<string> Names => _switchExecutiveConfigurationManagement.VirtualDeviceNames;
+        public IEnumerable<string> Routes => _switchExecutiveConfigurationManagement.Routes(SelectedName);
+        public IEnumerable<DeviceInfo> DeviceInfo => _switchExecutiveConfigurationManagement.DeviceInfo(SelectedName);
+        public IEnumerable<ChannelInfo> ChannelInfo => _switchExecutiveConfigurationManagement.ChannelInfo(SelectedName);
+        public IEnumerable<RouteInfo> RouteInfo => _switchExecutiveConfigurationManagement.RouteInfo(SelectedName);
 
         public string Comment =>
-           this.SelectedRouteName.Any()
-              ? this.switchExecutiveConfigurationManagement.Comment(this.SelectedName, this.SelectedRouteName)
+           SelectedRouteName.Any()
+              ? _switchExecutiveConfigurationManagement.Comment(SelectedName, SelectedRouteName)
               : string.Empty;
 
         public string SelectedName
         {
-            get => this.selectedName;
+            get => _selectedName;
 
             set
             {
                 if (value == null) { return; }
-                this.selectedName = value;
-                this.SelectedRouteName = string.Empty;
+                _selectedName = value;
+                SelectedRouteName = string.Empty;
             }
         }
 
         public string SelectedRouteName
         {
-            get => this.selectedRouteName;
+            get => _selectedRouteName;
 
             set
             {
                 if (value == null) { return; }
-                this.selectedRouteName = value;
+                _selectedRouteName = value;
             }
         }
     }

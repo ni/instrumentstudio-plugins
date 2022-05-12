@@ -11,7 +11,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         /// </summary>
         public InstrumentPanelResources()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         public static InstrumentPanelResources Instance { get; } = new InstrumentPanelResources();

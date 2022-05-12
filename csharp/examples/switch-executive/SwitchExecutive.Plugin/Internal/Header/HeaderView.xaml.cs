@@ -9,7 +9,7 @@ namespace SwitchExecutive.Plugin.Internal
     {
         public HeaderView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

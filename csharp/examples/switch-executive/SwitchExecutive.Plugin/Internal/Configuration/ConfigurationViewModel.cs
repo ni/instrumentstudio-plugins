@@ -28,10 +28,10 @@ namespace SwitchExecutive.Plugin.Internal
          { "Use Default Setting for Routes", MulticonnectMode.DefaultMode },
       };
 
-        private readonly ISwitchExecutiveDriverOperations driverOperations;
-        private readonly ISave saveOperation;
-        private IStatus status;
-        private string selectedConnectionMode = SupportedMulticonnectModes.First().Key;
+        private readonly ISwitchExecutiveDriverOperations _driverOperations;
+        private readonly ISave _saveOperation;
+        private IStatus _status;
+        private string _selectedConnectionMode = SupportedMulticonnectModes.First().Key;
 
         #endregion
 
@@ -42,18 +42,18 @@ namespace SwitchExecutive.Plugin.Internal
            ISave saveOperation,
            IStatus status)
         {
-            this.driverOperations = driverOperations;
-            this.saveOperation = saveOperation;
-            this.status = status;
+            _driverOperations = driverOperations;
+            _saveOperation = saveOperation;
+            _status = status;
 
-            this.ConnectedRouteTableViewModel = new ConnectedRouteTableViewModel(driverOperations, saveOperation, status);
+            ConnectedRouteTableViewModel = new ConnectedRouteTableViewModel(driverOperations, saveOperation, status);
 
             // these commands ask the driver to do work that could take time, so they execute in a separate thread
-            this.ConnectRouteCommand = this.CreateConnectCommand();
-            this.DisconnectRouteCommand = this.CreateDisconnectCommand();
-            this.DisconnectAllRouteCommand = this.CreateDisconnectAllCommand();
+            ConnectRouteCommand = CreateConnectCommand();
+            DisconnectRouteCommand = CreateDisconnectCommand();
+            DisconnectAllRouteCommand = CreateDisconnectAllCommand();
 
-            this.driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
+            _driverOperations.PropertyChanged += DriverOperations_PropertyChanged;
         }
 
         #endregion
@@ -63,32 +63,32 @@ namespace SwitchExecutive.Plugin.Internal
         public HeaderMenuViewModel HeaderMenuViewModel { get; }
         public ConnectedRouteTableViewModel ConnectedRouteTableViewModel { get; }
 
-        public IEnumerable<string> RouteList => this.driverOperations.RouteNames;
-        public bool IsRouteListSelectable => this.driverOperations.SelectedVirtualDevice.Any();
+        public IEnumerable<string> RouteList => _driverOperations.RouteNames;
+        public bool IsRouteListSelectable => _driverOperations.SelectedVirtualDevice.Any();
         [JsonProperty]
         public string SelectedRoute
         {
-            get => this.driverOperations.SelectedRoute;
+            get => _driverOperations.SelectedRoute;
             set
             {
                 if (value == null) { return; }
 
-                this.driverOperations.SelectedRoute = value;
-                this.NotifyPropertyChanged();
+                _driverOperations.SelectedRoute = value;
+                NotifyPropertyChanged();
 
-                this.Save();
+                Save();
             }
         }
-        public string SelectedRouteComment => this.driverOperations.Comment;
+        public string SelectedRouteComment => _driverOperations.Comment;
         public IEnumerable<string> ConnectionModes => SupportedMulticonnectModes.Keys;
         [JsonProperty]
         public string SelectedConnectionMode
         {
-            get => this.selectedConnectionMode;
+            get => _selectedConnectionMode;
             set
             {
-                this.selectedConnectionMode = value;
-                this.Save();
+                _selectedConnectionMode = value;
+                Save();
             }
         }
 
@@ -100,15 +100,15 @@ namespace SwitchExecutive.Plugin.Internal
 
         private void OnConnect(object obj)
         {
-            this.ClearErrorMessage();
+            ClearErrorMessage();
 
             try
             {
-                this.driverOperations.TryConnect(SupportedMulticonnectModes[this.SelectedConnectionMode]);
+                _driverOperations.TryConnect(SupportedMulticonnectModes[SelectedConnectionMode]);
             }
             catch (DriverException e)
             {
-                this.SetErrorMessage(e.Message);
+                SetErrorMessage(e.Message);
             }
         }
 
@@ -117,14 +117,14 @@ namespace SwitchExecutive.Plugin.Internal
             bool canConnect = false;
             try
             {
-                canConnect = this.driverOperations.CanConnect();
+                canConnect = _driverOperations.CanConnect();
             }
             catch (DriverException)
             {
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //this.SetErrorMessage(e.Message);
+                //SetErrorMessage(e.Message);
             }
 
             return canConnect;
@@ -134,28 +134,28 @@ namespace SwitchExecutive.Plugin.Internal
         {
             Action connectAction = async () =>
             {
-                await Task.Run(() => this.OnConnect(null));
-                this.Save();
+                await Task.Run(() => OnConnect(null));
+                Save();
             };
 
             return
                new NationalInstruments.RelayCommand(
                   execute: o => connectAction(),
-                  canExecute: this.CanConnect);
+                  canExecute: CanConnect);
         }
 
         private void OnDisconnect(object obj)
         {
-            this.ClearErrorMessage();
+            ClearErrorMessage();
 
             try
             {
-                if (this.driverOperations.IsConnected())
-                    this.driverOperations.TryDisconnect();
+                if (_driverOperations.IsConnected())
+                    _driverOperations.TryDisconnect();
             }
             catch (DriverException e)
             {
-                this.SetErrorMessage(e.Message);
+                SetErrorMessage(e.Message);
             }
         }
 
@@ -164,14 +164,14 @@ namespace SwitchExecutive.Plugin.Internal
             bool canDisconnect = false;
             try
             {
-                canDisconnect = this.driverOperations.CanDisconnect();
+                canDisconnect = _driverOperations.CanDisconnect();
             }
             catch (DriverException)
             {
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //this.SetErrorMessage(e.Message);
+                //SetErrorMessage(e.Message);
             }
 
             return canDisconnect;
@@ -181,27 +181,27 @@ namespace SwitchExecutive.Plugin.Internal
         {
             Action disconnectAction = async () =>
             {
-                await Task.Run(() => this.OnDisconnect(null));
-                this.Save();
+                await Task.Run(() => OnDisconnect(null));
+                Save();
             };
 
             return
                new NationalInstruments.RelayCommand(
                   execute: o => disconnectAction(),
-                  canExecute: this.CanDisconnect);
+                  canExecute: CanDisconnect);
         }
 
         private void OnDisconnectAll(object obj)
         {
-            this.ClearErrorMessage();
+            ClearErrorMessage();
 
             try
             {
-                this.driverOperations.TryDisconnectAll();
+                _driverOperations.TryDisconnectAll();
             }
             catch (DriverException e)
             {
-                this.SetErrorMessage(e.Message);
+                SetErrorMessage(e.Message);
             }
         }
 
@@ -210,14 +210,14 @@ namespace SwitchExecutive.Plugin.Internal
             bool canDisconnect = true;
             try
             {
-                canDisconnect = this.driverOperations.CanDisconnectAll();
+                canDisconnect = _driverOperations.CanDisconnectAll();
             }
             catch (DriverException)
             {
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //this.SetErrorMessage(e.Message);
+                //SetErrorMessage(e.Message);
             }
 
             return canDisconnect;
@@ -227,29 +227,29 @@ namespace SwitchExecutive.Plugin.Internal
         {
             Action disconnectAllAction = async () =>
             {
-                await Task.Run(() => this.OnDisconnectAll(null));
-                this.Save();
+                await Task.Run(() => OnDisconnectAll(null));
+                Save();
             };
 
             return
                 new NationalInstruments.RelayCommand(
                   execute: o => disconnectAllAction(),
-                  canExecute: this.CanDisconnectAll);
+                  canExecute: CanDisconnectAll);
         }
 
-        private void Save() => this.saveOperation.Save();
-        private void SetErrorMessage(string msg) => this.status.Set(msg);
-        private void ClearErrorMessage() => this.status.Clear();
+        private void Save() => _saveOperation.Save();
+        private void SetErrorMessage(string msg) => _status.Set(msg);
+        private void ClearErrorMessage() => _status.Clear();
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(this.driverOperations.RouteNames))
-                this.NotifyPropertyChanged(nameof(this.RouteList));
-            if (e.PropertyName == nameof(this.driverOperations.SelectedVirtualDevice))
-                this.NotifyPropertyChanged(nameof(this.IsRouteListSelectable));
-            if (e.PropertyName == nameof(this.driverOperations.Comment))
-                this.NotifyPropertyChanged(nameof(this.SelectedRouteComment));
-            if (e.PropertyName == nameof(this.driverOperations.SelectedRoute))
-                this.NotifyPropertyChanged(nameof(this.SelectedRoute));
+            if (e.PropertyName == nameof(_driverOperations.RouteNames))
+                NotifyPropertyChanged(nameof(RouteList));
+            if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
+                NotifyPropertyChanged(nameof(IsRouteListSelectable));
+            if (e.PropertyName == nameof(_driverOperations.Comment))
+                NotifyPropertyChanged(nameof(SelectedRouteComment));
+            if (e.PropertyName == nameof(_driverOperations.SelectedRoute))
+                NotifyPropertyChanged(nameof(SelectedRoute));
         }
     }
 }

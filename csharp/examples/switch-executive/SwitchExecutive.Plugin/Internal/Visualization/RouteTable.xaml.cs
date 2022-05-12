@@ -28,8 +28,8 @@ namespace SwitchExecutive.Plugin.Internal
 
         public RouteTable()
         {
-            this.SetValue(InfoItemsSourceProperty, new List<RouteInfo>());
-            this.InitializeComponent();
+            SetValue(InfoItemsSourceProperty, new List<RouteInfo>());
+            InitializeComponent();
         }
 
         #endregion
@@ -41,8 +41,8 @@ namespace SwitchExecutive.Plugin.Internal
         /// </summary>
         public IEnumerable<RouteInfo> InfoItemsSource
         {
-            get { return (IEnumerable<RouteInfo>)this.GetValue(RouteTable.InfoItemsSourceProperty); }
-            set { this.SetValue(RouteTable.InfoItemsSourceProperty, value); }
+            get { return (IEnumerable<RouteInfo>)GetValue(RouteTable.InfoItemsSourceProperty); }
+            set { SetValue(RouteTable.InfoItemsSourceProperty, value); }
         }
 
         #endregion

@@ -10,9 +10,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
     /// </summary>
     public sealed class MenuProvider : IMenuProvider
     {
-        private readonly ISet<IDynamicMenuDataProvider> dynamicMenuDataProviders;
-        private IList<FrameworkElement> dynamicMenuItemsRoot;
-        private object commandParameter;
+        private readonly ISet<IDynamicMenuDataProvider> _dynamicMenuDataProviders;
+        private IList<FrameworkElement> _dynamicMenuItemsRoot;
+        private object _commandParameter;
 
         /// <summary>
         /// Collects the dynamic menu items to be displayed from the all the IDynamicMenuDataProvider(s) and creates a view for them.
@@ -24,9 +24,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         /// </summary>
         public MenuProvider(object commandParameter)
         {
-            this.dynamicMenuItemsRoot = new List<FrameworkElement>();
-            this.dynamicMenuDataProviders = new HashSet<IDynamicMenuDataProvider>();
-            this.commandParameter = commandParameter;
+            _dynamicMenuItemsRoot = new List<FrameworkElement>();
+            _dynamicMenuDataProviders = new HashSet<IDynamicMenuDataProvider>();
+            _commandParameter = commandParameter;
         }
 
         /// <summary>
@@ -37,9 +37,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         {
             var dynamicMenuItems = new List<IMenuItem>();
 
-            foreach (var dynamicMenuDataProvider in this.dynamicMenuDataProviders)
+            foreach (var dynamicMenuDataProvider in _dynamicMenuDataProviders)
             {
-                dynamicMenuItems.AddRange(dynamicMenuDataProvider.CollectDynamicMenuItems(this.commandParameter));
+                dynamicMenuItems.AddRange(dynamicMenuDataProvider.CollectDynamicMenuItems(_commandParameter));
             }
 
             if (!dynamicMenuItems.Any())
@@ -47,14 +47,14 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
                 return Enumerable.Empty<FrameworkElement>();
             }
 
-            this.dynamicMenuItemsRoot = new List<FrameworkElement>();
+            _dynamicMenuItemsRoot = new List<FrameworkElement>();
             foreach (var dynamicMenuItem in dynamicMenuItems)
             {
                 // Add the entire tree for each root menuItem
-                this.AddMenuItemToMenuTree(dynamicMenuItem, null);
+                AddMenuItemToMenuTree(dynamicMenuItem, null);
             }
 
-            return this.dynamicMenuItemsRoot;
+            return _dynamicMenuItemsRoot;
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         public void AddMenuDataProvider(IDynamicMenuDataProvider dynamicMenuDataProvider)
         {
             // Note we need not perform .contains check since this is a hashSet.
-            this.dynamicMenuDataProviders.Add(dynamicMenuDataProvider);
+            _dynamicMenuDataProviders.Add(dynamicMenuDataProvider);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         public void RemoveMenuDataProvider(IDynamicMenuDataProvider dynamicMenuDataProvider)
         {
             // Note we need not perform .contains check since this is a hashSet.
-            this.dynamicMenuDataProviders.Remove(dynamicMenuDataProvider);
+            _dynamicMenuDataProviders.Remove(dynamicMenuDataProvider);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 
             if (parent == null)
             {
-                this.dynamicMenuItemsRoot.Add(menuView);
+                _dynamicMenuItemsRoot.Add(menuView);
             }
             else
             {
@@ -106,7 +106,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
 
             foreach (var subMenuItem in menuItem.SubItems)
             {
-                this.AddMenuItemToMenuTree(subMenuItem, menuView);
+                AddMenuItemToMenuTree(subMenuItem, menuView);
             }
         }
     }
