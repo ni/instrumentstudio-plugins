@@ -3,7 +3,7 @@
 namespace SwitchExecutive.Plugin
 {
     // This export attribute is what InstrumentStudio uses to discover your plugin.
-    [PanelPlugin("SwitchExecutive", "NI | CSharpPlugin | IS_2022 | SwitchExecutive", "NI InstrumentStudio", "SwitchExecutive", PanelPresentation.ConfigurationWithVisualization | PanelPresentation.ConfigurationOnly)]
+    [ExportPanelPlugin("SwitchExecutive", "NI | CSharpPlugin | IS_2022 | SwitchExecutive", "NI InstrumentStudio", "SwitchExecutive", PanelPresentation.ConfigurationWithVisualization | PanelPresentation.ConfigurationOnly)]
     public class SwitchExecutiveFactory : IPanelPluginFactory
     {
         /// <summary>
