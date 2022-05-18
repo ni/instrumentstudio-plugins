@@ -2,7 +2,7 @@
 
 namespace NationalInstruments.InstrumentStudio.HelloWorldPlugin
 {
-    [PanelPlugin(DisplayName, UniqueName, GroupName, PanelType, SupportedPresentations)]
+    [ExportPanelPlugin(DisplayName, UniqueName, GroupName, PanelType, SupportedPresentations)]
     public class ExamplePanelPluginFactory : IPanelPluginFactory
     {
         public const string DisplayName = "Hello World";

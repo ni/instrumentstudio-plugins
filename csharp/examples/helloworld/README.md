@@ -7,8 +7,7 @@ This example shows a minimal C# plugin example that can be used with InstrumentS
 ### InstrumentStudio
 
 This example requires assemblies that are installed with InstrumentStudio. You must install
-InstrumentStudio in order to build this plugin. This requires a development version
-of InstrumentStudio 22.3 at least version 22.3.0.383-0+d383.
+InstrumentStudio 22.3 or later in order to build this plugin.
 
 ### .NET SDK
 
