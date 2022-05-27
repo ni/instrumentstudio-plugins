@@ -6,7 +6,7 @@
     <RootNamespace>NationalInstruments.InstrumentStudio.HelloWorldPlugin</RootNamespace>
   </PropertyGroup>
   <PropertyGroup>
-    <InstrumentStudioDirectory>C:/Program Files/National Instruments/InstrumentStudio</InstrumentStudioDirectory>
+    <InstrumentStudioDirectory Condition="'$(InstrumentStudioDirectory)' == ''">C:/Program Files/National Instruments/InstrumentStudio</InstrumentStudioDirectory>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
