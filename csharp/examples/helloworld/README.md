@@ -1,45 +1,46 @@
 # Hello World C# InstrumentStudio Plugin
 
-This example shows a minimal C# plugin example that can be used with InstrumentStudio
+This is a minimal example of a C# plugin for InstrumentStudio.
 
 ## Dependencies
 
-### InstrumentStudio
+This plugin requires InstrumentStudio 2022 Q3 or later.
 
-This example requires assemblies that are installed with InstrumentStudio. You must install
-InstrumentStudio 22.3 or later in order to build this plugin.
-
-### .NET SDK
-
-In order to build, you must install the Microsoft .NET 6.0 SDK. You can download the
+Building this plugin requires the Microsoft .NET 6.0 SDK. You can download the
 latest from [this location](https://dotnet.microsoft.com/en-us/download).
 
 ## Building
 
-### Update the InstrumentStudio location in the .csproj file
+To build the plugin, run this command from the 'csharp/examples/helloworld' directory:
 
-Update this line to reflect the location where InstrumentStudio is installed.
-`<InstrumentStudioDirectory>C:\Program Files\National Instruments\InstrumentStudio</InstrumentStudioDirectory>`
+```
+dotnet build
+```
 
-This location provides these assemblies needed to build:
+The default project settings assume that InstrumentStudio is installed in the
+default location. If InstrumentStudio is installed in a custom location or is not installed, you
+can specify a custom path to the InstrumentStudio assemblies by setting the
+`InstrumentStudioDirectory` environment variable or editing the corresponding variable in
+`HelloWorld.NetCore.csproj`.
+
+Building InstrumentStudio C# plugins requires the following assemblies from the
+InstrumentStudio directory:
 
 - `NationalInstruments.Core.dll`
 - `NationalInstruments.InstrumentFramework.Plugins.dll`
 
-### Build the plugin
-
-To build the example, run this command from the 'csharp/examples/helloworld' directory:
-
-`dotnet build`
-
 ## Installation
 
-Copy the built assembly (NationalInstruments.HelloWorldPlugin.dll) into the 'Addons' directory under InstrumentStudio, for example "C:\Program Files\National Instruments\InstrumentStudio\Addons". The assembly can also be located in a sub-folder under the Addons directory if you want to isolate it from other plugins.
+Copy the built assembly (`NationalInstruments.HelloWorldPlugin.dll`) into the InstrumentStudio `Addons`
+directory, which is `C:\Program Files\National Instruments\InstrumentStudio\Addons` by default.
 
-If the plugin is installed correctly, it will appear in the Edit Layout dialog in InstrumentStudio
+You may optionally install the plugin assembly into a subdirectory of the `Addons` directory
+in order to isolate it from other plugins.
+
+If the plugin is installed correctly, it will appear in the Edit Layout dialog in InstrumentStudio:
 
 ![Hello World In Edit Layout Dialog](images/HelloWorldInEditLayout.png)
 
-The panel looks like this in InstrumentStudio once it is created
+The panel looks like this in InstrumentStudio once it is created:
 
 ![Hello World Panel](images/HelloWorldLargePanel.png)
