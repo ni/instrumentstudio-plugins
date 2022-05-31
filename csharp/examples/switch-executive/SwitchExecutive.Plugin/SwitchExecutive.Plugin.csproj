@@ -13,9 +13,10 @@
     <OutputPath>bin\x64\Release\</OutputPath>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-	<PropertyGroup>
-		<InstrumentStudioDirectory>C:\Program Files\National Instruments\InstrumentStudio</InstrumentStudioDirectory>
-	</PropertyGroup>
+  <PropertyGroup>
+    <InstrumentStudioDirectory Condition="'$(InstrumentStudioDirectory)' == ''">C:\Program Files\National Instruments\InstrumentStudio</InstrumentStudioDirectory>
+    <NISwitchExecutiveDirectory Condition="'$(NISwitchExecutiveDirectory)' == ''">C:\Windows\system32</NISwitchExecutiveDirectory>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="NationalInstruments.Common">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Common.dll</HintPath>
@@ -61,24 +62,19 @@
 	 <Resource Include="Resources\missingdevice_12x12.png" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="niSE">
-      <Guid>{4128667A-472E-4B0E-9D3F-05A6AD8FB114}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>1</VersionMinor>
-      <Lcid>0</Lcid>
+    <!-- niSE.dll provides two COM components: niSE and niseCfg. Use COMFileReference instead of
+      COMReference so that NI Switch Executive doesn't have to be installed/registered on the
+      build machine. -->
+    <!-- niSE component -->
+    <COMFileReference Include="$(NISwitchExecutiveDirectory)\niSE.dll\1">
       <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="niseCfg">
-      <Guid>{8715111D-1307-4657-97EC-A80A09695061}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>2</VersionMinor>
-      <Lcid>1033</Lcid>
+    </COMFileReference>
+    <!-- niseCfg component -->
+    <COMFileReference Include="$(NISwitchExecutiveDirectory)\niSE.dll\2">
       <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
+    </COMFileReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
