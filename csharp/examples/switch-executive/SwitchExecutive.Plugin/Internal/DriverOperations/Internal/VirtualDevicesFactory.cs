@@ -2,7 +2,7 @@
 {
     internal class VirtualDevicesFactory
     {
-        static internal IVirtualDevices CreateVirtualDevice(bool simulate = false)
+        internal static IVirtualDevices CreateVirtualDevice(bool simulate = false)
         {
             if (simulate)
                 return new FakeVirtualDevices();
@@ -14,7 +14,7 @@
             return new VirtualDevices(new NISwitchExecutiveConfigurationManagement());
         }
 
-        static public bool IsDriverInstalled()
+        public static bool IsDriverInstalled()
         {
             return NISwitchExecutiveConfigurationUtilities.CheckIfSwitchExecutiveInstalled();
         }

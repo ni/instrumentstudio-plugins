@@ -21,5 +21,9 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="NI.CSharp.Analyzers" Version="2.0.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\SwitchExecutive.Plugin\CodeAnalysisDictionary.xml" />
   </ItemGroup>
 </Project>

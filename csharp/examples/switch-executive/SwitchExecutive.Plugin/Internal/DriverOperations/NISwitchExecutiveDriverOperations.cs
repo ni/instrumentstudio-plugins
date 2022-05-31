@@ -4,11 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-
-using SwitchExecutive.Plugin.Internal.DriverOperations.Internal;
 using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.DriverOperations.Internal;
 
 namespace SwitchExecutive.Plugin.Internal.DriverOperations
 {
@@ -99,7 +97,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
                 NotifyPropertyChanged(nameof(DeviceInfo));
                 NotifyPropertyChanged(nameof(ChannelInfo));
                 NotifyPropertyChanged(nameof(DeviceInfo));
-                NotifyProperitiesConnectedRouteChanged();
+                NotifyPropertiesConnectedRouteChanged();
             }
         }
 
@@ -168,7 +166,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
                             if (channel.Name == route.Endpoint1)
                             {
                                 if (!channel.Connected)
-                                    channel.index = route.index;
+                                    channel.Index = route.Index;
                             }
                         }
 
@@ -177,7 +175,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
                             if (channel.Name == route.Endpoint2)
                             {
                                 if (!channel.Connected)
-                                    channel.index = route.index;
+                                    channel.Index = route.Index;
                             }
                         }
                     }
@@ -208,7 +206,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
                         {
                             if (expandedRoute == route.Name)
                             {
-                                route.index = i;
+                                route.Index = i;
 
                                 // if connection is a group then let the user know the group name
                                 if (route.Name != connectedRoute)
@@ -270,7 +268,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
                     TryConnect(route, connectionMode);
             }
 
-            NotifyProperitiesConnectedRouteChanged();
+            NotifyPropertiesConnectedRouteChanged();
         }
 
         public string ExpandedRoutePath
@@ -326,7 +324,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public void TryConnect(string route, MulticonnectMode connectionMode)
         {
             SwitchExecutive.Connect(route, connectionMode, true);
-            NotifyProperitiesConnectedRouteChanged();
+            NotifyPropertiesConnectedRouteChanged();
         }
 
         public void TryDisconnect() => TryDisconnectRoute(SelectedRoute);
@@ -334,7 +332,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public void TryDisconnectRoute(string route)
         {
             SwitchExecutive.Disconnect(route);
-            NotifyProperitiesConnectedRouteChanged();
+            NotifyPropertiesConnectedRouteChanged();
         }
 
         public bool IsConnected() => SwitchExecutive.IsConnected(SelectedRoute);
@@ -342,7 +340,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public void TryDisconnectAll()
         {
             SwitchExecutive.DisconnectAll();
-            NotifyProperitiesConnectedRouteChanged();
+            NotifyPropertiesConnectedRouteChanged();
         }
 
         public void Shutdown()
@@ -387,7 +385,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
             return SwitchExecutive.IsConnected(route);
         }
 
-        private void NotifyProperitiesConnectedRouteChanged()
+        private void NotifyPropertiesConnectedRouteChanged()
         {
             NotifyPropertyChanged(nameof(ConnectedRoutes));
             NotifyPropertyChanged(nameof(RouteInfo));

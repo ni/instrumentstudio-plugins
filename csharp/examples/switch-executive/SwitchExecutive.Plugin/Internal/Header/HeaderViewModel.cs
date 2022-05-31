@@ -1,11 +1,7 @@
-using System;
 using System.ComponentModel;
-using System.Collections.Generic;
 using System.Windows;
-
-using SwitchExecutive.Plugin.Internal.DriverOperations;
 using SwitchExecutive.Plugin.Internal.Common;
-
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {

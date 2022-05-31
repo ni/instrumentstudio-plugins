@@ -1,9 +1,8 @@
-﻿using NationalInstruments.InstrumentFramework.Plugins;
-using System;
-using System.Windows;
+﻿using System;
 using System.Windows.Controls;
-using SwitchExecutive.Plugin.Internal.DriverOperations;
+using NationalInstruments.InstrumentFramework.Plugins;
 using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
@@ -14,14 +13,14 @@ namespace SwitchExecutive.Plugin.Internal
             InitializeComponent();
 
             /* used to save/load our view models and models.  for save we serialize
-               and return the string to InstrumentStudio via PluginSession.  This 
+               and return the string to InstrumentStudio via PluginSession.  This
                class also handles not saving during load.  */
             var saveDelegator = new SaveDelegator(pluginSession);
 
             /* crete the main view model which creates all the child view models and models.  by
                doing this creation here we imply that the view is created first. Also we:
 
-               1. check the registry to see if SwitchExecutive is installed. 
+               1. check the registry to see if SwitchExecutive is installed.
                2. create a DriverOperations class that is basically our model and conneciton to the driver.
                3. create a status option that is shared to all view models.  this allows any code to report errors. */
             var mainViewModel =
@@ -37,7 +36,6 @@ namespace SwitchExecutive.Plugin.Internal
             saveDelegator.Attach(
                serialize: new Func<string>(() => mainViewModel.Serialize()),
                deserialize: o => mainViewModel.Deserialize(o));
-
 
             DataContext = mainViewModel;
 

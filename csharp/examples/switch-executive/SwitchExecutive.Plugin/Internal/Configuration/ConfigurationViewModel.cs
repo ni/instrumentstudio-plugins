@@ -1,18 +1,13 @@
 using System;
-using System.Linq;
-using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-
-
-using SwitchExecutive.Plugin.Internal.DriverOperations;
 using SwitchExecutive.Plugin.Internal.Common;
-
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
@@ -124,7 +119,7 @@ namespace SwitchExecutive.Plugin.Internal
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //SetErrorMessage(e.Message);
+                ////SetErrorMessage(e.Message);
             }
 
             return canConnect;
@@ -171,7 +166,7 @@ namespace SwitchExecutive.Plugin.Internal
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //SetErrorMessage(e.Message);
+                ////SetErrorMessage(e.Message);
             }
 
             return canDisconnect;
@@ -217,7 +212,7 @@ namespace SwitchExecutive.Plugin.Internal
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //SetErrorMessage(e.Message);
+                ////SetErrorMessage(e.Message);
             }
 
             return canDisconnect;

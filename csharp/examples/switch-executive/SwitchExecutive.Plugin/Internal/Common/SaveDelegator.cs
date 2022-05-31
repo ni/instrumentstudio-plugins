@@ -7,12 +7,12 @@ using NationalInstruments.InstrumentFramework.Plugins;
 
 namespace SwitchExecutive.Plugin.Internal.Common
 {
-    public interface ISave
+    internal interface ISave
     {
         void Save();
     }
 
-    class SaveDelegator : ISave
+    internal class SaveDelegator : ISave
     {
         private PluginSession _pluginSession;
         private Func<string> _serialize;
@@ -26,7 +26,7 @@ namespace SwitchExecutive.Plugin.Internal.Common
 
         public void Save()
         {
-            if (!Attrached())
+            if (!Attached())
                 return;
 
             if (!_loading)
@@ -39,7 +39,7 @@ namespace SwitchExecutive.Plugin.Internal.Common
 
         public void Deserialize(string json)
         {
-            if (!Attrached())
+            if (!Attached())
                 return;
 
             _loading = true;
@@ -55,6 +55,6 @@ namespace SwitchExecutive.Plugin.Internal.Common
             _deserialize = deserialize;
         }
 
-        private bool Attrached() => _serialize != null && _deserialize != null;
+        private bool Attached() => _serialize != null && _deserialize != null;
     }
 }

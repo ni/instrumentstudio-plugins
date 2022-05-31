@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 
-
 namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 {
     internal class NISwitchExecutiveHandle : SafeHandle

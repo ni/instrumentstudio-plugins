@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using SwitchExecutive.Plugin.Internal.DriverOperations;
-using SwitchExecutive.Plugin.Internal.Controls;
 using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.Controls;
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
@@ -32,8 +27,8 @@ namespace SwitchExecutive.Plugin.Internal
                 var channels = _driverOperations.ChannelInfo;
                 foreach (var channel in channels)
                 {
-                    if (channel.index != ChannelInfo.NotConnected)
-                        channel.DisplayColor = PlotColors.GetPlotColorStringForIndex(channel.index);
+                    if (channel.Index != ChannelInfo.NotConnected)
+                        channel.DisplayColor = PlotColors.GetPlotColorStringForIndex(channel.Index);
                 }
                 return channels;
             }
@@ -47,5 +42,4 @@ namespace SwitchExecutive.Plugin.Internal
                 NotifyPropertyChanged(nameof(Info));
         }
     }
-
 }

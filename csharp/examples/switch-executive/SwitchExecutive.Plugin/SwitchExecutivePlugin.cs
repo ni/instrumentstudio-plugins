@@ -1,5 +1,5 @@
-﻿using NationalInstruments.InstrumentFramework.Plugins;
-using System.Windows;
+﻿using System.Windows;
+using NationalInstruments.InstrumentFramework.Plugins;
 using SwitchExecutive.Plugin.Internal;
 
 namespace SwitchExecutive.Plugin

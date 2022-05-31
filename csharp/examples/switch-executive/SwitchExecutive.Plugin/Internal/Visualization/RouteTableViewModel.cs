@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-
-using SwitchExecutive.Plugin.Internal.DriverOperations;
-using SwitchExecutive.Plugin.Internal.Controls;
 using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.Controls;
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
@@ -30,9 +27,9 @@ namespace SwitchExecutive.Plugin.Internal
                 var routes = _driverOperations.RouteInfo;
                 foreach (var route in routes)
                 {
-                    if (route.index != RouteInfo.NotConnected)
+                    if (route.Index != RouteInfo.NotConnected)
                     {
-                        route.DisplayColor = PlotColors.GetPlotColorStringForIndex(route.index);
+                        route.DisplayColor = PlotColors.GetPlotColorStringForIndex(route.Index);
                     }
                 }
                 return routes;

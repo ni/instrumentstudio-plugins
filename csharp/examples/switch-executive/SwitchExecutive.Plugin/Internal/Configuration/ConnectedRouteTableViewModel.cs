@@ -5,14 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-
-using SwitchExecutive.Plugin.Internal.DriverOperations;
-using SwitchExecutive.Plugin.Internal.Controls;
 using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.Controls;
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
-    class ConnectedRoute
+    internal class ConnectedRoute
     {
         public const string NoConnections = "No connections";
 
@@ -95,7 +94,7 @@ namespace SwitchExecutive.Plugin.Internal
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //SetErrorMessage(e.Message);
+                ////SetErrorMessage(e.Message);
             }
 
             return canDisconnect;
@@ -165,7 +164,7 @@ namespace SwitchExecutive.Plugin.Internal
         {
             if (e.PropertyName == nameof(_driverOperations.ConnectedRoutes))
             {
-                // the table has popups, so redrawing unnecessarily causes the popups to dismiss.  Let's 
+                // the table has popups, so redrawing unnecessarily causes the popups to dismiss.  Let's
                 // do a check to ensure something has changed before redrawing.
                 var newConnectedRoutes = _driverOperations.ConnectedRoutes;
                 if (!AreStringListsEqual(ConnectedRoutesCache, newConnectedRoutes))
@@ -182,9 +181,9 @@ namespace SwitchExecutive.Plugin.Internal
             set => _connectedRoutesCache = value;
         }
 
-        private bool AreStringListsEqual(IEnumerable<string> A, IEnumerable<string> B)
+        private bool AreStringListsEqual(IEnumerable<string> a, IEnumerable<string> b)
         {
-            bool equal = (A.Count() == B.Count() && (!A.Except(B).Any() || !B.Except(A).Any()));
+            bool equal = (a.Count() == b.Count() && (!a.Except(b).Any() || !b.Except(a).Any()));
             return equal;
         }
     }

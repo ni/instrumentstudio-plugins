@@ -1,13 +1,11 @@
-using NationalInstruments;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Markup;
+using NationalInstruments;
 
 namespace SwitchExecutive.Plugin.Internal.Controls
 {

@@ -178,7 +178,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 
             foreach (niseCfg.NiseRoute route in virtualDevice.Routes)
             {
-                var routeGroups = new List<String>();
+                var routeGroups = new List<string>();
                 foreach (niseCfg.NiseRouteGroup routeGroup in route.ParentRouteGroups)
                 {
                     routeGroups.Add(routeGroup.Name);

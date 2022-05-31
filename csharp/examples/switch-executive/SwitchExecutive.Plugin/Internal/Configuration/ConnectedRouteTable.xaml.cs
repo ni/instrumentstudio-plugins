@@ -36,9 +36,8 @@ namespace SwitchExecutive.Plugin.Internal
         {
             if (e.Key == Key.Escape)
             {
-                //Popup.IsOpen = false;
+                ////Popup.IsOpen = false;
             }
         }
-
     }
 }

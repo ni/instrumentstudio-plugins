@@ -9,7 +9,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
 {
     internal class NISwitchExecutiveFactory
     {
-        static public NISwitchExecutiveInterface CreateNISwitchExecutive(string resourceName, bool simulate = false)
+        public static NISwitchExecutiveInterface CreateNISwitchExecutive(string resourceName, bool simulate = false)
         {
             if (simulate)
                 return new FakeNISwitchExecutive(resourceName);
@@ -21,7 +21,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
             return NISwitchExecutive.TryCreateOwnedSession(resourceName);
         }
 
-        static public bool IsDriverInstalled()
+        public static bool IsDriverInstalled()
         {
             return NISwitchExecutiveConfigurationUtilities.CheckIfSwitchExecutiveInstalled();
         }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using SwitchExecutive.Plugin.Internal.DriverOperations;
 using Xunit;
@@ -9,7 +8,7 @@ namespace SwitchExecutive.Plugin.Tests
     public class NISwitchExecutiveDriverOperationsTests
     {
         [Fact]
-        public void OnContruction_NoThrow()
+        public void OnConstruction_NoThrow()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
             Assert.NotNull(driverOperations);
@@ -26,7 +25,7 @@ namespace SwitchExecutive.Plugin.Tests
         public void DefaultSelectedVirtualDevice_IsEmpty()
         {
             ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
-            Assert.True(driverOperations.SelectedVirtualDevice == "");
+            Assert.True(string.IsNullOrEmpty(driverOperations.SelectedVirtualDevice));
         }
 
         [Fact]

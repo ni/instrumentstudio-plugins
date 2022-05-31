@@ -1,11 +1,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Input;
 using SwitchExecutive.Plugin.Internal.DriverOperations;
-using NationalInstruments.Controls;
 
 namespace SwitchExecutive.Plugin.Internal
 {

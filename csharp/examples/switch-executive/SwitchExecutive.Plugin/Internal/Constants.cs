@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using SwitchExecutive.Plugin.Internal.Controls;
-
 using NationalInstruments.Controls;
+using SwitchExecutive.Plugin.Internal.Controls;
 
 namespace SwitchExecutive.Plugin.Internal
 {

@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using SwitchExecutive.Plugin.Internal.DriverOperations;
-using SwitchExecutive.Plugin.Internal.Common;
 using NationalInstruments;
+using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
