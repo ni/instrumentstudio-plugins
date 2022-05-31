@@ -38,10 +38,11 @@ namespace SwitchExecutive.Plugin.Internal
 
         public void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_driverOperations.RouteInfo))
+            if (e.PropertyName == nameof(_driverOperations.RouteInfo)
+                || e.PropertyName == nameof(_driverOperations.ConnectedRoutes))
+            {
                 NotifyPropertyChanged(nameof(Info));
-            if (e.PropertyName == nameof(_driverOperations.ConnectedRoutes))
-                NotifyPropertyChanged(nameof(Info));
+            }
         }
     }
 }

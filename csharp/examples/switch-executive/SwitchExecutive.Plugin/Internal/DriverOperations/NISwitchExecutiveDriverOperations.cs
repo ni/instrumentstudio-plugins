@@ -51,7 +51,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
     }
 
     [JsonObject(MemberSerialization.OptIn)]
-    public class NISwitchExecutiveDriverOperations : BaseNotify, ISwitchExecutiveDriverOperations
+    public sealed class NISwitchExecutiveDriverOperations : BaseNotify, ISwitchExecutiveDriverOperations
     {
         private IEnumerable<string> _connectedRoutes = new List<string>();
         private List<string> _connectedRoutesCache = new List<string>();
@@ -59,7 +59,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         private string _selectedVirtualDevice = string.Empty;
         private string _selectedRoute = string.Empty;
         private bool _simulate;
-        private NISwitchExecutiveInterface _switchExecutive;
+        private ISwitchExecutive _switchExecutive;
         private IVirtualDevices _virtualDevices;
         private Timer _refreshTimer = null;
 
@@ -90,7 +90,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
 
         public void Refresh()
         {
-            if (SelectedVirtualDevice != string.Empty)
+            if (!string.IsNullOrEmpty(SelectedVirtualDevice))
             {
                 NotifyPropertyChanged(nameof(RouteNames));
                 NotifyPropertyChanged(nameof(Comment));
@@ -161,22 +161,18 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
                 {
                     foreach (var route in routeInfo)
                     {
-                        if (route.Endpoint1.Any())
+                        if (route.Endpoint1.Any()
+                            && channel.Name == route.Endpoint1
+                            && !channel.Connected)
                         {
-                            if (channel.Name == route.Endpoint1)
-                            {
-                                if (!channel.Connected)
-                                    channel.Index = route.Index;
-                            }
+                            channel.Index = route.Index;
                         }
 
-                        if (route.Endpoint2.Any())
+                        if (route.Endpoint2.Any()
+                            && channel.Name == route.Endpoint2
+                            && !channel.Connected)
                         {
-                            if (channel.Name == route.Endpoint2)
-                            {
-                                if (!channel.Connected)
-                                    channel.Index = route.Index;
-                            }
+                            channel.Index = route.Index;
                         }
                     }
                 }
@@ -200,7 +196,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
                         IEnumerable<string> expandedRoutePathList = new List<string>();
                         var expandedRouteList = ExpandedRouteList(connectedRoute);
                         if (expandedRouteList.Any())
+                        {
                             expandedRoutePathList = expandedRouteList.Split('&').Select(x => x.Trim());
+                        }
 
                         foreach (var expandedRoute in expandedRoutePathList)
                         {
@@ -210,7 +208,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
 
                                 // if connection is a group then let the user know the group name
                                 if (route.Name != connectedRoute)
+                                {
                                     route.ConnectedGroup = connectedRoute;
+                                }
                             }
                         }
 
@@ -226,15 +226,21 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         {
             get
             {
-                if (SelectedVirtualDevice == string.Empty)
+                if (string.IsNullOrEmpty(SelectedVirtualDevice))
+                {
                     _connectedRoutes = new List<string>();
+                }
                 else
                 {
                     var allConnections = SwitchExecutive.GetAllConnections();
                     if (allConnections.Any())
+                    {
                         _connectedRoutes = allConnections.Split('&').Select(x => x.Trim());
+                    }
                     else
+                    {
                         _connectedRoutes = new List<string>();
+                    }
                 }
 
                 return _connectedRoutes;
@@ -252,20 +258,28 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public void ApplyLoadFromFile(MulticonnectMode connectionMode = MulticonnectMode.Multiconnect)
         {
             if (!_connectedRoutesCache.Any())
+            {
                 return;
+            }
 
             // ensure a virtual device is selected to apply routes
             if (!SelectedVirtualDevice.Any())
+            {
                 return;
+            }
 
             // assume if a route is selected then we should apply routes from the saved file
             if (!SelectedRoute.Any())
+            {
                 return;
+            }
 
             foreach (var route in _connectedRoutesCache)
             {
                 if (!IsRouteConnected(route) && (route != DriverOperationsConstants.NoConnections))
+                {
                     TryConnect(route, connectionMode);
+                }
             }
 
             NotifyPropertiesConnectedRouteChanged();
@@ -276,9 +290,13 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
             get
             {
                 if (CanDisconnect())
+                {
                     _expandedRoutePath = SwitchExecutive.ExpandRouteSpec(SelectedRoute, ExpandOptions.ExpandToPaths);
+                }
                 else
+                {
                     _expandedRoutePath = string.Empty;
+                }
 
                 return _expandedRoutePath;
             }
@@ -288,9 +306,13 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         {
             string path = string.Empty;
             if (CanDisconnectRoute(route))
+            {
                 path = SwitchExecutive.ExpandRouteSpec(route, ExpandOptions.ExpandToPaths);
+            }
             else
+            {
                 path = string.Empty;
+            }
 
             return path;
         }
@@ -298,10 +320,14 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public bool CanConnect()
         {
             if (!SelectedVirtualDevice.Any())
+            {
                 return false;
+            }
 
             if (!SelectedRoute.Any())
+            {
                 return false;
+            }
 
             return true;
         }
@@ -314,7 +340,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public bool CanDisconnectAll()
         {
             if (!SelectedVirtualDevice.Any())
+            {
                 return false;
+            }
 
             return _connectedRoutes.Any();
         }
@@ -345,8 +373,8 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
 
         public void Shutdown()
         {
-            if (_switchExecutive != null)
-                _switchExecutive.Dispose();
+            _switchExecutive?.Dispose();
+            _refreshTimer?.Dispose();
         }
 
         public void Dispose() => Shutdown();
@@ -356,9 +384,13 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
             string expandedRoute = string.Empty;
 
             if (CanDisconnectRoute(route))
+            {
                 expandedRoute = SwitchExecutive.ExpandRouteSpec(route, ExpandOptions.ExpandToRoutes);
+            }
             else
+            {
                 expandedRoute = string.Empty;
+            }
 
             return expandedRoute;
         }
@@ -366,13 +398,19 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public bool CanDisconnectRoute(string route)
         {
             if (!SelectedVirtualDevice.Any())
+            {
                 return false;
+            }
 
             if (!SelectedRoute.Any())
+            {
                 return false;
+            }
 
             if (route == DriverOperationsConstants.NoConnections)
+            {
                 return false;
+            }
 
             return IsRouteConnected(route);
         }
@@ -380,7 +418,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public bool IsRouteConnected(string route)
         {
             if (route == DriverOperationsConstants.NoConnections)
+            {
                 return false;
+            }
 
             return SwitchExecutive.IsConnected(route);
         }
@@ -392,24 +432,20 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
             NotifyPropertyChanged(nameof(ExpandedRoutePath));
         }
 
-        private bool AreStringListsEqual(IEnumerable<string> A, IEnumerable<string> B)
-        {
-            bool equal = (A.Count() == B.Count() && (!A.Except(B).Any() || !B.Except(A).Any()));
-            return equal;
-        }
-
         private IVirtualDevices VirtualDevices
         {
             get
             {
                 if (_virtualDevices == null)
+                {
                     _virtualDevices = VirtualDevicesFactory.CreateVirtualDevice(_simulate);
+                }
 
                 return _virtualDevices;
             }
         }
 
-        private NISwitchExecutiveInterface SwitchExecutive
+        private ISwitchExecutive SwitchExecutive
         {
             get
             {

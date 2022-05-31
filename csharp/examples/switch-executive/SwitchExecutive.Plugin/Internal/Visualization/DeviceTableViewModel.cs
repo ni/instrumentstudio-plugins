@@ -24,7 +24,9 @@ namespace SwitchExecutive.Plugin.Internal
         public void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_driverOperations.DeviceInfo))
+            {
                 NotifyPropertyChanged(nameof(Info));
+            }
         }
     }
 }

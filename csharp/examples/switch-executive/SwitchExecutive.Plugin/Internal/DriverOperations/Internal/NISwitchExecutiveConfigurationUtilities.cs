@@ -16,7 +16,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
                 using (var key = Registry.LocalMachine.OpenSubKey(SwitchExecutiveCurrentVersionRegistryKey))
                 {
                     var versionString = key?.GetValue(VersionKey)?.ToString() ?? string.Empty;
-                    isInstalled = versionString != string.Empty;
+                    isInstalled = !string.IsNullOrEmpty(versionString);
                     return isInstalled;
                 }
             }

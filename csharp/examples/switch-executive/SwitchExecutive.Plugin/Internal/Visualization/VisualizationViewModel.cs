@@ -38,7 +38,9 @@ namespace SwitchExecutive.Plugin.Internal
             get
             {
                 if (_refreshCommand == null)
+                {
                     _refreshCommand = new RelayCommand(param => _driverOperations.Refresh());
+                }
 
                 return _refreshCommand;
             }

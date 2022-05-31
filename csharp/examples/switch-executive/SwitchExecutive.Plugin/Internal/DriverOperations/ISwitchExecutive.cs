@@ -27,9 +27,8 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         ExpandToPaths = 1
     }
 
-    public interface NISwitchExecutiveInterface
+    public interface ISwitchExecutive : IDisposable
     {
-        void Dispose();
         string Name { get; }
         void Connect(string connectSpec, MulticonnectMode multiconnectMode, bool waitForDebounce);
         void Disconnect(string spec);

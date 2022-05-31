@@ -73,7 +73,9 @@ namespace SwitchExecutive.Plugin.Internal
                 if (Name != ConnectedRoute.NoConnections)
                 {
                     if (_driverOperations.IsRouteConnected(Name))
+                    {
                         _driverOperations.TryDisconnectRoute(Name);
+                    }
                 }
             }
             catch (DriverException e)
@@ -87,7 +89,9 @@ namespace SwitchExecutive.Plugin.Internal
             try
             {
                 if (Name != ConnectedRoute.NoConnections)
+                {
                     canDisconnect = _driverOperations.CanDisconnectRoute(Name);
+                }
             }
             catch (DriverException)
             {

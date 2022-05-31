@@ -101,10 +101,14 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         private void DisplayContainerCollectionLoaded(object sender, RoutedEventArgs e)
         {
             if (_grid == null)
+            {
                 return;
+            }
 
             if (_loaded)
+            {
                 return;
+            }
 
             AddContainerPropertyChangedListeners();
             PopulateGrid();
@@ -115,7 +119,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         private void DisplayContainerCollectionUnloaded(object sender, RoutedEventArgs e)
         {
             if (!_loaded)
+            {
                 return;
+            }
 
             RemoveRowDefinitionPropertyChangedListeners();
             RemoveContainerPropertyChangedListeners();

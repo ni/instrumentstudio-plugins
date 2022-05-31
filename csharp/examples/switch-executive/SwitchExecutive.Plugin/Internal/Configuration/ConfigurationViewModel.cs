@@ -66,7 +66,10 @@ namespace SwitchExecutive.Plugin.Internal
             get => _driverOperations.SelectedRoute;
             set
             {
-                if (value == null) { return; }
+                if (value == null)
+                {
+                    return;
+                }
 
                 _driverOperations.SelectedRoute = value;
                 NotifyPropertyChanged();
@@ -146,7 +149,9 @@ namespace SwitchExecutive.Plugin.Internal
             try
             {
                 if (_driverOperations.IsConnected())
+                {
                     _driverOperations.TryDisconnect();
+                }
             }
             catch (DriverException e)
             {
@@ -237,14 +242,21 @@ namespace SwitchExecutive.Plugin.Internal
         private void ClearErrorMessage() => _status.Clear();
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_driverOperations.RouteNames))
-                NotifyPropertyChanged(nameof(RouteList));
-            if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
-                NotifyPropertyChanged(nameof(IsRouteListSelectable));
-            if (e.PropertyName == nameof(_driverOperations.Comment))
-                NotifyPropertyChanged(nameof(SelectedRouteComment));
-            if (e.PropertyName == nameof(_driverOperations.SelectedRoute))
-                NotifyPropertyChanged(nameof(SelectedRoute));
+            switch (e.PropertyName)
+            {
+                case nameof(_driverOperations.RouteNames):
+                    NotifyPropertyChanged(nameof(RouteList));
+                    break;
+                case nameof(_driverOperations.SelectedVirtualDevice):
+                    NotifyPropertyChanged(nameof(IsRouteListSelectable));
+                    break;
+                case nameof(_driverOperations.Comment):
+                    NotifyPropertyChanged(nameof(SelectedRouteComment));
+                    break;
+                case nameof(_driverOperations.SelectedRoute):
+                    NotifyPropertyChanged(nameof(SelectedRoute));
+                    break;
+            }
         }
     }
 }

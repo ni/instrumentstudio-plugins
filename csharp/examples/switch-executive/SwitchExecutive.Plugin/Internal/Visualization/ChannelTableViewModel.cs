@@ -28,7 +28,9 @@ namespace SwitchExecutive.Plugin.Internal
                 foreach (var channel in channels)
                 {
                     if (channel.Index != ChannelInfo.NotConnected)
+                    {
                         channel.DisplayColor = PlotColors.GetPlotColorStringForIndex(channel.Index);
+                    }
                 }
                 return channels;
             }
@@ -36,10 +38,11 @@ namespace SwitchExecutive.Plugin.Internal
 
         public void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_driverOperations.DeviceInfo))
+            if (e.PropertyName == nameof(_driverOperations.DeviceInfo)
+                || e.PropertyName == nameof(_driverOperations.ConnectedRoutes))
+            {
                 NotifyPropertyChanged(nameof(Info));
-            if (e.PropertyName == nameof(_driverOperations.ConnectedRoutes))
-                NotifyPropertyChanged(nameof(Info));
+            }
         }
     }
 }

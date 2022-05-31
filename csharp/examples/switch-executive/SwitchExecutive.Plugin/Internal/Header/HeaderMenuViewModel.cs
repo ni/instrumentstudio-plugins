@@ -17,7 +17,6 @@ namespace SwitchExecutive.Plugin.Internal
         private readonly ISwitchExecutiveDriverOperations _driverOperations;
         private readonly ISave _saveOperation;
         private IStatus _status;
-        private static ICommand _disabledCommand = new NationalInstruments.RelayCommand((o) => System.Linq.Expressions.Expression.Empty(), (o) => false);
         private bool _autoRefreshEnabled = false;
         private bool _includedConnectedRoutesWithSave = true;
 
@@ -91,7 +90,7 @@ namespace SwitchExecutive.Plugin.Internal
 
             return builder.MenuItems;
         }
-        public bool IsAnyDeviceOffline => _driverOperations.SelectedVirtualDevice == string.Empty;
+        public bool IsAnyDeviceOffline => string.IsNullOrEmpty(_driverOperations.SelectedVirtualDevice);
         [JsonProperty]
         public bool AutoRefreshEnabled
         {
@@ -124,7 +123,10 @@ namespace SwitchExecutive.Plugin.Internal
             get => _driverOperations.SelectedVirtualDevice;
             set
             {
-                if (value == null) { return; }
+                if (value == null)
+                {
+                    return;
+                }
                 ClearErrorMessage();
 
                 _driverOperations.SelectedVirtualDevice = value;
@@ -146,7 +148,9 @@ namespace SwitchExecutive.Plugin.Internal
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
+            {
                 NotifyPropertyChanged(nameof(IsAnyDeviceOffline));
+            }
         }
 
         private void SetErrorMessage(string msg) => _status.Set(msg);

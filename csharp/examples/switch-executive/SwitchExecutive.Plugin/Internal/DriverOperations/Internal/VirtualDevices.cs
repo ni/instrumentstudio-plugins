@@ -5,11 +5,11 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 {
     internal class VirtualDevices : IVirtualDevices
     {
-        private readonly NISwitchExecutiveConfigurationManagementInterface _switchExecutiveConfigurationManagement;
+        private readonly ISwitchExecutiveConfigurationManagement _switchExecutiveConfigurationManagement;
         private string _selectedName = string.Empty;
         private string _selectedRouteName = string.Empty;
 
-        public VirtualDevices(NISwitchExecutiveConfigurationManagementInterface switchExecutiveConfigurationManagement)
+        public VirtualDevices(ISwitchExecutiveConfigurationManagement switchExecutiveConfigurationManagement)
         {
             _switchExecutiveConfigurationManagement = switchExecutiveConfigurationManagement;
         }
@@ -31,7 +31,10 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 
             set
             {
-                if (value == null) { return; }
+                if (value == null)
+                {
+                    return;
+                }
                 _selectedName = value;
                 SelectedRouteName = string.Empty;
             }
@@ -43,7 +46,10 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 
             set
             {
-                if (value == null) { return; }
+                if (value == null)
+                {
+                    return;
+                }
                 _selectedRouteName = value;
             }
         }

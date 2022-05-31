@@ -27,7 +27,9 @@ namespace SwitchExecutive.Plugin.Internal.Common
         public void Save()
         {
             if (!Attached())
+            {
                 return;
+            }
 
             if (!_loading)
             {
@@ -40,7 +42,9 @@ namespace SwitchExecutive.Plugin.Internal.Common
         public void Deserialize(string json)
         {
             if (!Attached())
+            {
                 return;
+            }
 
             _loading = true;
             _deserialize(json);

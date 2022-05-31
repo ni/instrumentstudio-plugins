@@ -39,7 +39,10 @@ namespace SwitchExecutive.Plugin.Internal
 
             // create view models
             if (requestedPresentation == PanelPresentation.ConfigurationWithVisualization)
+            {
                 VisualizationViewModel = new VisualizationViewModel(driverOperations);
+            }
+
             HeaderViewModel = new HeaderViewModel(isSwitchExecutiveInstalled, driverOperations, saveOperation, status);
             ConfigurationViewModel = new ConfigurationViewModel(driverOperations, saveOperation, status);
 
@@ -110,7 +113,9 @@ namespace SwitchExecutive.Plugin.Internal
         {
             // for a new file (never saved) the json will be empty.
             if (json == null)
+            {
                 return;
+            }
 
             try
             {
@@ -160,7 +165,9 @@ namespace SwitchExecutive.Plugin.Internal
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
+            {
                 NotifyPropertyChanged(nameof(IsInstrumentActive));
+            }
         }
 
         #endregion
