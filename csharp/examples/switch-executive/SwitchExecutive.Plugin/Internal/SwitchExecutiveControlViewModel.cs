@@ -1,24 +1,19 @@
-﻿using NationalInstruments.InstrumentFramework.Plugins;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
-using Newtonsoft.Json.Linq;
+using NationalInstruments.InstrumentFramework.Plugins;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-
-using SwitchExecutive.Plugin.Internal.DriverOperations;
 using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
-/* this code is just a quick and dirty simple switch executive app for the purpose of exploring creating c# plugins 
+/* this code is just a quick and dirty simple switch executive app for the purpose of exploring creating c# plugins
    for InstrumentStudio.  The code isn't tested and doesn't handle exceptions well. Use at your own risk. */
 namespace SwitchExecutive.Plugin.Internal
 {
     [JsonObject(MemberSerialization.OptIn)]
-    class SwitchExecutiveControlViewModel : BaseNotify, IDisposable
+    internal class SwitchExecutiveControlViewModel : BaseNotify, IDisposable
     {
         #region Fields
 
@@ -44,7 +39,10 @@ namespace SwitchExecutive.Plugin.Internal
 
             // create view models
             if (requestedPresentation == PanelPresentation.ConfigurationWithVisualization)
+            {
                 VisualizationViewModel = new VisualizationViewModel(driverOperations);
+            }
+
             HeaderViewModel = new HeaderViewModel(isSwitchExecutiveInstalled, driverOperations, saveOperation, status);
             ConfigurationViewModel = new ConfigurationViewModel(driverOperations, saveOperation, status);
 
@@ -66,7 +64,7 @@ namespace SwitchExecutive.Plugin.Internal
         public VisualizationViewModel VisualizationViewModel { get; }
         public HeaderViewModel HeaderViewModel { get; }
         public ConfigurationViewModel ConfigurationViewModel { get; }
-        public NISwitchExecutiveDriverOperations DriverOpertationsModel => (NISwitchExecutiveDriverOperations)_driverOperations;
+        public NISwitchExecutiveDriverOperations DriverOperationsModel => (NISwitchExecutiveDriverOperations)_driverOperations;
 
         public FrameworkElement DisplayPanelVisual
         {
@@ -105,7 +103,7 @@ namespace SwitchExecutive.Plugin.Internal
                       HeaderViewModel.HeaderMenuViewModel,
                       MainViewModel,
                       ConfigurationViewModel,
-                      DriverOpertationsModel,
+                      DriverOperationsModel,
                   },
                   Formatting.Indented,
                   settings);
@@ -115,7 +113,9 @@ namespace SwitchExecutive.Plugin.Internal
         {
             // for a new file (never saved) the json will be empty.
             if (json == null)
+            {
                 return;
+            }
 
             try
             {
@@ -130,7 +130,7 @@ namespace SwitchExecutive.Plugin.Internal
                        HeaderViewModel.HeaderMenuViewModel,
                        MainViewModel,
                        ConfigurationViewModel,
-                       DriverOpertationsModel,
+                       DriverOperationsModel,
                    },
                    settings);
             }
@@ -160,12 +160,14 @@ namespace SwitchExecutive.Plugin.Internal
         private void ClearErrorMessage() => _status.Clear();
 
         /* hook up to notifications so that changes from models and other views can update this classes properities.
-           This app uses a design where the model can notify one or more views about changes. This is because the 
+           This app uses a design where the model can notify one or more views about changes. This is because the
            switch driver can make changes to the state that this app doesn't know about. */
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
+            {
                 NotifyPropertyChanged(nameof(IsInstrumentActive));
+            }
         }
 
         #endregion

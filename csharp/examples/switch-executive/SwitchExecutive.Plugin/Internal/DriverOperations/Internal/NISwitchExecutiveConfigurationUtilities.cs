@@ -5,7 +5,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 {
     internal class NISwitchExecutiveConfigurationUtilities
     {
-        static public bool CheckIfSwitchExecutiveInstalled()
+        public static bool CheckIfSwitchExecutiveInstalled()
         {
             bool isInstalled = false;
             const string SwitchExecutiveCurrentVersionRegistryKey = @"SOFTWARE\National Instruments\Switch Executive\CurrentVersion";
@@ -16,7 +16,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
                 using (var key = Registry.LocalMachine.OpenSubKey(SwitchExecutiveCurrentVersionRegistryKey))
                 {
                     var versionString = key?.GetValue(VersionKey)?.ToString() ?? string.Empty;
-                    isInstalled = versionString != string.Empty;
+                    isInstalled = !string.IsNullOrEmpty(versionString);
                     return isInstalled;
                 }
             }

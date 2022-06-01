@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using SwitchExecutive.Plugin.Internal.DriverOperations;
 using Xunit;
@@ -9,9 +8,9 @@ namespace SwitchExecutive.Plugin.Tests
     public class NISwitchExecutiveDriverOperationsTests
     {
         [Fact]
-        public void OnContruction_NoThrow()
+        public void OnConstruction_NoThrow()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             Assert.NotNull(driverOperations);
         }
 
@@ -25,14 +24,14 @@ namespace SwitchExecutive.Plugin.Tests
         [Fact]
         public void DefaultSelectedVirtualDevice_IsEmpty()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
-            Assert.True(driverOperations.SelectedVirtualDevice == "");
+            var driverOperations = new NISwitchExecutiveDriverOperations();
+            Assert.True(string.IsNullOrEmpty(driverOperations.SelectedVirtualDevice));
         }
 
         [Fact]
         public void SetVirtualDevice_ReturnsNoError()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             string newVirtualDevice = "VirtualDevice1";
             driverOperations.SelectedVirtualDevice = newVirtualDevice;
             Assert.True(driverOperations.SelectedVirtualDevice == newVirtualDevice);
@@ -41,7 +40,7 @@ namespace SwitchExecutive.Plugin.Tests
         [Fact]
         public void SetRoute_ReturnsNoError()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             string newRoute = "PowerUUT";
             driverOperations.SelectedRoute = newRoute;
             Assert.True(driverOperations.SelectedRoute == newRoute);
@@ -50,7 +49,7 @@ namespace SwitchExecutive.Plugin.Tests
         [Fact]
         public void VirtualDeviceNames_ReturnsSwitchExecutiveExample()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             IEnumerable<string> virtualDevices = driverOperations.VirtualDeviceNames;
             Assert.True(virtualDevices.FirstOrDefault(device => device == "SwitchExecutiveExample").Any());
         }
@@ -58,7 +57,7 @@ namespace SwitchExecutive.Plugin.Tests
         [Fact]
         public void VirtualDeviceRoutes_ReturnsPowerUUT()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             string newVirtualDevice = "SwitchExecutiveExample";
             driverOperations.SelectedVirtualDevice = newVirtualDevice;
 
@@ -69,7 +68,7 @@ namespace SwitchExecutive.Plugin.Tests
         [Fact]
         public void ConnectDisconnectRouteTest()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             string newVirtualDevice = "SwitchExecutiveExample";
             driverOperations.SelectedVirtualDevice = newVirtualDevice;
             driverOperations.TryDisconnectAll();
@@ -91,7 +90,7 @@ namespace SwitchExecutive.Plugin.Tests
         [Fact]
         public void ConnectDisconnectAllRouteTest()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             string newVirtualDevice = "SwitchExecutiveExample";
             driverOperations.SelectedVirtualDevice = newVirtualDevice;
             driverOperations.TryDisconnectAll();
@@ -113,7 +112,7 @@ namespace SwitchExecutive.Plugin.Tests
         [Fact]
         public void ConnectNoMulticonnectTwiceErrorsTest()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             driverOperations.SelectedVirtualDevice = "SwitchExecutiveExample";
             driverOperations.TryDisconnectAll();
             driverOperations.SelectedRoute = "PowerUUT";
@@ -126,7 +125,7 @@ namespace SwitchExecutive.Plugin.Tests
         [Fact]
         public void ConfiguredVirtualDevice_SwitchToAnotherVirtualDevice_CanConnect()
         {
-            ISwitchExecutiveDriverOperations driverOperations = new NISwitchExecutiveDriverOperations();
+            var driverOperations = new NISwitchExecutiveDriverOperations();
             driverOperations.SelectedVirtualDevice = "SwitchExecutiveExample";
             driverOperations.TryDisconnectAll();
             driverOperations.SelectedRoute = "PowerUUT";

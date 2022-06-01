@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
+﻿namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 {
     internal static class IVIConstants
     {

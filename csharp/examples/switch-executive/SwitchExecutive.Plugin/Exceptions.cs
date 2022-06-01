@@ -5,6 +5,10 @@ namespace SwitchExecutive.Plugin
 {
     public class DriverException : ExternalException
     {
+        public DriverException()
+        {
+        }
+
         public DriverException(string message, int errorCode)
             : base(message, errorCode)
         {

@@ -1,18 +1,13 @@
 using System;
-using System.Linq;
-using System.ComponentModel;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-
-
-using SwitchExecutive.Plugin.Internal.DriverOperations;
 using SwitchExecutive.Plugin.Internal.Common;
-
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
@@ -71,7 +66,10 @@ namespace SwitchExecutive.Plugin.Internal
             get => _driverOperations.SelectedRoute;
             set
             {
-                if (value == null) { return; }
+                if (value == null)
+                {
+                    return;
+                }
 
                 _driverOperations.SelectedRoute = value;
                 NotifyPropertyChanged();
@@ -124,7 +122,7 @@ namespace SwitchExecutive.Plugin.Internal
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //SetErrorMessage(e.Message);
+                ////SetErrorMessage(e.Message);
             }
 
             return canConnect;
@@ -151,7 +149,9 @@ namespace SwitchExecutive.Plugin.Internal
             try
             {
                 if (_driverOperations.IsConnected())
+                {
                     _driverOperations.TryDisconnect();
+                }
             }
             catch (DriverException e)
             {
@@ -171,7 +171,7 @@ namespace SwitchExecutive.Plugin.Internal
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //SetErrorMessage(e.Message);
+                ////SetErrorMessage(e.Message);
             }
 
             return canDisconnect;
@@ -217,7 +217,7 @@ namespace SwitchExecutive.Plugin.Internal
                 // this method is to prevent the user from clicking buttons that will fail
                 // so swallow any other errors that come back.  if revelant the user will
                 // get the error on a user interaction.
-                //SetErrorMessage(e.Message);
+                ////SetErrorMessage(e.Message);
             }
 
             return canDisconnect;
@@ -242,14 +242,21 @@ namespace SwitchExecutive.Plugin.Internal
         private void ClearErrorMessage() => _status.Clear();
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_driverOperations.RouteNames))
-                NotifyPropertyChanged(nameof(RouteList));
-            if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
-                NotifyPropertyChanged(nameof(IsRouteListSelectable));
-            if (e.PropertyName == nameof(_driverOperations.Comment))
-                NotifyPropertyChanged(nameof(SelectedRouteComment));
-            if (e.PropertyName == nameof(_driverOperations.SelectedRoute))
-                NotifyPropertyChanged(nameof(SelectedRoute));
+            switch (e.PropertyName)
+            {
+                case nameof(_driverOperations.RouteNames):
+                    NotifyPropertyChanged(nameof(RouteList));
+                    break;
+                case nameof(_driverOperations.SelectedVirtualDevice):
+                    NotifyPropertyChanged(nameof(IsRouteListSelectable));
+                    break;
+                case nameof(_driverOperations.Comment):
+                    NotifyPropertyChanged(nameof(SelectedRouteComment));
+                    break;
+                case nameof(_driverOperations.SelectedRoute):
+                    NotifyPropertyChanged(nameof(SelectedRoute));
+                    break;
+            }
         }
     }
 }

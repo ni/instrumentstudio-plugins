@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using SwitchExecutive.Plugin.Internal.DriverOperations;
-using SwitchExecutive.Plugin.Internal.Common;
 using NationalInstruments;
+using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
@@ -41,7 +38,9 @@ namespace SwitchExecutive.Plugin.Internal
             get
             {
                 if (_refreshCommand == null)
+                {
                     _refreshCommand = new RelayCommand(param => _driverOperations.Refresh());
+                }
 
                 return _refreshCommand;
             }

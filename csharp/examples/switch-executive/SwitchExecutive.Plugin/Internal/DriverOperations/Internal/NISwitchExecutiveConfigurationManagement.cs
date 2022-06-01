@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 {
-    internal interface NISwitchExecutiveConfigurationManagementInterface
+    internal interface ISwitchExecutiveConfigurationManagement
     {
         IEnumerable<string> VirtualDeviceNames { get; }
         IEnumerable<string> Routes(string virtualDeviceName);
@@ -14,7 +14,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
         IEnumerable<RouteInfo> RouteInfo(string virtualDeviceName);
     }
 
-    internal class NISwitchExecutiveConfigurationManagement : NISwitchExecutiveConfigurationManagementInterface
+    internal class NISwitchExecutiveConfigurationManagement : ISwitchExecutiveConfigurationManagement
     {
         public IEnumerable<string> VirtualDeviceNames
         {
@@ -44,7 +44,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             }
 
             if (virtualDevice == null)
+            {
                 return allRoutes;
+            }
 
             // return all route groups first then routes but alphabetize each one
             List<string> allRoutesGroups = new List<string>();
@@ -81,18 +83,24 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             }
 
             if (virtualDevice == null)
+            {
                 return string.Empty;
+            }
 
             foreach (niseCfg.RouteGroup routeGroup in virtualDevice.RouteGroups)
             {
                 if (routeGroup.Name == route)
+                {
                     return routeGroup.Comment;
+                }
             }
 
             foreach (niseCfg.Route aRoute in virtualDevice.Routes)
             {
                 if (aRoute.Name == route)
+                {
                     return aRoute.Comment;
+                }
             }
 
             return string.Empty;
@@ -114,7 +122,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             }
 
             if (virtualDevice == null)
+            {
                 return info;
+            }
 
             foreach (niseCfg.IviDevice2 device in virtualDevice.IviDevices)
             {
@@ -140,7 +150,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             }
 
             if (virtualDevice == null)
+            {
                 return info;
+            }
 
             foreach (niseCfg.NiseChannel channel in virtualDevice.Channels)
             {
@@ -174,11 +186,13 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
             }
 
             if (virtualDevice == null)
+            {
                 return info;
+            }
 
             foreach (niseCfg.NiseRoute route in virtualDevice.Routes)
             {
-                var routeGroups = new List<String>();
+                var routeGroups = new List<string>();
                 foreach (niseCfg.NiseRouteGroup routeGroup in route.ParentRouteGroups)
                 {
                     routeGroups.Add(routeGroup.Name);

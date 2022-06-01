@@ -8,7 +8,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
     /// </summary>
     public static class MenuItemFactory
     {
-        private static ICommand AlwaysSelectableNoop { get; } = new NationalInstruments.RelayCommand(MenuItemFactory.Noop, MenuItemFactory.AlwaysSelectable);
+        private static ICommand AlwaysSelectableNoOp { get; } = new NationalInstruments.RelayCommand(MenuItemFactory.NoOp, MenuItemFactory.AlwaysSelectable);
 
         /// <summary>
         /// Creates a separator for the menu.
@@ -30,7 +30,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         /// <returns> A menu item. </returns>
         public static IMenuItem CreateMenuItem(string menuText, double weight)
         {
-            return MenuItemFactory.CreateMenuItem(MenuItemFactory.AlwaysSelectableNoop, null, menuText, weight, MenuType.MenuItem, null);
+            return MenuItemFactory.CreateMenuItem(MenuItemFactory.AlwaysSelectableNoOp, null, menuText, weight, MenuType.MenuItem, null);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
         /// <returns> A menu item. </returns>
         public static IMenuItem CreateMenuItem(Image menuIcon, string menuText, double weight)
         {
-            return MenuItemFactory.CreateMenuItem(MenuItemFactory.AlwaysSelectableNoop, menuIcon, menuText, weight, MenuType.MenuItem, null);
+            return MenuItemFactory.CreateMenuItem(MenuItemFactory.AlwaysSelectableNoOp, menuIcon, menuText, weight, MenuType.MenuItem, null);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls.Menu
             return true;
         }
 
-        private static void Noop(object dummyObject)
+        private static void NoOp(object dummyObject)
         {
             // NOOP
         }

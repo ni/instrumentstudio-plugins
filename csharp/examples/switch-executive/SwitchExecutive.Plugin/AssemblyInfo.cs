@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+using System.Resources;
 using System.Runtime.InteropServices;
 using NationalInstruments.Composition;
 
@@ -11,9 +11,12 @@ using NationalInstruments.Composition;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("SwitchExecutive.Plugin")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2019")]
+[assembly: AssemblyCopyright("Copyright © National Instruments 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
+// In order to be correctly recognized by InstrumentStudio, assemblies need to have this
+// `ParticipatesInComposition` attribute
 [assembly: ParticipatesInComposition]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -38,3 +41,5 @@ using NationalInstruments.Composition;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: System.Runtime.Versioning.SupportedOSPlatform("windows7.0")]
+
+[assembly: NeutralResourcesLanguage("en-US")]

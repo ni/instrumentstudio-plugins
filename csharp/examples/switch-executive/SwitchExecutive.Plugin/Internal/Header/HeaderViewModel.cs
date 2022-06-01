@@ -1,11 +1,7 @@
-using System;
 using System.ComponentModel;
-using System.Collections.Generic;
 using System.Windows;
-
-using SwitchExecutive.Plugin.Internal.DriverOperations;
 using SwitchExecutive.Plugin.Internal.Common;
-
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
@@ -64,16 +60,24 @@ namespace SwitchExecutive.Plugin.Internal
             get
             {
                 if (!IsSwitchExecutiveInstalled)
+                {
                     SetErrorMessage("Error: Switch Executive is not installed.");
+                }
 
                 if (_status.IsFatal)
+                {
                     return _status.GetMessage();
+                }
 
-                bool connected = _driverOperations.SelectedVirtualDevice != string.Empty;
+                bool connected = !string.IsNullOrEmpty(_driverOperations.SelectedVirtualDevice);
                 if (connected)
+                {
                     return _driverOperations.SelectedVirtualDevice;
+                }
                 else
+                {
                     return HeaderViewModel._disconnected;
+                }
             }
         }
         private bool IsSwitchExecutiveInstalled { get; }
@@ -94,7 +98,9 @@ namespace SwitchExecutive.Plugin.Internal
         private void Status_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_status.Message))
+            {
                 NotifyPropertyChanged(nameof(Status));
+            }
         }
     }
 }

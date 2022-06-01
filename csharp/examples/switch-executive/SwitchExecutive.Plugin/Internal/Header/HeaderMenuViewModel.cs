@@ -1,14 +1,13 @@
 using System;
-using System.Windows.Input;
-using System.ComponentModel;
 using System.Collections.Generic;
-using SwitchExecutive.Plugin.Internal.DriverOperations;
-using SwitchExecutive.Plugin.Internal.Controls.Menu;
-using SwitchExecutive.Plugin.Internal.Common;
+using System.ComponentModel;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using SwitchExecutive.Plugin.Internal.Common;
+using SwitchExecutive.Plugin.Internal.Controls.Menu;
+using SwitchExecutive.Plugin.Internal.DriverOperations;
 
 namespace SwitchExecutive.Plugin.Internal
 {
@@ -18,9 +17,8 @@ namespace SwitchExecutive.Plugin.Internal
         private readonly ISwitchExecutiveDriverOperations _driverOperations;
         private readonly ISave _saveOperation;
         private IStatus _status;
-        private static ICommand _disabledCommand = new NationalInstruments.RelayCommand((o) => System.Linq.Expressions.Expression.Empty(), (o) => false);
         private bool _autoRefreshEnabled = false;
-        private bool _includedConntectedRoutesWithSave = true;
+        private bool _includedConnectedRoutesWithSave = true;
 
         #region Constructors
 
@@ -79,7 +77,7 @@ namespace SwitchExecutive.Plugin.Internal
 
             builder.AddMenu(MenuItemFactory.CreateSeparator(currentWeight++));
 
-            //Menu: Refresh
+            // Menu: Refresh
             builder.AddMenu(
                MenuItemFactory.CreateMenuItem(
                         menuCommand:
@@ -92,7 +90,7 @@ namespace SwitchExecutive.Plugin.Internal
 
             return builder.MenuItems;
         }
-        public bool IsAnyDeviceOffline => _driverOperations.SelectedVirtualDevice == string.Empty;
+        public bool IsAnyDeviceOffline => string.IsNullOrEmpty(_driverOperations.SelectedVirtualDevice);
         [JsonProperty]
         public bool AutoRefreshEnabled
         {
@@ -109,10 +107,10 @@ namespace SwitchExecutive.Plugin.Internal
         [JsonProperty]
         public bool IncludeConnectedRoutesWithSave
         {
-            get => _includedConntectedRoutesWithSave;
+            get => _includedConnectedRoutesWithSave;
             set
             {
-                _includedConntectedRoutesWithSave = value;
+                _includedConnectedRoutesWithSave = value;
                 Save();
 
                 NotifyPropertyChanged();
@@ -125,14 +123,17 @@ namespace SwitchExecutive.Plugin.Internal
             get => _driverOperations.SelectedVirtualDevice;
             set
             {
-                if (value == null) { return; }
+                if (value == null)
+                {
+                    return;
+                }
                 ClearErrorMessage();
 
                 _driverOperations.SelectedVirtualDevice = value;
                 NotifyPropertyChanged();
 
                 // the .net framework handles the policy on when to call 'canExecutes' on ICommands.
-                // for whatever reason it doesn't work well for this app (likely because state 
+                // for whatever reason it doesn't work well for this app (likely because state
                 // changes are happening in the driver hidden from policy.  This call hints to
                 // the framework to requery.  This makes the buttons on the app to be disabled/enabled
                 // properly.
@@ -147,7 +148,9 @@ namespace SwitchExecutive.Plugin.Internal
         private void DriverOperations_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(_driverOperations.SelectedVirtualDevice))
+            {
                 NotifyPropertyChanged(nameof(IsAnyDeviceOffline));
+            }
         }
 
         private void SetErrorMessage(string msg) => _status.Set(msg);

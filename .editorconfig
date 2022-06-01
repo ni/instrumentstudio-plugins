@@ -21,3 +21,7 @@ indent_size = 2
 # Use 4 spaces as indentation
 insert_final_newline = true
 indent_size = 4
+
+# Formatting conventions
+# Organize usings
+dotnet_sort_system_directives_first = true

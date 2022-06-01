@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-
 namespace SwitchExecutive.Plugin.Internal.Controls.Menu.Internal
 {
     internal sealed class MenuItem : IMenuItem

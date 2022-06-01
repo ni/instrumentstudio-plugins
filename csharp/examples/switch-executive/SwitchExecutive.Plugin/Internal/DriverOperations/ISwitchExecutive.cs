@@ -16,6 +16,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
 
     public enum OperationOrder
     {
+        None = 0,
         BreakBeforeMake = 1,
         BreakAfterMake = 2
     }
@@ -26,9 +27,8 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         ExpandToPaths = 1
     }
 
-    public interface NISwitchExecutiveInterface
+    public interface ISwitchExecutive : IDisposable
     {
-        void Dispose();
         string Name { get; }
         void Connect(string connectSpec, MulticonnectMode multiconnectMode, bool waitForDebounce);
         void Disconnect(string spec);
@@ -63,7 +63,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
            bool status,
            string deviceName,
            string reservedForRouting,
-           string hardwire,
+           string hardWire,
            string comment)
         {
             Name = name;
@@ -71,7 +71,7 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
             Status = status ? "Enabled" : string.Empty;
             DeviceName = deviceName;
             ReservedForRouting = reservedForRouting;
-            Hardwire = hardwire;
+            HardWire = hardWire;
             Comment = comment;
         }
 
@@ -80,11 +80,11 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public string Status { get; }
         public string DeviceName { get; }
         public string ReservedForRouting { get; }
-        public string Hardwire { get; }
+        public string HardWire { get; }
         public string Comment { get; }
-        public int index { set; get; } = ChannelInfo.NotConnected;
-        public string DisplayColor { set; get; } = Constants.InstrumentPanels.NoBlockBannerColor;
-        public bool Connected => index != ChannelInfo.NotConnected;
+        public int Index { get; set; } = ChannelInfo.NotConnected;
+        public string DisplayColor { get; set; } = Constants.InstrumentPanels.NoBlockBannerColor;
+        public bool Connected => Index != ChannelInfo.NotConnected;
     }
 
     public class RouteInfo
@@ -113,9 +113,9 @@ namespace SwitchExecutive.Plugin.Internal.DriverOperations
         public string Endpoint2 { get; }
         public string Specification { get; }
         public string Comment { get; }
-        public string ConnectedGroup { set; get; }
-        public string Connected => index == RouteInfo.NotConnected ? string.Empty : "Connected";
-        public int index { set; get; } = RouteInfo.NotConnected;
-        public string DisplayColor { set; get; } = Constants.InstrumentPanels.NoBlockBannerColor;
+        public string ConnectedGroup { get; set; }
+        public string Connected => Index == RouteInfo.NotConnected ? string.Empty : "Connected";
+        public int Index { get; set; } = RouteInfo.NotConnected;
+        public string DisplayColor { get; set; } = Constants.InstrumentPanels.NoBlockBannerColor;
     }
 }

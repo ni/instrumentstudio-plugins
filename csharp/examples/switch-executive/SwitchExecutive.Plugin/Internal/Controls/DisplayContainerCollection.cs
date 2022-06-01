@@ -28,7 +28,7 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             // TODO:  for some reason this works in the IF stack, but in the plugin it causes a crash
             // on tab switching.  Race condition?  This is really only necessary for layouts that add
             // display containers dynamically (like FFT views).
-            //Unloaded += DisplayContainerCollectionUnloaded;
+            ////Unloaded += DisplayContainerCollectionUnloaded;
         }
 
         #endregion
@@ -101,10 +101,14 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         private void DisplayContainerCollectionLoaded(object sender, RoutedEventArgs e)
         {
             if (_grid == null)
+            {
                 return;
+            }
 
             if (_loaded)
+            {
                 return;
+            }
 
             AddContainerPropertyChangedListeners();
             PopulateGrid();
@@ -115,7 +119,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls
         private void DisplayContainerCollectionUnloaded(object sender, RoutedEventArgs e)
         {
             if (!_loaded)
+            {
                 return;
+            }
 
             RemoveRowDefinitionPropertyChangedListeners();
             RemoveContainerPropertyChangedListeners();
@@ -262,9 +268,9 @@ namespace SwitchExecutive.Plugin.Internal.Controls
             var collapsibleRow = (CollapsibleRowDefinition)sender;
             var rowIndex = _grid.RowDefinitions.IndexOf(collapsibleRow);
             var container = DisplayContainers.Where(c => Grid.GetRow(c) == rowIndex).FirstOrDefault();
-            if (container != null &&
-               !container.IsContentCollapsed &&
-               container.PreferredProportion != collapsibleRow.Height.Value)
+            if (container != null
+                && !container.IsContentCollapsed
+                && container.PreferredProportion != collapsibleRow.Height.Value)
             {
                 container.PreferredProportion = collapsibleRow.Height.Value;
             }

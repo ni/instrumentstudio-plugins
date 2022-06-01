@@ -1,6 +1,6 @@
 ﻿namespace SwitchExecutive.Plugin.Internal.DriverOperations.Internal
 {
-    internal class FakeNISwitchExecutive : NISwitchExecutiveInterface
+    internal class FakeNISwitchExecutive : ISwitchExecutive
     {
         private string _resourceName;
 

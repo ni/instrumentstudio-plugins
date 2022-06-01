@@ -18,6 +18,9 @@
     <NISwitchExecutiveDirectory Condition="'$(NISwitchExecutiveDirectory)' == ''">C:\Windows\system32</NISwitchExecutiveDirectory>
   </PropertyGroup>
   <ItemGroup>
+    <AdditionalFiles Include="CodeAnalysisDictionary.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="NationalInstruments.Common">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Common.dll</HintPath>
     </Reference>
@@ -54,12 +57,14 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="NI.CSharp.Analyzers" Version="2.0.4" />
+    <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\missingdevice_16x16.png" />
   </ItemGroup>
   <ItemGroup>
-	 <Resource Include="Resources\missingdevice_12x12.png" />
+   <Resource Include="Resources\missingdevice_12x12.png" />
   </ItemGroup>
   <ItemGroup>
     <!-- niSE.dll provides two COM components: niSE and niseCfg. Use COMFileReference instead of
