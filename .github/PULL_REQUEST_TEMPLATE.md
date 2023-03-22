@@ -1,11 +1,15 @@
-# Justification
+- [ ] This contribution adheres to [CONTRIBUTING.md](https://github.com/ni/instrumentstudio-plugins/blob/main/CONTRIBUTING.md).
 
-TODO: Describe why this change is required or what problem it solves. If work-item/issue-tracking links are included, provide some details about them.
+TODO: Check the above box with an 'x' indicating you've read and followed [CONTRIBUTING.md](https://github.com/ni/instrumentstudio-plugins/blob/main/CONTRIBUTING.md).
 
-# Implementation
+### What does this Pull Request accomplish?
 
-TODO: Describe how the change addresses the problem. Consider factors such as complexity, alternative solutions, performance impact, etc. Consider listing files with important changes or comment on them directly in the pull request.
+TODO: Include high-level description of the changes in this pull request.
 
-# Testing
+### Why should this Pull Request be merged?
 
-TODO: Detail the testing done to ensure this submission meets requirements. Include automated/manual test additions or modifications, testing done on a local build, private CI run results, and additional testing not covered by automatic pull request validation.
+TODO: Justify why this contribution should be part of the project.
+
+### What testing has been done?
+
+TODO: Detail what testing has been done to ensure this submission meets requirements.
