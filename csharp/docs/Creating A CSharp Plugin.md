@@ -128,7 +128,7 @@ Run `dotnet build` to ensure the plugin project is buildable at this point.
 
 Create a new class in the project the implements the `IPanelPluginFactory` interface. The key elements here are:
 
-- The class is decorated with the `PanelPlugin` attribute. This tells the framework about the plugin
+- The class is decorated with the `ExportPanelPlugin` attribute. This tells the framework about the plugin
 in general terms including its 'DisplayName' and other 'metadata' information.
 - The class implements the `IPanelPluginFactory` interface. This interface contains the `CreatePlugin` method.
 - The `CreatePlugin` method is called by the framework and returns an instance of your class that inherits from the `PanelPlugin` abstract base class.
@@ -143,7 +143,7 @@ using NationalInstruments.InstrumentFramework.Plugins;
 
 namespace NationalInstruments.InstrumentStudio.HelloWorldPlugin
 {
-    [PanelPlugin(DisplayName, UniqueName, GroupName, PanelType, SupportedPresentations)]
+    [ExportPanelPlugin(DisplayName, UniqueName, GroupName, PanelType, SupportedPresentations)]
     public class MyPanelPluginFactory : IPanelPluginFactory
     {
         public const string DisplayName = "My First Plugin";
