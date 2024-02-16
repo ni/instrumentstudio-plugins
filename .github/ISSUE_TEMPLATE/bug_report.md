@@ -44,6 +44,6 @@ Search open/closed issues before submitting. Someone may have reported the same 
 <!--- Include as many relevant details as possible about the environment you experienced the bug in -->
 
 * OS & Device: [e.g. macOS, Windows, Linux] on [Mac, PC]
-* `ni-measurementlink-service` version [e.g. 0.12.3]
-* MeasurementLink version [e.g. 23.0.0d123]
-* Python version [e.g. 3.9]
+* InstrumentStudio version [e.g. 23.0.0f123]
+* .NET version [e.g. 6.0]
+* LabVIEW version [e.g. 2023 Q3]
