@@ -23,36 +23,47 @@
   <ItemGroup>
     <Reference Include="NationalInstruments.Common">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Common.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.Controls">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.Controls.Numerics">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.Numerics.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.Controls.SkinProviders">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.SkinProviders.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.Controls.SkinProviders.Graphs">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.SkinProviders.Graphs.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.Controls.SkinProviders.Numerics">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Controls.SkinProviders.Numerics.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.Core">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.Core.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.FuseControlsImplementation">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.FuseControlsImplementation.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.InstrumentFramework.Plugins">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.InstrumentFramework.Plugins.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="NationalInstruments.PlatformFramework">
       <HintPath>$(InstrumentStudioDirectory)\NationalInstruments.PlatformFramework.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="System.Windows.Interactivity">
       <HintPath>$(InstrumentStudioDirectory)\System.Windows.Interactivity.dll</HintPath>
+      <Private>false</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
