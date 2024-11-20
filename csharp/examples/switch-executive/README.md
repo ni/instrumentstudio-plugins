@@ -9,6 +9,22 @@ This plug-in requires InstrumentStudio 2022 Q3 or later and NI Switch Executive.
 Building this plug-in requires VisualStudio 2022. You cannot build this plug-in using `dotnet build`
 because the .NET Core version of MSBuild does not support resolving COM references.
 
+Building this plug-in requires the Microsoft .NET SDK. You can download the
+latest from the link below.
+
+| InstrumentStudio Version       | .NET SDK Version       | Link |
+|--------------------------------|------------------------|------|
+| 2022 Q3 - 2024 Q3              | 6.0                    | [https://dotnet.microsoft.com/en-us/download/dotnet/6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) |
+| 2024 Q4 - 2025 Q1              | 8.0                    | [https://dotnet.microsoft.com/en-us/download/dotnet/8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) |
+
+You also need to change the `TargetFramework` element in
+SwitchExecutive.Plugin.csproj to match the required .NET SDK Version. For example,
+to target InstrumentStudio 2024Q4 or greater, change the .csproj element like
+this.
+```xml
+<TargetFramework>net8.0-windows</TargetFramework>
+```
+
 ## Building
 
 To build the plug-in, do one of the following:
