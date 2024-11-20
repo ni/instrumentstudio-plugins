@@ -56,7 +56,7 @@ While there might be some use cases for absolute paths, such as enabling debuggi
 dependencies by setting an absolute path to an installed LabVIEW's vilib folder under the AdditionalVISearchPaths setting, in general you should never ship
 a gplugindata file with absolute paths because that makes it harder to make a plug-in that can work at any possible install location for InstrumentStudio.
 
-## Adding <vilib>, <userlib>, and <instrlib>
+## Adding &lt;vilib&gt;, &lt;userlib&gt;, and &lt;instrlib&gt;
 Our recommendation is to create lvlibp files or source distributions when distributing your plugins to end users. However, in order to support
 using loose, unpackaged VIs during development that can still reference VIs in the LabVIEW IDE's search paths, there is an option on the Preferences
 dialog under the Plugins category to automatically include the search paths for these folders if you have the correct version of the LabVIEW IDE
