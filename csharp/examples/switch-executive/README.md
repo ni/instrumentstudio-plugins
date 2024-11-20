@@ -1,17 +1,17 @@
-# Switch Executive InstrumentStudio Plugin
+# Switch Executive InstrumentStudio Plug-In
 
-This plugin allows users to use Switch Executive to connect/disconnect routes from within InstrumentStudio.
+This plug-in allows users to use Switch Executive to connect/disconnect routes from within InstrumentStudio.
 
 ## Dependencies
 
-This plugin requires InstrumentStudio 2022 Q3 or later and NI Switch Executive.
+This plug-in requires InstrumentStudio 2022 Q3 or later and NI Switch Executive.
 
-Building this plugin requires VisualStudio 2022. You cannot build this plugin using `dotnet build`
+Building this plug-in requires VisualStudio 2022. You cannot build this plug-in using `dotnet build`
 because the .NET Core version of MSBuild does not support resolving COM references.
 
 ## Building
 
-To build the plugin, do one of the following:
+To build the plug-in, do one of the following:
 - In VisualStudio, right click on the solution and select `Build`.
 - From a command prompt:
   - cd to the directory containing `SwitchExecutive.Plugin.sln`.
@@ -31,11 +31,11 @@ the `InstrumentStudioDirectory` and `NISwitchExecutiveDirectory` environment var
 Copy the built assembly (`SwitchExecutive.Plugin.dll`) into the InstrumentStudio `Addons`
 directory, which is `C:\Program Files\National Instruments\InstrumentStudio\Addons` by default.
 
-You may optionally install the plugin assembly into a subdirectory of the `Addons` directory
+You may optionally install the plug-in assembly into a subdirectory of the `Addons` directory
 in order to isolate it from other plugins.
 
 See [this forum post](https://forums.ni.com/t5/InstrumentStudio/SwitchExecutive-Hosted-Application/gpm-p/3998692?profile.language=en)
-for more details about the Switch Executive plugin.
+for more details about the Switch Executive plug-in.
 
 ## Testing
 

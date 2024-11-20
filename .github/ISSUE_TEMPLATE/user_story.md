@@ -5,6 +5,6 @@ title: '(Fully descriptive title)'
 labels: 'user story,triage'
 ---
 
-<!-- Ensure the title can be understood without the parent item's context, e.g. "csharp instrumentstudio plugin example" rather than just "plugin example" -->
+<!-- Ensure the title can be understood without the parent item's context, e.g. "csharp instrumentstudio plug-in example" rather than just "plug-in example" -->
 
 ## User Story

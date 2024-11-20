@@ -1,17 +1,17 @@
-# Hello World C# InstrumentStudio Plugin
+# Hello World C# InstrumentStudio Plug-In
 
-This is a minimal example of a C# plugin for InstrumentStudio.
+This is a minimal example of a C# plug-in for InstrumentStudio.
 
 ## Dependencies
 
-This plugin requires InstrumentStudio 2022 Q3 or later.
+This plug-in requires InstrumentStudio 2022 Q3 or later.
 
-Building this plugin requires the Microsoft .NET 6.0 SDK. You can download the
+Building this plug-in requires the Microsoft .NET 6.0 SDK. You can download the
 latest from [this location](https://dotnet.microsoft.com/en-us/download).
 
 ## Building
 
-To build the plugin, run this command from the 'csharp/examples/helloworld' directory:
+To build the plug-in, run this command from the 'csharp/examples/helloworld' directory:
 
 ```
 dotnet build
@@ -23,7 +23,7 @@ can specify a custom path to the InstrumentStudio assemblies by setting the
 `InstrumentStudioDirectory` environment variable or editing the corresponding variable in
 `HelloWorld.NetCore.csproj`.
 
-Building InstrumentStudio C# plugins requires the following assemblies from the
+Building InstrumentStudio C# plug-ins requires the following assemblies from the
 InstrumentStudio directory:
 
 - `NationalInstruments.Core.dll`
@@ -34,10 +34,10 @@ InstrumentStudio directory:
 Copy the built assembly (`NationalInstruments.HelloWorldPlugin.dll`) into the InstrumentStudio `Addons`
 directory, which is `C:\Program Files\National Instruments\InstrumentStudio\Addons` by default.
 
-You may optionally install the plugin assembly into a subdirectory of the `Addons` directory
-in order to isolate it from other plugins.
+You may optionally install the plug-in assembly into a subdirectory of the `Addons` directory
+in order to isolate it from other plug-ins.
 
-If the plugin is installed correctly, it will appear in the Edit Layout dialog in InstrumentStudio:
+If the plug-in is installed correctly, it will appear in the Edit Layout dialog in InstrumentStudio:
 
 ![Hello World In Edit Layout Dialog](images/HelloWorldInEditLayout.png)
 
