@@ -1,9 +1,9 @@
-# Creating a C# Plugin for InstrumentStudio
+# Creating a C# Plug-In for InstrumentStudio
 
-This tutorial walks you through creating a simple C# plugin for InstrumentStudio from scratch. This plugin
-has minimal functionality and is intended just to get you to a point where your plugin shows up and can
-be put into a panel in InstrumentStudio. The plugin has no real functionality - the intent is to get you to
-the point where you have a plugin that is building and running correctly as quickly as possible.
+This tutorial walks you through creating a simple C# plug-in for InstrumentStudio from scratch. This plug-in
+has minimal functionality and is intended just to get you to a point where your plug-in shows up and can
+be put into a panel in InstrumentStudio. The plug-in has no real functionality - the intent is to get you to
+the point where you have a plug-in that is building and running correctly as quickly as possible.
 
 ## Overview of the steps
 
@@ -15,8 +15,8 @@ the point where you have a plugin that is building and running correctly as quic
 - [Implement the `PanelPlugin` Class](#implement-the-panelplugin-class)
 - [Implement the `IPanelPluginFactory` Class](#implement-the-ipanelpluginfactory-class)
 - [Optional: Delete the Class1.cs file](#optional-delete-the-class1cs-file)
-- [Install the plugin](#install-the-plugin-assembly-into-instrumentstudio)
-- [Test the plugin](#test-the-plugin)
+- [Install the plug-in](#install-the-plug-in-assembly-into-instrumentstudio)
+- [Test the plug-in](#test-the-plug-in)
 
 ## Install InstrumentStudio
 
@@ -26,25 +26,25 @@ InstrumentStudio with at least version 22.3.0.383-0+d383.
 ## Get the .NET SDK
 
 You will need the .NET SDK and its command-line features in order to create the C# project
-for the plugin. Install the latest Microsoft .NET 6.0 SDK from [this location](https://dotnet.microsoft.com/en-us/download).
+for the plug-in. Install the latest Microsoft .NET 6.0 SDK from [this location](https://dotnet.microsoft.com/en-us/download).
 
 ## Create a C# Solution and Project
 
-### Create a folder and a solution to contain your plugin
+### Create a Folder and a Solution to contain your Plug-In
 
 For this tutorial, we'll use **c:\myplugin** for this folder. From the command-line in **c:\myplugin**, run this command to create a solution
 
 `dotnet new sln`
 
-### Create a WPF library for the plugin
+### Create a WPF Library for the Plug-In
 
 `dotnet new wpflib`
 
-### Add the plugin library to the solution
+### Add the Plug-In Library to the Solution
 
 `dotnet sln add .\myplugin.csproj`
 
-Run `dotnet build` to ensure the plugin project is buildable at this point.
+Run `dotnet build` to ensure the plug-in project is buildable at this point.
 
 ## Add Project References
 
@@ -79,7 +79,7 @@ Your .csproj file should look something like this:
 </Project>
 ```
 
-Run `dotnet build` to ensure the plugin project is buildable at this point.
+Run `dotnet build` to ensure the plug-in project is buildable at this point.
 
 ## Add the ParticipatesInComposition Attribute
 
@@ -94,14 +94,14 @@ using NationalInstruments.Composition;
 [assembly: ParticipatesInComposition]
 ```
 
-Run `dotnet build` to ensure the plugin project is buildable at this point.
+Run `dotnet build` to ensure the plug-in project is buildable at this point.
 
 ## Implement the `PanelPlugin` Class
 
 Create a new class in the project that inherits from `PanelPlugin`. This is the central class for
-the plugin and an instance of it will be returned from the `IPanelPluginFactory` class in the next step.
-The `PanelContent` property represents the main UI for your plugin. It can be any WPF [`FrameworkElement`](https://docs.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-6.0) - in this example,
-we are simply returning a `TextBlock` as the minimal user interface element of our plugin.
+the plug-in and an instance of it will be returned from the `IPanelPluginFactory` class in the next step.
+The `PanelContent` property represents the main UI for your plug-in. It can be any WPF [`FrameworkElement`](https://docs.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-6.0) - in this example,
+we are simply returning a `TextBlock` as the minimal user interface element of our plug-in.
 
 ```csharp
 using NationalInstruments.InstrumentFramework.Plugins;
@@ -122,17 +122,17 @@ namespace NationalInstruments.InstrumentStudio.HelloWorldPlugin
 }
 ```
 
-Run `dotnet build` to ensure the plugin project is buildable at this point.
+Run `dotnet build` to ensure the plug-in project is buildable at this point.
 
 ## Implement the `IPanelPluginFactory` Class
 
 Create a new class in the project the implements the `IPanelPluginFactory` interface. The key elements here are:
 
-- The class is decorated with the `ExportPanelPlugin` attribute. This tells the framework about the plugin
+- The class is decorated with the `ExportPanelPlugin` attribute. This tells the framework about the plug-in
 in general terms including its 'DisplayName' and other 'metadata' information.
 - The class implements the `IPanelPluginFactory` interface. This interface contains the `CreatePlugin` method.
 - The `CreatePlugin` method is called by the framework and returns an instance of your class that inherits from the `PanelPlugin` abstract base class.
-- The GroupName and PanelType determine how the plugin appears in the Edit Layout dialog in InstrumentStudio. See the images below.
+- The GroupName and PanelType determine how the plug-in appears in the Edit Layout dialog in InstrumentStudio. See the images below.
 
 ![GroupName](images/EditLayoutGroupName.png)
 
@@ -146,8 +146,8 @@ namespace NationalInstruments.InstrumentStudio.HelloWorldPlugin
     [ExportPanelPlugin(DisplayName, UniqueName, GroupName, PanelType, SupportedPresentations)]
     public class MyPanelPluginFactory : IPanelPluginFactory
     {
-        public const string DisplayName = "My First Plugin";
-        public const string UniqueName = "NI | CSharpPlugin | My Plugin";
+        public const string DisplayName = "My First Plug-In";
+        public const string UniqueName = "NI | CSharpPlugin | My Plug-In";
         public const string GroupName = "NI InstrumentStudio";
         public const string PanelType = "Example";
         public const PanelPresentation SupportedPresentations = PanelPresentation.ConfigurationWithVisualization | PanelPresentation.ConfigurationOnly;
@@ -158,25 +158,25 @@ namespace NationalInstruments.InstrumentStudio.HelloWorldPlugin
 }
 ```
 
-Run `dotnet build` to ensure the plugin project is buildable at this point.
+Run `dotnet build` to ensure the plug-in project is buildable at this point.
 
 ## Optional: Delete the Class1.cs file
 
 When the library was created, .NET put an initial Class1.cs file into the project directory.
 This file is unneeded and can be deleted if you wish.
 
-## Install the plugin assembly into InstrumentStudio
+## Install the Plug-In assembly into InstrumentStudio
 
 Copy the myplugin.dll from the built assembly directory (bin\Debug\net6.0-windows) to the Addons folder of InstrumentStudio
 (C:\Program Files\National Instruments\InstrumentStudio\Addons). It can be anywhere under this directory including a sub-folder.
 
-## Test the Plugin
+## Test the Plug-In
 
-Run InstrumentStudio. NOTE: Relaunch InstrumentStudio if it is already running to detect new plugins. From the lobby screen in InstrumentStudio, click the 'Manual Layout' button. You will see the 'Edit Layout' dialog with your new plugin listed there:
+Run InstrumentStudio. NOTE: Relaunch InstrumentStudio if it is already running to detect new plugins. From the lobby screen in InstrumentStudio, click the 'Manual Layout' button. You will see the 'Edit Layout' dialog with your new plug-in listed there:
 
 ![Edit Layout Dialog](images/MyPluginEditLayout.png)
 
-Create a large panel for the plugin and click OK. You will see a soft front panel with your plugin UI in it
+Create a large panel for the plug-in and click OK. You will see a soft front panel with your plug-in UI in it
 similar to this:
 
 ![Large Panel](images/MyPluginLargePanel.png)
