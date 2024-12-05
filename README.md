@@ -18,3 +18,9 @@ Documentation and examples for writing C# plug-ins can be found under the
 
 Documentation for writing LabVIEW plug-ins can be found under the
 [labview](https://github.com/ni/instrumentstudio-plugins/tree/main/labview) directory.
+
+## Measurement Plug-Ins
+
+InstrumentStudio also supports Measurement Plug-Ins. To learn more about them, follow these links:
+* [LabVIEW Measurement Plug-Ins](https://github.com/ni/measurement-plugin-labview)
+* [Python Measurement Plug-Ins](https://github.com/ni/measurement-plugin-python)
