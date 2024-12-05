@@ -21,6 +21,6 @@ Documentation for writing LabVIEW plug-ins can be found under the
 
 ## Measurement Plug-Ins
 
-InstrumentStudio also supports Measurement Plug-Ins. To learn more about them, follow these links:
+InstrumentStudio also supports a different type of plug-in which works across products called "Measurement Plug-Ins". To learn more about them, follow these links:
 * [LabVIEW Measurement Plug-Ins](https://github.com/ni/measurement-plugin-labview)
 * [Python Measurement Plug-Ins](https://github.com/ni/measurement-plugin-python)
