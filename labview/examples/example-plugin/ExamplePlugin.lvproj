@@ -16,7 +16,9 @@
 		<Item Name="Documentation" Type="Folder"/>
 		<Item Name="ExamplePlugin.lvlib" Type="Library" URL="../ExamplePlugin.lvlib/ExamplePlugin.lvlib"/>
 		<Item Name="Dependencies" Type="Dependencies">
-			<Item Name="InstrumentStudio Plugin SDK.lvlib" Type="Library" URL="../Plugin SDK/InstrumentStudio Plugin SDK.lvlib"/>
+			<Item Name="vi.lib" Type="Folder">
+				<Item Name="InstrumentStudio Plugin SDK.lvlib" Type="Library" URL="/&lt;vilib&gt;/Plug-In SDKs/InstrumentStudio/InstrumentStudio Plugin SDK.lvlib"/>
+			</Item>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
 			<Item Name="Plugin Packed Library" Type="Packed Library">
@@ -29,7 +31,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToProject</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{05547330-7608-4C70-A459-D72560977C4B}</Property>
-				<Property Name="Bld_version.build" Type="Int">2</Property>
+				<Property Name="Bld_version.build" Type="Int">3</Property>
 				<Property Name="Bld_version.major" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">ExamplePlugin.lvlibp</Property>
 				<Property Name="Destination[0].path" Type="Path">../builds/NI_AB_PROJECTNAME.lvlibp</Property>
