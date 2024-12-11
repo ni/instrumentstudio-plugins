@@ -14,13 +14,15 @@ Install the VI package for the InstrumentStudio Plug-In SDK
 (`ni_instrumentstudio_plugin_sdk-1.0.0.1.vip`) which you can obtain from one of
 the [Releases](https://github.com/ni/instrumentstudio-plugins/releases) from
 this repo into the desired version of LabVIEW using the [VI Package
-Manager](https://www.vipm.io/). LabVIEW 2021 and greater are supported.*
-Download the 
+Manager](https://www.vipm.io/). LabVIEW 2021 and greater are supported.
 
 ## Building
 
 * Open `ExamplePlugin.lvproj`
-* Build the `Plugin Packed Library` in the project
+* Build the `Plugin Packed Library` build specification
+  * Navigate to `Plugin Packed Library` under the `Build
+    Specifications` folder in the project
+  * Right-click on the build spec and choose `Build`
 
 ## Installation of the Plug-In
 
