@@ -6,7 +6,7 @@
 			DisplayName="Example InstrumentStudio 2021"
 			PanelType="Examples"
 			GroupName="NI Example Plugins"
-			VIPath="ExamplePlugin.lvlibp\ExamplePlugin.lvlib\ExamplePlugin.vi"
+			VIPath="ExamplePlugin.lvlibp\ExamplePlugin.vi"
 			SupportedPanelSizes="LargeAndSmall"
 			ApplicationContext="Unique" />
 	</Plugins>
