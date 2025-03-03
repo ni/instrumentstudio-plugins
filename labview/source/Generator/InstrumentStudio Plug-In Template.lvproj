@@ -11,10 +11,10 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="InstrumentStudio Plug-In Data File" Type="Folder">
-			<Item Name="Template Data File.gplugindata" Type="Document" URL="../_InstrumentStudio Plug-In Template/Template Data File.gplugindata"/>
+			<Item Name="IS Plugin Data File.gplugindata" Type="Document" URL="../_InstrumentStudio Plug-In Template/IS Plugin Data File.gplugindata"/>
 		</Item>
-		<Item Name="InstrumentStudio Plug-In Library" Type="Folder">
-			<Item Name="InstrumentStudio Plug-In Template.lvlib" Type="Library" URL="../_InstrumentStudio Plug-In Template/InstrumentStudio Plug-In Template.lvlib"/>
+		<Item Name="InstrumentStudio Plug-In Main VI" Type="Folder">
+			<Item Name="Main.vi" Type="VI" URL="../_InstrumentStudio Plug-In Template/Main.vi"/>
 		</Item>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
