@@ -6,5 +6,5 @@
 	<Property Name="NI.LV.All.SaveVersion" Type="Str">21.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">false</Property>
 	<Property Name="NI.SortType" Type="Int">3</Property>
-	<Item Name="Template Main VI.vi" Type="VI" URL="../Template Main VI.vi"/>
+	<Item Name="Main.vi" Type="VI" URL="../Main.vi"/>
 </Library>
