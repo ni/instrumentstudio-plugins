@@ -4,6 +4,6 @@
 	<Property Name="NI.Lib.SourceVersion" Type="Int">553680896</Property>
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">false</Property>
-	<Item Name="IS Plugin Data File Template.gplugindata" Type="Document" URL="../IS Plugin Data File Template.gplugindata"/>
-	<Item Name="IS Plugin Main VI Template.vi" Type="VI" URL="../IS Plugin Main VI Template.vi"/>
+	<Item Name="Plugin Data File Template.gplugindata" Type="Document" URL="../Plugin Data File Template.gplugindata"/>
+	<Item Name="Plugin Main VI Template.vi" Type="VI" URL="../Plugin Main VI Template.vi"/>
 </Library>
