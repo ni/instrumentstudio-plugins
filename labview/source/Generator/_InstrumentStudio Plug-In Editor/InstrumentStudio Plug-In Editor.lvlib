@@ -20,14 +20,14 @@
 	<Item Name="subVIs" Type="Folder">
 		<Item Name="Add Library To Project.vi" Type="VI" URL="../subVIs/Add Library To Project.vi"/>
 		<Item Name="Change Value.vi" Type="VI" URL="../subVIs/Change Value.vi"/>
-		<Item Name="Copy InstrumentStudio Plug-In Data File.vi" Type="VI" URL="../subVIs/Copy InstrumentStudio Plug-In Data File.vi"/>
-		<Item Name="Copy InstrumentStudio Plug-In Main VI.vi" Type="VI" URL="../subVIs/Copy InstrumentStudio Plug-In Main VI.vi"/>
 		<Item Name="Copy Template Library.vi" Type="VI" URL="../subVIs/Copy Template Library.vi"/>
 		<Item Name="Edit IS Plugin Data File.vi" Type="VI" URL="../subVIs/Edit IS Plugin Data File.vi"/>
 		<Item Name="Get Active Project.vi" Type="VI" URL="../subVIs/Get Active Project.vi"/>
 		<Item Name="Get Library.vi" Type="VI" URL="../subVIs/Get Library.vi"/>
 		<Item Name="Get Reserved Names.vi" Type="VI" URL="../subVIs/Get Reserved Names.vi"/>
 		<Item Name="Open Project.vi" Type="VI" URL="../subVIs/Open Project.vi"/>
+		<Item Name="Rename InstrumentStudio Plug-In Data File.vi" Type="VI" URL="../subVIs/Rename InstrumentStudio Plug-In Data File.vi"/>
+		<Item Name="Rename InstrumentStudio Plug-In Main VI.vi" Type="VI" URL="../subVIs/Rename InstrumentStudio Plug-In Main VI.vi"/>
 		<Item Name="Valid InstrumentStudio Plug-In Name.vi" Type="VI" URL="../subVIs/Valid InstrumentStudio Plug-In Name.vi"/>
 	</Item>
 	<Item Name="Create InstrumentStudio Plug-In.vi" Type="VI" URL="../../Create InstrumentStudio Plug-In.vi"/>
