@@ -33,7 +33,7 @@
 		<Item Name="Rename Template Plugin Files.vi" Type="VI" URL="../Rename Template Plugin Files.vi"/>
 		<Item Name="Save Copy of Template Library.vi" Type="VI" URL="../Save Copy of Template Library.vi"/>
 		<Item Name="Valid Plugin Name.vi" Type="VI" URL="../Valid Plugin Name.vi"/>
-		<Item Name="Validate Group Name.vi" Type="VI" URL="../Validate Group Name.vi"/>
+		<Item Name="Default Group Name.vi" Type="VI" URL="../Default Group Name.vi"/>
 	</Item>
 	<Item Name="Global VIs" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
