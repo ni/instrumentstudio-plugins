@@ -15,7 +15,6 @@
 		<Item Name="InstrumentStudio Plug-In Generator" Type="Folder">
 			<Item Name="InstrumentStudio Plug-In Editor.lvlib" Type="Library" URL="../_InstrumentStudio Plug-In Editor/InstrumentStudio Plug-In Editor.lvlib"/>
 		</Item>
-		<Item Name="NI_AB_API_PPL_Extensions.lvclass" Type="LVClass" URL="../_InstrumentStudio Plug-In Editor/NI_AB_API_PPL_Extensions/NI_AB_API_PPL_Extensions.lvclass"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="8.6CompatibleGlobalVar.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/config.llb/8.6CompatibleGlobalVar.vi"/>

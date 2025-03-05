@@ -21,7 +21,7 @@
 		<Item Name="Add Renamed Files to Library.vi" Type="VI" URL="../Add Renamed Files to Library.vi"/>
 		<Item Name="Copy and Modify Template Plugin.vi" Type="VI" URL="../Copy and Modify Template Plugin.vi"/>
 		<Item Name="Create Plugin.vi" Type="VI" URL="../Create Plugin.vi"/>
-		<Item Name="Create PPL.vi" Type="VI" URL="../NI_AB_API_PPL_Extensions/Create PPL.vi"/>
+		<Item Name="Create PPL.vi" Type="VI" URL="../Create PPL.vi"/>
 		<Item Name="Data Holder.ctl" Type="VI" URL="../Data Holder.ctl"/>
 		<Item Name="Edit Plugin Data File.vi" Type="VI" URL="../Edit Plugin Data File.vi"/>
 		<Item Name="Get Active Project.vi" Type="VI" URL="../Get Active Project.vi"/>
