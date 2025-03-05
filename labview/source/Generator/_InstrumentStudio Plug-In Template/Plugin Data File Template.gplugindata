@@ -3,7 +3,7 @@
 	<Plugins>
 		<PluginData 
 			UniqueName="National Instruments|Template InstrumentStudio Plugin"
-			DisplayName="Template InstrumentStudio plug-in that serves as a starting point to develop applications as IS plug-ins."
+			DisplayName="Template plug-in that serves as a starting point to ease the development of IS plug-in applications."
 			PanelType="Template InstrumentStudio Plugin"
 			GroupName="NI InstrumentStudio Plugins"
 			VIPath="InstrumentStudio Plug-In Template.lvlibp\Plugin Main VI Template.vi"
