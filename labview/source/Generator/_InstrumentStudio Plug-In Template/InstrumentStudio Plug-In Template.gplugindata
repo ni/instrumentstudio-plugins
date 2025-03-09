@@ -6,7 +6,7 @@
 			DisplayName="Template plug-in that serves as a starting point to ease the development of IS plug-in applications."
 			PanelType="Template InstrumentStudio Plugin"
 			GroupName="NI InstrumentStudio Plugins"
-			VIPath="InstrumentStudio Plug-In Template.lvlibp\Plugin Main VI Template.vi"
+			VIPath="InstrumentStudio Plug-In Template.lvlibp\InstrumentStudio Plug-In Template.vi"
 			SupportedPanelSizes="LargeAndSmall"
 			ApplicationContext="Unique" />
 	</Plugins>
