@@ -18,7 +18,6 @@
 	<Item Name="Helpers" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		<Item Name="Add Library to Project.vi" Type="VI" URL="../Add Library to Project.vi"/>
-		<Item Name="Add Renamed Files to Library.vi" Type="VI" URL="../Add Renamed Files to Library.vi"/>
 		<Item Name="Create Plugin.vi" Type="VI" URL="../Create Plugin.vi"/>
 		<Item Name="Create PPL.vi" Type="VI" URL="../Create PPL.vi"/>
 		<Item Name="Data Holder.ctl" Type="VI" URL="../Data Holder.ctl"/>
@@ -28,6 +27,7 @@
 		<Item Name="Get Library.vi" Type="VI" URL="../Get Library.vi"/>
 		<Item Name="Get Reserved Names.vi" Type="VI" URL="../Get Reserved Names.vi"/>
 		<Item Name="Open Project.vi" Type="VI" URL="../Open Project.vi"/>
+		<Item Name="Relink Renamed Files to Library.vi" Type="VI" URL="../Relink Renamed Files to Library.vi"/>
 		<Item Name="Rename Template Plugin Files.vi" Type="VI" URL="../Rename Template Plugin Files.vi"/>
 		<Item Name="Save Copy of Template Library.vi" Type="VI" URL="../Save Copy of Template Library.vi"/>
 		<Item Name="Template and Plugin Files Path.vi" Type="VI" URL="../Template and Plugin Files Path.vi"/>
