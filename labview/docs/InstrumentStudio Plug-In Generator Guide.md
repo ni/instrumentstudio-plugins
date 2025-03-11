@@ -42,7 +42,8 @@ NI Packages Dependency | Version Required
 - Download the `InstrumentStudio Plug-In SDK` and `InstrumentStudio Plug-In Generator` packages from
   the latest release assets.
 
-- Install the `InstrumentStudio Plug-In SDK`, followed by the `InstrumentStudio Plug-In Generator`.
+- Install the `InstrumentStudio Plug-In SDK` package, followed by the `InstrumentStudio Plug-In
+  Generator` package.
 
 ## Developing a LabVIEW InstrumentStudio Plug-In
 
@@ -54,7 +55,8 @@ NI Packages Dependency | Version Required
 
       ![Create InstrumentStudio Plug-In](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Create%20InstrumentStudio%20Plug-In.png)
 
-   - This will create a new InstrumentStudio plug-in library in the project.
+   - This will create a new InstrumentStudio plug-in library and a PPL build specification for the
+     plug-in in the project.
 
       ![InstrumentStudio Plug-In Library](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Plug-In%20Library.png)
 
@@ -90,9 +92,9 @@ document.
 
 ## Using a LabVIEW InstrumentStudio plug-in in InstrumentStudio
 
-1. Open InstrumentStudio and click `Manual Layout`.
-2. The InstrumentStudio plug-in will be listed under the Add-Ons category within the group specified
-   in the `.gplugindata` file.
+1. Open InstrumentStudio and click `Manual Layout` to open the Edit Layout dialog.
+2. In the dialog, the InstrumentStudio plug-in will be listed under the Add-Ons category within the
+   group specified in the `.gplugindata` file.
 3. Choose the desired plug-in and create a large panel.
   
    ![Edit Layout](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Edit%20Layout.png)
