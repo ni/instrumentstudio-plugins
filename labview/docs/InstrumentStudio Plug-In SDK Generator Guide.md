@@ -1,6 +1,6 @@
-# InstrumentStudio Plug-In SDK Generator for LabVIEW
+# InstrumentStudio Plug-In Generator for LabVIEW
 
-- [InstrumentStudio Plug-In SDK Generator for LabVIEW](#instrumentstudio-plug-in-sdk-generator-for-labview)
+- [InstrumentStudio Plug-In Generator for LabVIEW](#instrumentstudio-plug-in-generator-for-labview)
   - [Introduction](#introduction)
   - [Workflow](#workflow)
   - [Software support](#software-support)
@@ -14,9 +14,9 @@
 
 ## Introduction
 
-The InstrumentStudio Plug-In SDK generator tool allows users to create new plug-ins from a template
-by specifying a desired name and group. This tool provides a convenient starting point for
-developing any LabVIEW application as an InstrumentStudio plug-in.
+The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins from a template by
+specifying a desired name and group. This tool provides a convenient starting point for developing
+any LabVIEW application as an InstrumentStudio plug-in.
 
 ---
 
@@ -38,11 +38,10 @@ NI Packages Dependency | Version Required
 
 ## Installation
 
-- Download the `InstrumentStudio Plug-In SDK` and `InstrumentStudio Plug-In SDK Generator` packages
-  from the latest release assets.
+- Download the `InstrumentStudio Plug-In SDK` and `InstrumentStudio Plug-In Generator` packages from
+  the latest release assets.
 
-- Install the `InstrumentStudio Plug-In SDK`, followed by the `InstrumentStudio Plug-In SDK
-  Generator`.
+- Install the `InstrumentStudio Plug-In SDK`, followed by the `InstrumentStudio Plug-In Generator`.
 
 ## Developing a LabVIEW InstrumentStudio Plug-In
 
