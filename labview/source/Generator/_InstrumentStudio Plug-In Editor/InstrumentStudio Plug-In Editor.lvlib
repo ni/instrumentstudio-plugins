@@ -19,7 +19,7 @@
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
 		<Item Name="Create Plugin.vi" Type="VI" URL="../Create Plugin.vi"/>
 		<Item Name="Create PPL.vi" Type="VI" URL="../Create PPL.vi"/>
-		<Item Name="Data Holder.ctl" Type="VI" URL="../Data Holder.ctl"/>
+		<Item Name="Plugin Configuration.ctl" Type="VI" URL="../Plugin Configuration.ctl"/>
 		<Item Name="Default Group Name.vi" Type="VI" URL="../Default Group Name.vi"/>
 		<Item Name="Edit Plugin Data File.vi" Type="VI" URL="../Edit Plugin Data File.vi"/>
 		<Item Name="Get Active Project.vi" Type="VI" URL="../Get Active Project.vi"/>
