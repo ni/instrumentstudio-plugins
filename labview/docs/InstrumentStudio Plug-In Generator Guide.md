@@ -9,6 +9,7 @@
   - [Deploying a LabVIEW InstrumentStudio plug-in](#deploying-a-labview-instrumentstudio-plug-in)
   - [Using a LabVIEW InstrumentStudio plug-in in InstrumentStudio](#using-a-labview-instrumentstudio-plug-in-in-instrumentstudio)
   - [Creating a package or installer to deploy a LabVIEW InstrumentStudio plug-in](#creating-a-package-or-installer-to-deploy-a-labview-instrumentstudio-plug-in)
+  - [Note](#note)
 
 ---
 
@@ -49,27 +50,23 @@ NI Packages Dependency | Version Required
 2. From the project window, go to `Tools` → `Plug-In SDKs` → `InstrumentStudio Plug-In` → `Create
    InstrumentStudio Plug-in...`.
    - In the dialog, enter the `InstrumentStudio Plug-in Name` and `InstrumentStudio Plug-in Group`,
-       then click `Create InstrumentStudio Plug-in`.
+     then click `Create InstrumentStudio Plug-in`.
 
-      ![Create InstrumentStudio
-      Plug-In](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Create%20InstrumentStudio%20Plug-In.png)
+      ![Create InstrumentStudio Plug-In](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Create%20InstrumentStudio%20Plug-In.png)
 
    - This will create a new InstrumentStudio plug-in library in the project.
 
-      ![InstrumentStudio Plug-In
-      Library](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Plug-In%20Library.png)
+      ![InstrumentStudio Plug-In Library](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Plug-In%20Library.png)
 
 3. Add your logic/implementation to the top-level plug-in VI. By default, the VI shows off some of
    the basic features of LabVIEW InstrumentStudio plug-ins.
 
-   ![Top-level plug-in VI Block
-   diagram](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Top-level%20VI%20Block%20diagram.png)
+   ![Top-level plug-in VI Block diagram](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Top-level%20VI%20Block%20diagram.png)
 
 Note: For more information about the GPluginData file format and InstrumentStudio plug-in
 development, please refer to the
-[GPluginData-File-Format](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/GPluginData-File-Format.pdf)
-and [G Plugin Development
-Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
+[GPluginData-File-Format](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/GPluginData-File-Format.pdf) and
+[G Plugin Development Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
 documents.
 
 ---
@@ -85,8 +82,8 @@ documents.
      its contents do not conflict with other plug-ins.
 
 Note: For information about the recommended PPL build settings for an InstrumentStudio plug-in,
-please refer to the 'Building and Deploying Release Plug-Ins' section in the [G Plugin Development
-Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
+please refer to the 'Building and Deploying Release Plug-Ins' section in the
+[G Plugin Development Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
 document.
 
 ---
@@ -98,13 +95,11 @@ document.
    in the `.gplugindata` file.
 3. Choose the desired plug-in and create a large panel.
   
-   ![Edit
-   Layout](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Edit%20Layout.png)
+   ![Edit Layout](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Edit%20Layout.png)
 
 4. The layout will be populated with the plug-in UI as shown below.
 
-   ![Plug-In
-   SFP](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Plug-In%20Soft%20Panel.png)
+   ![Plug-In SFP](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Plug-In%20Soft%20Panel.png)
 
 5. Modify the inputs in the UI to interact with the application.
 
@@ -117,25 +112,30 @@ document.
    [Creating Build Specifications](https://www.ni.com/docs/en-US/bundle/labview/page/creating-build-specifications.html)
    for more information.
 
-   ![Package or Installer build spec
-   creation](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Package%20or%20Installer%20build%20spec.png)
+   ![Package or Installer build spec creation](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Package%20or%20Installer%20build%20spec.png)
 
 3. Open the `Destinations` page in the package or installer build specification properties.
 4. Set the destination directory to `C:\Program Files\National
    Instruments\InstrumentStudio\Addons\<Sub-directory name>`.
 
-   ![Destination
-   directory](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Package%20or%20Installer%20Destination%20directory.png)
+   ![Destination directory](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Package%20or%20Installer%20Destination%20directory.png)
 
 5. In the `Source Files` page, add the `PPL` build specification of the plug-in to the destination
    view. This action will automatically incorporate the files generated by the PPL into the package
    or installer during the build process.
 
-   ![Source
-   Files](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Package%20or%20Installer%20Source%20Files.png)
+   ![Source Files](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Package%20or%20Installer%20Source%20Files.png)
 
 6. To build the package or installer, right-click on the desired build specification and choose
 'Build'.
 
    Note: The PPL build specification must be built first in order for the package or installer build
    to succeed.
+
+---
+
+## Note
+
+For information about InstrumentStudio Plug-In SDK APIs, please refer to the
+[InstrumentStudio Plugin SDK Reference](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/InstrumentStudio%20Plugin%20SDK%20Reference.pdf)
+document.
