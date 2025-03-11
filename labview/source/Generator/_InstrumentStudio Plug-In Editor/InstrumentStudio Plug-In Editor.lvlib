@@ -17,23 +17,18 @@
 </Property>
 	<Item Name="Helpers" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
-		<Item Name="Add Library to Project.vi" Type="VI" URL="../Add Library to Project.vi"/>
-		<Item Name="Add Renamed Files to Library.vi" Type="VI" URL="../Add Renamed Files to Library.vi"/>
-		<Item Name="Copy and Modify Template Plugin.vi" Type="VI" URL="../Copy and Modify Template Plugin.vi"/>
 		<Item Name="Create Plugin.vi" Type="VI" URL="../Create Plugin.vi"/>
 		<Item Name="Create PPL.vi" Type="VI" URL="../Create PPL.vi"/>
-		<Item Name="Data Holder.ctl" Type="VI" URL="../Data Holder.ctl"/>
+		<Item Name="Plugin Configuration.ctl" Type="VI" URL="../Plugin Configuration.ctl"/>
+		<Item Name="Default Group Name.vi" Type="VI" URL="../Default Group Name.vi"/>
 		<Item Name="Edit Plugin Data File.vi" Type="VI" URL="../Edit Plugin Data File.vi"/>
 		<Item Name="Get Active Project.vi" Type="VI" URL="../Get Active Project.vi"/>
+		<Item Name="Get File Rename Paths.vi" Type="VI" URL="../Get File Rename Paths.vi"/>
 		<Item Name="Get Library.vi" Type="VI" URL="../Get Library.vi"/>
 		<Item Name="Get Reserved Names.vi" Type="VI" URL="../Get Reserved Names.vi"/>
 		<Item Name="Open Project.vi" Type="VI" URL="../Open Project.vi"/>
-		<Item Name="Rename Plugin Data File.vi" Type="VI" URL="../Rename Plugin Data File.vi"/>
-		<Item Name="Rename Plugin Main VI.vi" Type="VI" URL="../Rename Plugin Main VI.vi"/>
-		<Item Name="Rename Template Plugin Files.vi" Type="VI" URL="../Rename Template Plugin Files.vi"/>
-		<Item Name="Save Copy of Template Library.vi" Type="VI" URL="../Save Copy of Template Library.vi"/>
+		<Item Name="Update Template Plugin Files.vi" Type="VI" URL="../Update Template Plugin Files.vi"/>
 		<Item Name="Valid Plugin Name.vi" Type="VI" URL="../Valid Plugin Name.vi"/>
-		<Item Name="Default Group Name.vi" Type="VI" URL="../Default Group Name.vi"/>
 	</Item>
 	<Item Name="Global VIs" Type="Folder">
 		<Property Name="NI.LibItem.Scope" Type="Int">2</Property>
