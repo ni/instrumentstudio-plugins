@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<GPluginMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ni.com/InstrumentStudio/GPluginMetadata">
+	<Plugins>
+		<PluginData 
+			UniqueName="National Instruments|Template InstrumentStudio Plugin"
+			DisplayName="Template plug-in that serves as a starting point to ease the development of IS plug-in applications."
+			PanelType="Template InstrumentStudio Plugin"
+			GroupName="NI InstrumentStudio Plugins"
+			VIPath="InstrumentStudio Plug-In Template.lvlibp\InstrumentStudio Plug-In Template.vi"
+			SupportedPanelSizes="LargeAndSmall"
+			ApplicationContext="Unique" />
+	</Plugins>
+</GPluginMetadata>
