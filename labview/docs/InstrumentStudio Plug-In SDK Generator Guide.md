@@ -63,10 +63,11 @@ NI Packages Dependency | Version Required
 
    ![Top-level plug-in VI Block diagram](./images/InstrumentStudio%20Plug-In%20Guide/Top-level%20VI%20Block%20diagram.png)
 
-Note: For information about the GPluginData file format and InstrumentStudio plug-in development,
-please refer to the
-[GPluginData-File-Format](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/GPluginData-File-Format.pdf) and
-[G Plugin Development Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
+Note: For more information about the GPluginData file format and InstrumentStudio plug-in
+development, please refer to the
+[GPluginData-File-Format](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/GPluginData-File-Format.pdf)
+and [G Plugin Development
+Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
 documents.
 
 ---
@@ -82,8 +83,8 @@ documents.
      its contents do not conflict with other plug-ins.
 
 Note: For information about the recommended PPL build settings for an InstrumentStudio plug-in,
-refer to the 'Building and Deploying Release Plug-Ins' section in the
-[G Plugin Development Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
+please refer to the 'Building and Deploying Release Plug-Ins' section in the [G Plugin Development
+Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
 document.
 
 ---
@@ -116,7 +117,7 @@ document.
 
 3. Open the `Destinations` page in the package or installer build specification properties.
 4. Set the destination directory to `C:\Program Files\National
-   Instruments\InstrumentStudio\Addons\<Plug-in Name>`.
+   Instruments\InstrumentStudio\Addons\<Sub-directory name>`.
 
    ![Destination directory](./images/InstrumentStudio%20Plug-In%20Guide/Package%20or%20Installer%20Destination%20directory.png)
 
