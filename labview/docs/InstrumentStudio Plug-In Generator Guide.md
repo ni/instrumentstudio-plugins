@@ -55,7 +55,7 @@ the latest release assets.
    1. This will open the `Create InstrumentStudio Plug-in` dialog.
    2. The name of the Active LabVIEW Project will be automatically populated in the `Active Project
       Name` indicator.  
-      Note: The new InstrumentStudio plug-in will be created in this Active LabVIEW project.
+      **Note:** The new InstrumentStudio plug-in will be created in this active LabVIEW project.
    3. Enter the `InstrumentStudio Plug-in Name` and `InstrumentStudio Plug-in Group`.
    4. Click on the `Create InstrumentStudio Plug-in` button.
 
