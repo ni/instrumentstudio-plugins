@@ -15,8 +15,8 @@
 
 ## Introduction
 
-The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins from a template by
-specifying a desired name and group. This tool provides a convenient starting point for developing
+The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins with
+specified name and group. This tool provides a convenient starting point for developing
 any LabVIEW application as an InstrumentStudio plug-in.
 
 ---
@@ -78,7 +78,7 @@ documents.
 
 ## Deploying a LabVIEW InstrumentStudio plug-in
 
-1. Open the LabVIEW project which contains the InstrumentStudio plug-in.
+1. Open the Active LabVIEW project where the InstrumentStudio plug-in was created.
 2. The generated plug-in comes with a Packed Project Library (PPL) build specification.
 3. Right-click on the PPL build specification and choose 'Build'.
 4. Copy the built plug-in files into the InstrumentStudio `Addons` directory, which is `C:\Program
@@ -96,7 +96,7 @@ document.
 ## Using a LabVIEW InstrumentStudio plug-in in InstrumentStudio
 
 1. Open InstrumentStudio and click `Manual Layout` to open the Edit Layout dialog.
-2. In the dialog, the InstrumentStudio plug-in will be listed under the Add-Ons category within the
+2. The InstrumentStudio plug-in will be listed under the Add-Ons category within the
    group specified in the `.gplugindata` file.
 3. Choose the desired plug-in and create a large panel.
   
