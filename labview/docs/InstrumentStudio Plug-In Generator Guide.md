@@ -102,7 +102,7 @@ document.
    - If no group name is specified during plug-in creation, the plug-in will be populated under the
      `Default` group.
    - The group name specified at the time of plug-in creation will be saved in the `.gplugindata`
-     file holds the properties of the plug-in.
+     file, which holds the properties of the plug-in.
       - If needed, the user can edit the `GroupName` property in the file to modify the plug-in's
         group later.
 3. Choose the desired plug-in and create a large panel.
