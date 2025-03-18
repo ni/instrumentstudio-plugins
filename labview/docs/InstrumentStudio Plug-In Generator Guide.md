@@ -99,10 +99,9 @@ document.
 1. Open InstrumentStudio and click `Manual Layout` to open the Edit Layout dialog.
 2. The InstrumentStudio plug-in will be listed under the Add-Ons category within the group specified
    at the time of the plug-in creation.  
-   Note:
-   - If `InstrumentStudio Plug-in Group` is not specified during plug-in creation, the plug-in will
+   2.1  If `InstrumentStudio Plug-in Group` is not specified during plug-in creation, the plug-in will
      be populated under the `Default` group.
-   - The `InstrumentStudio Plug-in Group` specified at the time of plug-in creation will be saved in
+   2.2 The `InstrumentStudio Plug-in Group` specified at the time of plug-in creation will be saved in
      the plug-in's `.gplugindata` file, which holds the properties of the plug-in.
       - If needed, the user can edit the `GroupName` property in the file to modify the plug-in's
         group later.
