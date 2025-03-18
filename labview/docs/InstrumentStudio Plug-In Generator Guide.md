@@ -64,8 +64,8 @@ Plug-In Generator` package.
 
       ![InstrumentStudio Plug-In Library](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Plug-In%20Library.png)
 
-3. Add your logic/implementation to the top-level plug-in VI. By default, the VI shows off some of
-   the basic features of LabVIEW InstrumentStudio plug-ins.
+3. Default template is added to the library VIs, which contains some of the basic features of the LabVIEW InstrumentStudio plug-ins.
+4. Add your logic implementation to the top-level plug-in VI. 
 
    ![Top-level plug-in VI Block diagram](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Top-level%20VI%20Block%20diagram.png)
 
