@@ -15,8 +15,8 @@
 
 ## Introduction
 
-The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins from a template by
-specifying a desired name and group. This tool provides a convenient starting point for developing
+The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins with
+specified name and group. This tool provides a convenient starting point for developing
 any LabVIEW application as an InstrumentStudio plug-in.
 
 ---
