@@ -148,8 +148,8 @@ document.
 6. To build the package or installer, right-click on the desired build specification and choose
    'Build'.
 
-   **Note:** The PPL build specification must be built first in order for the package or installer build
-   to succeed.
+   **Note:** The PPL build specification must be built first in order for the package or installer
+   build to succeed.
 
 ---
 
