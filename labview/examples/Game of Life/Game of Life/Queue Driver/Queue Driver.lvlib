@@ -15,5 +15,6 @@
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.SortType" Type="Int">3</Property>
 	<Item Name="Queue Operations.ctl" Type="VI" URL="../Queue Operations.ctl"/>
+	<Item Name="Queue State and Data.ctl" Type="VI" URL="../Queue State and Data.ctl"/>
 	<Item Name="Queue Driver.vi" Type="VI" URL="../Queue Driver.vi"/>
 </Library>
