@@ -75,7 +75,7 @@ documents.
 
 ## Deploying a LabVIEW InstrumentStudio plug-in
 
-1. Open the LabVIEW project which contains the InstrumentStudio plug-in.
+1. Open the Active LabVIEW project where the InstrumentStudio plug-in was created.
 2. The generated plug-in comes with a Packed Project Library (PPL) build specification.
 3. Build the PPL.
 4. Copy the built plug-in files into the InstrumentStudio `Addons` directory, which is `C:\Program
