@@ -93,7 +93,7 @@ document.
 ## Using a LabVIEW InstrumentStudio plug-in in InstrumentStudio
 
 1. Open InstrumentStudio and click `Manual Layout` to open the Edit Layout dialog.
-2. In the dialog, the InstrumentStudio plug-in will be listed under the Add-Ons category within the
+2. The InstrumentStudio plug-in will be listed under the Add-Ons category within the
    group specified in the `.gplugindata` file.
 3. Choose the desired plug-in and create a large panel.
   
