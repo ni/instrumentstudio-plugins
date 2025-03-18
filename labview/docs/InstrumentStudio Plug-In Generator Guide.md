@@ -39,18 +39,18 @@ NI Packages Dependency | Version Required
 
 ## Installation
 
-- Download the `InstrumentStudio Plug-In SDK` and `InstrumentStudio Plug-In Generator` packages from
-  the latest release assets.
+Download the `InstrumentStudio Plug-In SDK` package and `InstrumentStudio Plug-In Generator` from
+the latest release assets.
 
-- Install the `InstrumentStudio Plug-In SDK` package, followed by the `InstrumentStudio Plug-In
-  Generator` package.
+Note: Please install the `InstrumentStudio Plug-In SDK` package before installing `InstrumentStudio
+Plug-In Generator` package.
 
 ## Developing a LabVIEW InstrumentStudio Plug-In
 
 1. Create and save a new LabVIEW project.
 2. From the project window, go to `Tools` → `Plug-In SDKs` → `InstrumentStudio Plug-In` → `Create
    InstrumentStudio Plug-in...`.
-   1. The `Create InstrumentStudio Plug-in` dialog opens.
+   1. The `Create InstrumentStudio Plug-in` dialog will open.
    2. The name of the current `Active Project` will be automatically populated in the `Active
       Project Name` indicator.
    3. Enter the `InstrumentStudio Plug-in Name` and `InstrumentStudio Plug-in Group`.
@@ -59,7 +59,7 @@ NI Packages Dependency | Version Required
       ![Create InstrumentStudio Plug-In](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Create%20InstrumentStudio%20Plug-In.png)
 
    5. This will create a new InstrumentStudio plug-in library and a PPL build specification for the
-     plug-in in the project.
+     plug-in in the Active LabVIEW project.
 
       ![InstrumentStudio Plug-In Library](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Plug-In%20Library.png)
 
@@ -80,7 +80,7 @@ documents.
 
 1. Open the Active LabVIEW project where the InstrumentStudio plug-in was created.
 2. The generated plug-in comes with a Packed Project Library (PPL) build specification.
-3. Right-click on the PPL build specification and choose 'Build'.
+3. Build the PPL by right-clicking on the PPL build specification and choosing 'Build'.
 4. Copy the built plug-in files into the InstrumentStudio `Addons` directory, which is `C:\Program
    Files\National Instruments\InstrumentStudio\Addons` by default.
    - You may optionally install the plug-in files into a subdirectory of the `Addons` directory so
@@ -96,8 +96,15 @@ document.
 ## Using a LabVIEW InstrumentStudio plug-in in InstrumentStudio
 
 1. Open InstrumentStudio and click `Manual Layout` to open the Edit Layout dialog.
-2. The InstrumentStudio plug-in will be listed under the Add-Ons category within the
-   group specified in the `.gplugindata` file.
+2. The InstrumentStudio plug-in will be listed under the Add-Ons category within the group specified
+   at the time of the plug-in creation.  
+   Note:
+   - If no group name is specified during plug-in creation, the plug-in will be populated under the
+     `Default` group.
+   - The group name specified at the time of plug-in creation will be saved in the `.gplugindata`
+     file holds the properties of the plug-in.
+      - If needed, the user can edit the `GroupName` property in the file to modify the plug-in's
+        group later.
 3. Choose the desired plug-in and create a large panel.
   
    ![Edit Layout](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/InstrumentStudio%20Edit%20Layout.png)
