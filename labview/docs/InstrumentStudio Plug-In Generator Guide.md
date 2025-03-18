@@ -15,9 +15,9 @@
 
 ## Introduction
 
-The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins with
-specified name and group. This tool provides a convenient starting point for developing
-any LabVIEW application as an InstrumentStudio plug-in.
+The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins with specified name
+and group. This tool provides a convenient starting point for developing any LabVIEW application as
+an InstrumentStudio plug-in.
 
 ---
 
@@ -50,11 +50,11 @@ Plug-In Generator` package.
 1. Create and save a new LabVIEW project.
 2. From the project window, go to `Tools` → `Plug-In SDKs` → `InstrumentStudio Plug-In` → `Create
    InstrumentStudio Plug-in...`.
-   1. The `Create InstrumentStudio Plug-in` dialog will open.
-   2. The name of the current `Active Project` will be automatically populated in the `Active
-      Project Name` indicator.
+   1. This will open the `Create InstrumentStudio Plug-in` dialog.
+   2. The name of the Active LabVIEW Project will be automatically populated in the `Active Project
+      Name` indicator.
    3. Enter the `InstrumentStudio Plug-in Name` and `InstrumentStudio Plug-in Group`.
-   4. Click `Create InstrumentStudio Plug-in`.
+   4. Click on the `Create InstrumentStudio Plug-in` button.
 
       ![Create InstrumentStudio Plug-In](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Create%20InstrumentStudio%20Plug-In.png)
 
