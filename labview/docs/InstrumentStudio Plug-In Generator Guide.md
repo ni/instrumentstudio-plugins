@@ -44,7 +44,7 @@ packages from the latest release assets.
 
 > [!NOTE]  
 > Please install the `InstrumentStudio Plug-In SDK` package before installing `InstrumentStudio
-Plug-In Generator` package.
+> Plug-In Generator` package.
 
 ---
 
@@ -58,6 +58,8 @@ Plug-In Generator` package.
       Name` indicator.  
       - The new InstrumentStudio plug-in will be created in this active LabVIEW project.
    3. Enter the `InstrumentStudio Plug-in Name` and `InstrumentStudio Plug-in Group`.
+      - The `InstrumentStudio Plug-in Group` input is optional and will be set to default value
+        'Default' if not provided.
    4. Click on the `Create InstrumentStudio Plug-in` button.
 
       ![Create InstrumentStudio Plug-In](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Create%20InstrumentStudio%20Plug-In.png)
@@ -77,11 +79,11 @@ Plug-In Generator` package.
 
 > [!NOTE]  
 > For more information about the GPluginData file format and InstrumentStudio plug-in development,
-please refer to the
-[GPluginData-File-Format](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/GPluginData-File-Format.pdf)
-and [G Plugin Development
-Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
-documents.
+> please refer to the
+> [GPluginData-File-Format](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/GPluginData-File-Format.pdf)
+> and [G Plugin Development
+> Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
+> documents.
 
 ---
 
@@ -105,9 +107,9 @@ documents.
 
 > [!NOTE]  
 > For information about the recommended PPL build settings for an InstrumentStudio plug-in, please
-refer to the 'Building and Deploying Release Plug-Ins' section in the [G Plugin Development
-Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
-document.
+> refer to the 'Building and Deploying Release Plug-Ins' section in the [G Plugin Development
+> Guide](https://github.com/ni/instrumentstudio-plugins/blob/main/labview/docs/G%20Plugin%20Development%20Guide.pdf)
+> document.
 
 ---
 
@@ -136,7 +138,7 @@ document.
 
 ## Creating a package or installer to deploy a LabVIEW InstrumentStudio plug-in
 
-1. Open the LabVIEW project which contains the InstrumentStudio plug-in.
+1. Open the Active LabVIEW project where the InstrumentStudio plug-in was created.
 2. Create a Package or Installer build specification in the project. Refer to
    [Creating Build Specifications](https://www.ni.com/docs/en-US/bundle/labview/page/creating-build-specifications.html)
    for more information.
