@@ -56,8 +56,7 @@ Plug-In Generator` package.
    1. This will open the `Create InstrumentStudio Plug-in` dialog.
    2. The name of the Active LabVIEW Project will be automatically populated in the `Active Project
       Name` indicator.  
-      > [!NOTE]  
-      > The new InstrumentStudio plug-in will be created in this active LabVIEW project.
+         - The new InstrumentStudio plug-in will be created in this active LabVIEW project.
    3. Enter the `InstrumentStudio Plug-in Name` and `InstrumentStudio Plug-in Group`.
    4. Click on the `Create InstrumentStudio Plug-in` button.
 
@@ -97,9 +96,9 @@ documents.
      its contents do not conflict with other plug-ins.
 5. In addition to the default `Addons` directory, you can also install plug-ins to a user-defined
    directory configured in the IS preferences dialog for plug-ins shown below.
-   - This user-defined directory allows for the installation of plug-ins without requiring
+   1. This user-defined directory allows for the installation of plug-ins without requiring
       administrative permissions.
-   - Configuring this preference requires IS to be launched with administrator privileges.
+   2. Configuring this preference requires IS to be launched with administrator privileges.
 
    ![Preferences for Plugins dialog](./images/InstrumentStudio%20Plug-In%20Generator%20Guide/Preferences%20for%20Plugins.png)
 
@@ -160,9 +159,9 @@ document.
 6. To build the package or installer, right-click on the desired build specification and choose
    'Build'.
 
-   > [!NOTE]  
-   > The PPL build specification must be built first in order for the package or installer build to
-   > succeed.
+> [!NOTE]  
+> The PPL build specification must be built first in order for the package or installer build to
+> succeed.
 
 ---
 
