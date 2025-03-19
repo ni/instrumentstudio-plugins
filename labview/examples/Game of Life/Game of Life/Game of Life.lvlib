@@ -8,17 +8,16 @@
 
 </Property>
 	<Item Name="Helpers" Type="Folder">
-		<Item Name="Add Event.vi" Type="VI" URL="../Helpers/Add Event.vi"/>
+		<Item Name="Add Event Record.vi" Type="VI" URL="../Helpers/Add Event Record.vi"/>
 		<Item Name="Align Error Message.vi" Type="VI" URL="../Helpers/Align Error Message.vi"/>
 		<Item Name="Configuration.ctl" Type="VI" URL="../Helpers/Configuration.ctl"/>
-		<Item Name="Data.ctl" Type="VI" URL="../Helpers/Data.ctl"/>
-		<Item Name="Enum to Variant Array.vi" Type="VI" URL="../Helpers/Enum to Variant Array.vi"/>
-		<Item Name="Game of Life.ctl" Type="VI" URL="../Helpers/Game of Life.ctl"/>
+		<Item Name="Data Cluster.ctl" Type="VI" URL="../Helpers/Data Cluster.ctl"/>
+		<Item Name="Game of Life Cluster.ctl" Type="VI" URL="../Helpers/Game of Life Cluster.ctl"/>
 		<Item Name="Get 8 Neighbors.vi" Type="VI" URL="../Helpers/Get 8 Neighbors.vi"/>
+		<Item Name="Get IS Logs Directory Path.vi" Type="VI" URL="../Helpers/Get IS Logs Directory Path.vi"/>
 		<Item Name="Get Log Directory Path.vi" Type="VI" URL="../Helpers/Get Log Directory Path.vi"/>
 		<Item Name="Get Neighbor Coordinates.vi" Type="VI" URL="../Helpers/Get Neighbor Coordinates.vi"/>
 		<Item Name="Get Neighbor Values.vi" Type="VI" URL="../Helpers/Get Neighbor Values.vi"/>
-		<Item Name="Get System Document Path.vi" Type="VI" URL="../Helpers/Get System Document Path.vi"/>
 		<Item Name="Initialize Game.vi" Type="VI" URL="../Helpers/Initialize Game.vi"/>
 		<Item Name="Log Events.vi" Type="VI" URL="../Helpers/Log Events.vi"/>
 		<Item Name="Next Generation.vi" Type="VI" URL="../Helpers/Next Generation.vi"/>
@@ -29,7 +28,7 @@
 		<Item Name="Queue Driver.lvlib" Type="Library" URL="../Queue Driver/Queue Driver.lvlib"/>
 	</Item>
 	<Item Name="User Event Driver" Type="Folder">
-		<Item Name="User Event.lvlib" Type="Library" URL="../User Event Driver/User Event.lvlib"/>
+		<Item Name="User Event Driver.lvlib" Type="Library" URL="../User Event Driver/User Event Driver.lvlib"/>
 	</Item>
 	<Item Name="Game of Life.gplugindata" Type="Document" URL="../Game of Life.gplugindata"/>
 	<Item Name="Game of Life.vi" Type="VI" URL="../Game of Life.vi"/>
