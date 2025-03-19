@@ -29,7 +29,7 @@
 		<Item Name="Queue Driver.lvlib" Type="Library" URL="../Queue Driver/Queue Driver.lvlib"/>
 	</Item>
 	<Item Name="User Event Driver" Type="Folder">
-		<Item Name="User Event.lvlib" Type="Library" URL="../User Event LV2/User Event.lvlib"/>
+		<Item Name="User Event.lvlib" Type="Library" URL="../User Event Driver/User Event.lvlib"/>
 	</Item>
 	<Item Name="Game of Life.gplugindata" Type="Document" URL="../Game of Life.gplugindata"/>
 	<Item Name="Game of Life.vi" Type="VI" URL="../Game of Life.vi"/>
