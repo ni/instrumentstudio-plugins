@@ -14,6 +14,6 @@
 	<Property Name="NI.Lib.Version" Type="Str">1.0.0.0</Property>
 	<Property Name="NI.LV.All.SourceOnly" Type="Bool">true</Property>
 	<Property Name="NI.SortType" Type="Int">3</Property>
-	<Item Name="User Event Operations.ctl" Type="VI" URL="../controls/User Event Operations.ctl"/>
+	<Item Name="User Event Operations.ctl" Type="VI" URL="../User Event Operations.ctl"/>
 	<Item Name="User Event Driver.vi" Type="VI" URL="../User Event Driver.vi"/>
 </Library>
