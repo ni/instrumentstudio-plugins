@@ -92,12 +92,13 @@ packages from the latest release assets.
 1. Open the Active LabVIEW project where the InstrumentStudio plug-in was created.
 2. The generated plug-in comes with a Packed Project Library (PPL) build specification.
 3. To build the PPL, right-click on the desired build specification and choose 'Build'.
-4. Copy the built plug-in files into the InstrumentStudio `Addons` directory, which is `C:\Program
-   Files\National Instruments\InstrumentStudio\Addons` by default.
-   - You may optionally install the plug-in files into a subdirectory of the `Addons` directory so
-     its contents do not conflict with other plug-ins.
-   - In addition to the default `Addons` directory, you can also install the plug-ins to a
-     user-defined directory configured in the InstrumentStudio preferences dialog for plug-ins.
+4. Copy or install the built plug-in files into the InstrumentStudio `Addons` directory, which is
+   `C:\Program Files\National Instruments\InstrumentStudio\Addons` by default. This action will
+   require administrative permission.
+   1. You may optionally install the plug-in files into a subdirectory of the `Addons` directory so
+      its contents do not conflict with other plug-ins.
+   2. In addition to the default `Addons` directory, you can also install the plug-ins to a
+      user-defined directory configured in the InstrumentStudio preferences dialog for plug-ins.
       - This user-defined directory allows for the installation of plug-ins without requiring
         administrative permissions.
       - To configure this preference, InstrumentStudio must be launched with administrator
@@ -118,10 +119,10 @@ packages from the latest release assets.
 1. Open InstrumentStudio and click `Manual Layout` to open the Edit Layout dialog.
 2. The InstrumentStudio plug-in will be listed under the Add-Ons category within the group specified
    at the time of the plug-in creation.  
-   - If `InstrumentStudio Plug-in Group` is not specified during plug-in creation, the plug-in will
-     be populated under the `Default` group.
-   - The `InstrumentStudio Plug-in Group` specified at the time of plug-in creation will be saved in
-     the plug-in's `.gplugindata` file, which holds the properties of the plug-in.
+   1. If `InstrumentStudio Plug-in Group` is not specified during plug-in creation, the plug-in will
+      be populated under the `Default` group.
+   2. The `InstrumentStudio Plug-in Group` specified at the time of plug-in creation will be saved
+      in the plug-in's `.gplugindata` file, which holds the properties of the plug-in.
       - If needed, the user can edit the `GroupName` property in the file to modify the plug-in's
         group later.
 3. Choose the desired plug-in and create a large panel.
