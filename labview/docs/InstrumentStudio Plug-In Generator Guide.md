@@ -91,7 +91,7 @@ packages from the latest release assets.
 
 1. Open the Active LabVIEW project where the InstrumentStudio plug-in was created.
 2. The generated plug-in comes with a Packed Project Library (PPL) build specification.
-3. To build the PPL, right-click on the desired build specification and choose 'Build'.
+3. To build the PPL, right-click on the PPL build specification and choose 'Build'.
 4. Copy or install the built plug-in files into the InstrumentStudio `Addons` directory, which is
    `C:\Program Files\National Instruments\InstrumentStudio\Addons` by default. This action will
    require administrative permission.
