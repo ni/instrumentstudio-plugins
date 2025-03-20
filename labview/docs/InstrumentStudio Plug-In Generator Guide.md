@@ -15,9 +15,9 @@
 
 ## Introduction
 
-The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins with specified name
-and group. This tool provides a convenient starting point for developing any LabVIEW application as
-an InstrumentStudio plug-in.
+The InstrumentStudio Plug-In Generator tool allows users to create new plug-ins with a specified
+name and group. This tool provides a convenient starting point for developing any LabVIEW
+application as an InstrumentStudio plug-in.
 
 ---
 
@@ -43,7 +43,7 @@ Download and install the `InstrumentStudio Plug-In SDK` and `InstrumentStudio Pl
 packages from the latest release assets.
 
 > [!NOTE]  
-> Please install the `InstrumentStudio Plug-In SDK` package before installing `InstrumentStudio
+> Please install the `InstrumentStudio Plug-In SDK` package before installing the `InstrumentStudio
 > Plug-In Generator` package.
 
 ---
@@ -89,7 +89,7 @@ packages from the latest release assets.
 
 ## Deploying a LabVIEW InstrumentStudio plug-in
 
-1. Open the Active LabVIEW project where the InstrumentStudio plug-in was created.
+1. Open the active LabVIEW project where the InstrumentStudio plug-in was created.
 2. The generated plug-in comes with a Packed Project Library (PPL) build specification.
 3. To build the PPL, right-click on the PPL build specification and choose 'Build'.
 4. Copy or install the built plug-in files into the InstrumentStudio `Addons` directory, which is
@@ -118,11 +118,11 @@ packages from the latest release assets.
 
 1. Open InstrumentStudio and click `Manual Layout` to open the Edit Layout dialog.
 2. The InstrumentStudio plug-in will be listed under the Add-Ons category within the group specified
-   at the time of the plug-in creation.  
-   1. If `InstrumentStudio Plug-in Group` is not specified during plug-in creation, the plug-in will
-      be populated under the `Default` group.
-   2. The `InstrumentStudio Plug-in Group` specified at the time of plug-in creation will be saved
-      in the plug-in's `.gplugindata` file, which holds the properties of the plug-in.
+   at the time of plug-in creation.  
+   1. If `InstrumentStudio Plug-in Group` was not specified during plug-in creation, the plug-in
+      will be populated under the `Default` group.
+   2. The `InstrumentStudio Plug-in Group` specified at the time of plug-in creation is saved in the
+      plug-in's `.gplugindata` file, which holds the properties of the plug-in.
       - If needed, the user can edit the `GroupName` property in the file to modify the plug-in's
         group later.
 3. Choose the desired plug-in and create a large panel.
@@ -139,7 +139,7 @@ packages from the latest release assets.
 
 ## Creating a package or installer to deploy a LabVIEW InstrumentStudio plug-in
 
-1. Open the Active LabVIEW project where the InstrumentStudio plug-in was created.
+1. Open the active LabVIEW project where the InstrumentStudio plug-in was created.
 2. Create a Package or Installer build specification in the project. Refer to
    [Creating Build Specifications](https://www.ni.com/docs/en-US/bundle/labview/page/creating-build-specifications.html)
    for more information.
