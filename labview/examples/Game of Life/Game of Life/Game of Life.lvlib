@@ -14,13 +14,12 @@
 		<Item Name="Configuration.ctl" Type="VI" URL="../Helpers/Configuration.ctl"/>
 		<Item Name="Convert Cells into Graph.vi" Type="VI" URL="../Helpers/Convert Cells into Graph.vi"/>
 		<Item Name="Data Cluster.ctl" Type="VI" URL="../Helpers/Data Cluster.ctl"/>
-		<Item Name="Game of Life Cluster.ctl" Type="VI" URL="../Helpers/Game of Life Cluster.ctl"/>
 		<Item Name="Get 8 Neighbors.vi" Type="VI" URL="../Helpers/Get 8 Neighbors.vi"/>
-		<Item Name="Get IS Logs Directory Path.vi" Type="VI" URL="../Helpers/Get IS Logs Directory Path.vi"/>
 		<Item Name="Get Log Directory Path.vi" Type="VI" URL="../Helpers/Get Log Directory Path.vi"/>
 		<Item Name="Get Neighbor Coordinates.vi" Type="VI" URL="../Helpers/Get Neighbor Coordinates.vi"/>
 		<Item Name="Get Neighbor Values.vi" Type="VI" URL="../Helpers/Get Neighbor Values.vi"/>
 		<Item Name="Get Next Generation Outputs.vi" Type="VI" URL="../Helpers/Get Next Generation Outputs.vi"/>
+		<Item Name="Graph Elements.ctl" Type="VI" URL="../Helpers/Graph Elements.ctl"/>
 		<Item Name="Initialize Game.vi" Type="VI" URL="../Helpers/Initialize Game.vi"/>
 		<Item Name="Log Events.vi" Type="VI" URL="../Helpers/Log Events.vi"/>
 		<Item Name="Wrap Coordinates.vi" Type="VI" URL="../Helpers/Wrap Coordinates.vi"/>
