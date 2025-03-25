@@ -18,7 +18,6 @@
 		<Item Name="Get Log Directory Path.vi" Type="VI" URL="../Helpers/Get Log Directory Path.vi"/>
 		<Item Name="Get Neighbor Coordinates.vi" Type="VI" URL="../Helpers/Get Neighbor Coordinates.vi"/>
 		<Item Name="Get Neighbor Values.vi" Type="VI" URL="../Helpers/Get Neighbor Values.vi"/>
-		<Item Name="Get Next Generation Outputs.vi" Type="VI" URL="../Helpers/Get Next Generation Outputs.vi"/>
 		<Item Name="Graph Elements.ctl" Type="VI" URL="../Helpers/Graph Elements.ctl"/>
 		<Item Name="Initialize Game.vi" Type="VI" URL="../Helpers/Initialize Game.vi"/>
 		<Item Name="Log Events.vi" Type="VI" URL="../Helpers/Log Events.vi"/>
