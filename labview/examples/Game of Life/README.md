@@ -1,12 +1,12 @@
 # Game of Life - InstrumentStudio Plugin Example
 
-This InstrumentStudio plugin example illustrates how to host Game of Life LabVIEW code seamlessly
-into InstrumentStudio environment.
+This InstrumentStudio plugin example illustrates how to host Conway's Game of Life simulation
+LabVIEW code seamlessly in InstrumentStudio environment.
 
-This example demonstrates the usage of XY Data in a graph. It allows the user to specify the size of
-the game board and the update interval between generations. It will run indefinitely as long as
-there are 'births' and 'deaths' happening on the game board unless the `Stop all outputs` or
-`Start/Stop` button is switched off.
+- This example allows the user to specify the size of the game board and the update interval between
+  generations.
+- The simulation will run indefinitely as long as there are 'births' and 'deaths' occurring on the
+  game board, unless the `Start/Stop` button is switched off.
 
 ## Features
 
@@ -39,9 +39,16 @@ To run the example plug-in, follow these steps.
 3. Once the build is over, copy the folder containing the builds and place it under the Addons
    folder of InstrumentStudio at `C:\Program Files\National Instruments\InstrumentStudio\Addons`.
 4. Now, open InstrumentStudio, create a new InstrumentStudio project, and save it.
-5. Within the project, create a manual layout by following `Add-Ons -> NI Example Plugins -> Game of
-   Life` in Edit Layout.
-6. Once the soft front panel is open, the Game of Life InstrumentStudio plugin will start running.
+5. From the project window, click `Manual Layout` to open the Edit Layout dialog.
+   1. Navigate to `Add-Ons` -> `NI Example Plugins` -> `Conway's Game of Life`.
+   2. Create a large panel.
+6. Once the SFP is open, an instance of the plugin VI will start running in the backend.
+7. Click on the `Start` button to run the simulation to visualise Conway's Game of Life theory on
+   the graph/game board.
+   1. The simulation will run indefinitely as long as there are 'births' and 'deaths' occurring on
+      the graph.
+   2. Click on the `Stop` button to stop the simulation.
+8. The plugin VI instance will stop running on closure of the SFP.
 
 ### Stop the example plug-in
 
@@ -52,11 +59,14 @@ stop the plug-in.
 
 ### Make changes to the example plug-in
 
-Logic for the Game of Life InstrumentStudio plugin example is found in the top-level plug-in VI
-`Game of Life.vi`.
+- The implementation logic for the Game of Life InstrumentStudio plugin example is found in the
+  top-level plug-in VI `Game of Life.vi`.
+- Add your logic/edit the existing logic in the top-level VI to make changes to the plugin.
 
 ### How to add new UI elements
 
-Add controls and indicators to the front panel of the top-level plug-in VI. Capture events
-associated with the controls in the Event Handling Loop and pass the data to Message Handling Loop
-through the Queue Driver.vi for further operations.
+- Add controls and indicators to the front panel of the top-level plug-in VI.
+- Capture events associated with the controls in the Event Handling Loop and pass the data to
+  Message Handling Loop through the `Queue Driver.vi` for further operations.
+- Add the necessary logic is respective states of Message handling loop to handle subsequent
+  processing and actions.
