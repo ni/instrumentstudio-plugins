@@ -1,7 +1,7 @@
 # Game of Life - InstrumentStudio Plugin Example
 
 This InstrumentStudio plugin example illustrates how to host Conway's Game of Life simulation
-LabVIEW code seamlessly in InstrumentStudio environment.
+LabVIEW code seamlessly within the InstrumentStudio environment.
 
 - This example allows the user to specify the size of the game board and the update interval between
   generations.
