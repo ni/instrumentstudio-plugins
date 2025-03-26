@@ -34,21 +34,32 @@ LabVIEW code seamlessly within the InstrumentStudio environment.
 
 To run the example plug-in, follow these steps.
 
-1. Open the LabVIEW project (Game of Life.lvproj) file for the example.
-2. Build the packed project library under the build specification.
-3. Once the build is over, copy the folder containing the builds and place it under the Addons
-   folder of InstrumentStudio at `C:\Program Files\National Instruments\InstrumentStudio\Addons`.
-4. Now, open InstrumentStudio, create a new InstrumentStudio project, and save it.
-5. From the project window, click `Manual Layout` to open the Edit Layout dialog.
+1. Open the LabVIEW project (Game of Life.lvproj) file which contains the example plug-in.
+2. The example plug-in comes with a Packed Project Library (PPL) build specification.
+3. To build the PPL, right-click on the PPL build specification and choose 'Build'.
+4. Once the build is complete, copy or install the built example plug-in files into the
+   InstrumentStudio Addons directory, which is `C:\Program Files\National
+   Instruments\InstrumentStudio\Addons` by default. This action will require administrative
+   permission.
+   1. You may optionally install the plug-in files into a subdirectory of the Addons directory so
+      its contents do not conflict with other plug-ins.
+   2. In addition to the default Addons directory, you can also install the plug-in files to a
+      user-defined directory configured in the InstrumentStudio preferences dialog for plug-ins.
+        - This user-defined directory allows for the installation of plug-ins without requiring
+          administrative permissions.
+        - To configure this preference, InstrumentStudio must be launched with administrator
+          privileges.
+5. Now, open InstrumentStudio, create a new InstrumentStudio project, and save it.
+6. From the project window, click `Manual Layout` to open the Edit Layout dialog.
    1. Navigate to `Add-Ons` -> `NI Example Plugins` -> `Conway's Game of Life`.
    2. Create a large panel.
-6. Once the SFP is open, an instance of the plugin VI will start running in the backend.
-7. Click on the `Start` button to run the simulation to visualise Conway's Game of Life theory on
+7. Once the SFP is open, an instance of the plug-in VI will start running in the backend.
+8. Click on the `Start` button to run the simulation to visualise Conway's Game of Life theory on
    the graph/game board.
    1. The simulation will run indefinitely as long as there are 'births' and 'deaths' occurring on
       the graph.
    2. Click on the `Stop` button to stop the simulation.
-8. The plugin VI instance will stop running on closure of the SFP.
+9. The plug-in VI instance will stop running on closure of the SFP.
 
 ### Stop the example plug-in
 
