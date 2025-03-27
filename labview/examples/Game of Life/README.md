@@ -50,13 +50,16 @@ To run the example plug-in, follow these steps.
    2. Create a large panel.
 7. Once the SFP is open, an instance of the plug-in VI will start running in the backend.
 8. By default, the controls in the SFP will load with either their default values or the last saved
-   values. You can adjust the controls to change the game board size and the update interval between
-   generations as needed.
+   values.
+    1. Adjust the controls to change the game board size and the update interval between
+       generations.
 9. Click on the `Start` button to run the simulation to visualise Conway's Game of Life theory on
    the graph/game board.
    1. The simulation will run indefinitely as long as there are 'births' and 'deaths' occurring on
       the graph.
-   2. Click on the `Stop` button to stop the simulation.
+   2. The `Update interval` value can be changed during the simulation to update the interval
+      between the update of subsequent generations on the board.
+   3. Click on the `Stop` button to stop the simulation.
 10. The plug-in VI instance will stop running on closure of the SFP or closure of the
     InstrumentStudio project window or removal of the SFP from layout.
 
