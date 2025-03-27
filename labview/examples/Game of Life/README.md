@@ -1,7 +1,7 @@
 # Game of Life - InstrumentStudio Plug-in Example
 
-This is an example that demonstrates how to integrate and use the InstrumentStudio Plug-In SDK APIs
-in LabVIEW applications to develop the application as an InstrumentStudio plug-in.
+This example demonstrates how to integrate and use the InstrumentStudio Plug-In SDK APIs in LabVIEW
+applications to develop the application as an InstrumentStudio plug-in.
 
 ## Features
 
