@@ -76,5 +76,5 @@ To run the example plug-in, follow these steps.
 - Add the necessary logic is respective states of Message handling loop to handle subsequent
   processing and actions.
 
-Note: This example plug-in follows Queued Message Handler design pattern to ensure a responsive UI,
+Note: This example plug-in uses the Queued Message Handler design pattern to handle a responsive UI,
 while the choice of design pattern can vary based on the application needs.
