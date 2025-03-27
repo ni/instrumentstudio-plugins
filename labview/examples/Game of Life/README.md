@@ -50,7 +50,8 @@ To run the example plug-in, follow these steps.
    2. Create a large panel.
 7. Once the SFP is open, an instance of the plug-in VI will start running in the backend.
 8. By default, the controls in the SFP will load with either their default values or the last saved
-   values. You can adjust the game board size and the update interval between generations as needed.
+   values. You can adjust the controls to change the game board size and the update interval between
+   generations as needed.
 9. Click on the `Start` button to run the simulation to visualise Conway's Game of Life theory on
    the graph/game board.
    1. The simulation will run indefinitely as long as there are 'births' and 'deaths' occurring on
@@ -74,3 +75,6 @@ To run the example plug-in, follow these steps.
   Message Handling Loop through the `Queue Driver.vi` for further operations.
 - Add the necessary logic is respective states of Message handling loop to handle subsequent
   processing and actions.
+
+Note: This example plug-in follows Queued Message Handler design pattern to ensure a responsive UI,
+while the choice of design pattern can vary based on the application needs.
