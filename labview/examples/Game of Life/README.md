@@ -1,20 +1,15 @@
-# Game of Life - InstrumentStudio Plugin Example
+# Game of Life - InstrumentStudio Plug-in Example
 
-This InstrumentStudio plugin example illustrates how to host Conway's Game of Life simulation
-LabVIEW code seamlessly within the InstrumentStudio environment.
-
-- This example allows the user to specify the size of the game board and the update interval between
-  generations.
-- The simulation will run indefinitely as long as there are 'births' and 'deaths' occurring on the
-  game board, unless the `Start/Stop` button is switched off.
+This is an example that demonstrates how to integrate and use the InstrumentStudio Plug-In SDK APIs
+in LabVIEW applications to develop the application as an InstrumentStudio plug-in.
 
 ## Features
 
-- Contains a LabVIEW project featuring the Game of Life InstrumentStudio plugin example.
+- Contains a LabVIEW project featuring the Game of Life InstrumentStudio plug-in example.
 - Includes a `.gplugindata` file that informs InstrumentStudio about the properties of the
-  InstrumentStudio plugin example and its implementation code.
+  InstrumentStudio plug-in example and its implementation code.
 - Contains an InstrumentStudio project and a soft front panel to host the Game of Life
-  InstrumentStudio plugin example within InstrumentStudio.
+  InstrumentStudio plug-in example within InstrumentStudio.
 - Initiates the game upon switching on `Start\Stop` button in `Game Panel` tab.
 - Changes the InstrumentStudio soft front panel status to `running` when the game begins.
 - Preserves the front panel control inputs in `Edit Time configuration` and retains their values
@@ -54,25 +49,23 @@ To run the example plug-in, follow these steps.
    1. Navigate to `Add-Ons` -> `NI Example Plugins` -> `Conway's Game of Life`.
    2. Create a large panel.
 7. Once the SFP is open, an instance of the plug-in VI will start running in the backend.
-8. Click on the `Start` button to run the simulation to visualise Conway's Game of Life theory on
+8. By default, the controls in the SFP will load with either their default values or the last saved
+   values. You can adjust the game board size and the update interval between generations as needed.
+9. Click on the `Start` button to run the simulation to visualise Conway's Game of Life theory on
    the graph/game board.
    1. The simulation will run indefinitely as long as there are 'births' and 'deaths' occurring on
       the graph.
    2. Click on the `Stop` button to stop the simulation.
-9. The plug-in VI instance will stop running on closure of the SFP.
-
-### Stop the example plug-in
-
-Close the soft front panel containing the example plug-in or the whole InstrumentStudio window to
-stop the plug-in.
+10. The plug-in VI instance will stop running on closure of the SFP or closure of the
+    InstrumentStudio project window or removal of the SFP from layout.
 
 ## Developer Guide
 
 ### Make changes to the example plug-in
 
-- The implementation logic for the Game of Life InstrumentStudio plugin example is found in the
+- The implementation logic for the Game of Life InstrumentStudio plug-in example is found in the
   top-level plug-in VI `Game of Life.vi`.
-- Add your logic/edit the existing logic in the top-level VI to make changes to the plugin.
+- Add your logic/edit the existing logic in the top-level VI to make changes to the plug-in.
 
 ### How to add new UI elements
 
