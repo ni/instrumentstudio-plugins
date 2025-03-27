@@ -57,8 +57,8 @@ To run the example plug-in, follow these steps.
    the graph/game board.
    1. The simulation will run indefinitely as long as there are 'births' and 'deaths' occurring on
       the graph.
-   2. The `Update interval` value can be changed during the simulation to update the interval
-      between the update of subsequent generations on the board.
+   2. The `Update interval` value can be changed during the simulation to adjust the time interval
+      between the updates of subsequent generations on the board.
    3. Click on the `Stop` button to stop the simulation.
 10. The plug-in VI instance will stop running on closure of the SFP or closure of the
     InstrumentStudio project window or removal of the SFP from layout.
