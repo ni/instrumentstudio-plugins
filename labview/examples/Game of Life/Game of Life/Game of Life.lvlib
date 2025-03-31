@@ -21,6 +21,7 @@
 		<Item Name="Graph Elements.ctl" Type="VI" URL="../Helpers/Graph Elements.ctl"/>
 		<Item Name="Initialize Game.vi" Type="VI" URL="../Helpers/Initialize Game.vi"/>
 		<Item Name="Log Events.vi" Type="VI" URL="../Helpers/Log Events.vi"/>
+		<Item Name="Timestamp to Timestring.vi" Type="VI" URL="../Helpers/Timestamp to Timestring.vi"/>
 		<Item Name="Wrap Coordinates.vi" Type="VI" URL="../Helpers/Wrap Coordinates.vi"/>
 	</Item>
 	<Item Name="Queue Driver" Type="Folder">
