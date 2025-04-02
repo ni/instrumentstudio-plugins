@@ -17,11 +17,7 @@ applications to develop the application as an InstrumentStudio plug-in.
 - Allows the user to stop the game using the `Stop all outputs` button which is present in the
   InstrumentStudio soft front panel header or the `Start\Stop` button present in the `Game Panel`
   tab of the soft front panel.
-- Provides an option to view event logs and enable or disable event logging via a checkbox in the
-  `Events` tab.
-- Logs InstrumentStudio events and errors with timestamps in a CSV file, saved either in the root
-  directory of the InstrumentStudio project under the `Event Logs` folder or in the user documents
-  under the `InstrumentStudio Logs` folder if no InstrumentStudio project is found.
+- Displays event logs via the `Event Record` listbox present in the `Events` tab.
 
 ## User Guide
 
