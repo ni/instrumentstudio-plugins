@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<GPluginMetadata xmlns="http://www.ni.com/InstrumentStudio/GPluginMetadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Plugins>
+		<PluginData 
+			ApplicationContext="Unique" 
+			DisplayName="InstrumentStudio plug-in example that displays Conway's Game of Life simulation in a graph." 
+			GroupName="NI Example Plugins" 
+			PanelType="Conway's Game of Life" 
+			SupportedPanelSizes="Large" 
+			UniqueName="National Instruments | Game of Life Plug-In" 
+			VIPath="Game of Life.lvlibp\Game of Life.vi" />
+	</Plugins>
+</GPluginMetadata>
