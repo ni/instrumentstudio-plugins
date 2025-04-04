@@ -1,7 +1,7 @@
-<VI_Package_Builder_Settings Version="2020.1" Created_Date="2024-12-05 10:51:38" Modified_Date="2025-03-05 21:29:14" Creator="jdixon" Comments="" ID="9072dfc266c1896ee042875c6d1796a5">
+<VI_Package_Builder_Settings Version="2020.1" Created_Date="2024-12-05 10:51:38" Modified_Date="2025-04-04 14:07:42" Creator="jdixon" Comments="" ID="afeb7c681d07a5a8cc99809f94aa3364">
   <Library_General_Settings>
     <Package_File_Name>ni_instrumentstudio_plugin_sdk</Package_File_Name>
-    <Library_Version>1.0.0.2</Library_Version>
+    <Library_Version>1.1.0.2</Library_Version>
     <Auto_Increment_Version>false</Auto_Increment_Version>
     <Library_Source_Folder>..\source\Plugin SDK</Library_Source_Folder>
     <Library_Output_Folder>..\Build Output</Library_Output_Folder>
@@ -371,7 +371,7 @@
         <Path>..\source\Plugin SDK\Update Running State.vi</Path>
         <VI_Title/>
       </Items_Data>
-      <GUID>2F78F9C5EEBC99DB92F0D7895A326559</GUID>
+      <GUID>700489E9863AF927746462AF7FC238B9</GUID>
     </Functions_Palette_Data>
   </Library_Palette_Definition>
 </VI_Package_Builder_Settings>
