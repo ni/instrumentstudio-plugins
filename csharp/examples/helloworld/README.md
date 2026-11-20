@@ -16,7 +16,7 @@ latest from the link below.
 | 2026 Q4 - present              | 10.0                   | [https://dotnet.microsoft.com/en-us/download/dotnet/10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) |
 
 You may also need to change the `TargetFramework` element in
-HelloWorld.NetCore.csproj to match the required .NET SDK Version. For example,
+`HelloWorldPlugin.csproj` to match the required .NET SDK Version. For example,
 to target InstrumentStudio 2026 Q3, change the .csproj element like
 this:
 ```xml
