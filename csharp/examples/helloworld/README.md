@@ -12,12 +12,13 @@ latest from the link below.
 | InstrumentStudio Version       | .NET SDK Version       | Link |
 |--------------------------------|------------------------|------|
 | 2022 Q3 - 2024 Q3              | 6.0                    | [https://dotnet.microsoft.com/en-us/download/dotnet/6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) |
-| 2024 Q4 - 2025 Q1              | 8.0                    | [https://dotnet.microsoft.com/en-us/download/dotnet/8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) |
+| 2024 Q4 - 2026 Q3              | 8.0                    | [https://dotnet.microsoft.com/en-us/download/dotnet/8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) |
+| 2026 Q4 - present              | 10.0                   | [https://dotnet.microsoft.com/en-us/download/dotnet/10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) |
 
-You also need to change the `TargetFramework` element in
+You may also need to change the `TargetFramework` element in
 HelloWorld.NetCore.csproj to match the required .NET SDK Version. For example,
-to target InstrumentStudio 2024Q4 or greater, change the .csproj element like
-this.
+to target InstrumentStudio 2026 Q3, change the .csproj element like
+this:
 ```xml
 <TargetFramework>net8.0-windows</TargetFramework>
 ```
@@ -35,7 +36,7 @@ The default project settings assume that InstrumentStudio is installed in the
 default location. If InstrumentStudio is installed in a custom location or is
 not installed, you can specify a custom path to the InstrumentStudio assemblies
 by setting the `InstrumentStudioDirectory` environment variable or editing the
-corresponding variable in `HelloWorld.NetCore.csproj`.
+corresponding variable in `HelloWorldPlugin.csproj`.
 
 Building InstrumentStudio C# plug-ins requires at least the following assemblies
 from the InstrumentStudio installation directory:
